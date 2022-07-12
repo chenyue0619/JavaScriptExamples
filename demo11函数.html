@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo11函数</title>
+</head>
+<body>
+    <script>
+        // function fn(a){
+        //     console.log(a);
+        // };
+        // fn("我是外面传给函数参数的值");
+
+        // function fn(a,b,c){
+        //     console.log(a,b,c);
+        // };
+        // fn(1,2,3);
+
+        // 写一个函数用来计算加法
+        // function sum(a,b){
+        //     var result = a+b;
+        //     console.log(result);
+        // };
+        // sum(2,3);
+
+        // function fn(){
+        //     console.log(arguments);
+        // };
+        // fn(1,2,3,4,4);
+
+        // function fn(){
+        //     console.log(arguments.callee());
+        // };
+        // fn();
+
+        // var a=1;
+        // var b= a;
+        // console.log(a,b);
+
+
+
+        // var some = {nickname:"xiaoming"};
+
+        // //定义一个函数
+        // function handleObj(obj){
+        //     obj.nickname = "xiaohong";//把obj定义为一个对象
+        //     console.log(obj);
+        // };
+
+        // //给函数handleObj传参数
+        // handleObj(some);//some的值已经被修改
+        // console.log(some);
+
+
+
+
+        // funciton name(){}函数的表达式
+        // var fn = function(a,b){//匿名函数，此写法为函数的声明
+        //     console.log(a,b);
+        // };
+        // fn(1,2);
+
+        //立即执行函数
+        (function(a,b){//设置形参
+            console.log(a,b);
+        })(1,2);//传参数
+
+         //立即执行函数
+         (function(a,b){//设置形参
+            console.log(a,b);
+        })('str','str');//传参数
+
+        
+
+        
+
+
+
+        // 函数表达式
+        // function abc(){
+        //     console.log("我是具名函数,使用函数表达式来书写");
+        // };
+        // abc();//调用函数
+
+        // 立即执行函数
+        // (function abc(){
+        //     console.log("我是一个立即执行函数");
+        // })();
+        
+        // (function (){
+        //     console.log("我是一个立即执行函数");
+        // }());
+
+        // ~ function (){
+        //     console.log("我是一个立即执行函数");
+        // }();//注意在最后加上一个小括号
+
+        // + function abc (){
+        //     console.log("我是一个立即执行函数");
+        // }();//注意在最后加上一个小括号
+
+        // - function abc (){
+        //     console.log("我是一个立即执行函数");
+        // }();//注意在最后加上一个小括号
+
+
+        // // 函数声明
+        // var fn = function (){
+        //     console.log("我是具名函数，使用函数声明来书写");
+        // };
+        // console.log(fn);
+
+
+
+
+        // 写在数组里面
+        // var arr = [
+        //     function(){console.log("我是函数1");},
+        //     function(){console.log("我是函数2");}
+        // ];
+        // arr[0]();//注意加括号，调用函数，会变成一个方法
+        // arr[1]();//注意加括号，调用函数，会变成一个方法
+
+        // for(var key in arr){
+        //     console.log(arr[key]());//注意加括号，不然只是一个简单的数组某一项，而不是函数方法
+        // }
+
+        // //写在循环里面
+        // if(true){
+        //     function abc(){
+        //         console.log("我是写在循环里面的函数");
+        //     };
+        //     abc();
+
+        // };
+        // abc();
+        // console.log(typeof abc);
+
+
+
+        // var obj = {
+        //     abc:function(){
+        //         console.log("我是obj对象里面的abc属性,我是一个函数");
+        //     }
+        // };
+        // obj.abc();//因为abc的属性值为一个函数，那么abc就变成一个方法，所以此语句用于调用匿名函数
+    </script>
+</body>
+</html>

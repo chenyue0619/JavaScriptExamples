@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom9判断</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* .box{
+            width:200px;
+            height: 200px;
+            background-color: red;
+        } */
+        .xiaomei{
+            margin-bottom: 10px;
+            width:200px;
+            height: 50px;
+            color: orange;
+        }
+        .xiaoming{
+            width:200px;
+            height: 50px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="xiaomei">小美：小明，明天要不要出去玩？</div>
+        <div class="xiaoming">小明：</div>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var xiaomei = document.querySelector('.xiaomei');
+        var xiaoming = document.querySelector('.xiaoming');
+        //console.log(xiaomei,xiaoming);
+        var condition = '上课';
+        //上课 -> 不行
+        //打篮球 -> 你对篮球感兴趣吗
+        //没事情做 -> 好呀，最近星巴克出了新品，改天请你喝！
+        if(condition === '上课'){
+            xiaoming.innerText += '不行,我要上课';
+        }else if(condition === '打篮球'){
+            xiaoming.innerText += '你对篮球感兴趣吗';
+        //else后面不加判断条件，直接跟操作代码块
+        }else{
+            xiaoming.innerText += '好呀，最近星巴克出了新品，改天请你喝！';
+        };
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //如果condition是空字符串，则执行下面的操作
+        //''  返回false
+        //condition返回true（因为不是空字符串），执行if操作，false执行else操作
+        // if(condition){
+        //     xiaoming.innerText += "不行，我明天要上课！";
+            
+        // }
+        // //如果condition非空字符串，则执行下面的操作
+        // else{
+           
+        //     xiaoming.innerText += "好呀，最近星巴克出了新品，改天请你喝！";
+        // };
+
+        // //1 && 2返回true
+        // //&&遇到false则停
+        // if(1 && 2){
+        //     console.log('成功了');
+        // }
+        // else{
+        //     console.log('失败了');
+        // };
+       
+        // var a = 1;
+        // var b = 3;
+        // if(b > 10){
+        //     a = "b大于10";
+        //     console.log(a);//没有返回值是因为，
+        //                     //if括号里面的条件不成立，
+        //                     //所以不会习性代码块里面的内容，
+        //                     //所以不会输出a的值
+        // };
+        // console.log(a);//因为if括号条件不成立，所以会打印出a原来的值
+        
+    </script>
+</body>
+</html>

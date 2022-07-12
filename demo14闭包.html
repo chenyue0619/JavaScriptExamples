@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo14闭包</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">0</div>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <script>
+        // 当点击元素时会打印出相应的下标
+        // console.time();
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].onclick = function (){
+        //         console.log(i);//当点击元素的时候函数才会执行，
+        //                         //但是i是全局变量，在点击时间触发时，for循环已经执行完毕
+                                    // 虽然i变量没有没回收掉，但是for循环已经执行完全
+        //     };
+        // };
+        // // console.timeEnd();//执行完这段代码所用的时间
+
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].num = i;//给boxs添加一个属性
+        //     boxs[i].onclick = function (){//点击元素会执行此函数
+        //         console.log(this.num);
+        //     };
+        // };
+
+        // // 加属性
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     // 不可以在元素身上乱绑属性，不规范
+        //     boxs[i].num = i;//将i值存储在num属性里面了，
+        //                     // 所以就算是在函数执行之前，每个boxs的num也已经存在了，
+        //                     // 之后打印出相应的num就可以了
+        //     boxs[i].onclick = function (){
+        //         console.log(this.num);
+        //     };
+        // };
+
+        // // 立即执行函数
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     // 因为是点击元素才会执行函数，如果将里面的变量换成i的话，i是全局变量，在调用函数之前就已经结束for循环
+        //             // 也就是说在点击之前已经存在i变量了，所以就会一直等到for循环结束，等到for循环结束,在点击元素调用函数的就是最后的i值了
+        //     // 但是如果重新设置一个变量，在点击元素之前就不会调用函数，只有将变量值传进去之后才会调用
+        //     (function fn(a){
+        //         boxs[a].onclick = function (){//通过点击的方式执行函数，所以不需要return必须返回一个值
+        //             console.log(a);
+        //         };
+        //     })(i);//每次都会形成一个单独的作用域
+        //             //立即执行函数，当讲变量值传进去之后，函数会立即执行
+        //             // 立即执行函数里面的变量不受全局变量的影响
+        //             // 因为只有这一个立即执行函数，所以就不会走for循环体，所以i的值就没有迭代
+        //             // 立即执行函数：当函数内容全部写完之后就会立马执行函数里面的语句，当每一次变量值传进去之后就会执行此函数
+        //                     // 而如果不加一个变量，直接写i的话，不传值就会开始执行函数
+        // };
+
+
+
+
+
+
+
+
+
+        // var box1 = document.querySelector('.box');
+        // // onclick[点击鼠标]只有点击该元素的时候会触发后面的函数
+        // box1.onclick = function fn(){
+        //     console.log("你点击了我");
+        //     box1.style.backgroundColor = "blue";//当点击该元素的时候背景颜色变为蓝色
+        // };
+
+
+        // function fn(){
+        //     var num = 1;
+        //     return num;//rerurn是按值返回的
+        // }
+        // fn();
+        // console.log( fn());//报错，num是fn内部的变量
+
+        // function fn(){
+        //     console.log(num);
+        // }
+        // fn();
+
+
+        // function fn(){
+        //     var num = 1;
+        //     return function (){
+        //         console.log(num);
+        //     };
+        // };
+        
+        // var result = fn();
+        // result();
+
+
+        // fn();
+        // console.log(fn());
+
+        
+        //     // 立即执行函数IIFE
+        // (function (){
+        //     var str = "我是一个立即执行函数";
+        //     console.log(str);
+        // })();
+
+        // function fn(){
+        //     var str = "我是一个函数";
+        //     console.log(str);
+        // };
+        // fn();
+
+        // function fn(){
+        //     function fn2(){};
+        // };//fn()没有执行，所以fn2()不存在，不占内存
+        // fn();//fn()正在执行，则fn2()存在，占内存
+        //         //fn()执行完成，fn2()释放内存，不存在
+        //         //作用域链实函数在执行的过程中函数可以使用那些变量，从下往上找，只能用自身作用域和上层作用域
+
+        // 闭包的条件：函数a返回一个函数b，函数b使用函数a里面的变量
+        // function fn(){
+        //     var num = 0;     
+        //     return function fn2(){//return是按值返回的，会在返回之前计算值不会形成闭包
+        //         console.log(num);
+        //         return num;//return返回值之后前面的变量已经被垃圾收集器给收集掉，所以在fn2返回值的时候num已经不存在了
+        //     };
+        // };
+        // // console.log(fn());
+        // var result = fn();//形成闭包，保留，返回值之前的变量
+        // result();//调用fn2()函数，这个时候已经形成闭包，变量已经被保存下来了，可以进行访问
+        // var result = fn();//result代表的是函数fn()的返回值，也就是fn2()函数体也就是console.log(fn2)的结果，就是fn2的函数体
+
+        // fn2(){                     //return是按值返回的，会在返回之前计算值不会形成闭包
+        //     console.log(num);
+        // };
+
+        // result = fn2;
+
+        //result();//所以这里就相当于调用了函数fn2，就是语句fn2();
+
+        // fn();//无返回值，没有调用fn2()
+        // fn2();//报错，fn2没有定义，全局变量没办法访问局部变量，window.fn2()也不可以
+        //         // 因为外界不能访问局部变量，所以只能用一个变量来代替，这里代表的是return返回值，也就是内部函数，将内部函数保存在一个变量里面
+
+        // var result = fn();//result等于fn()的结果，这个地方就是形成了闭包
+        // console.log(result);//输出结果是fn()的返回值，也就是函数fn2()的身体
+        // result();//result就相当于将函数形成一个闭包，这样返回值函数就可以调用了
+
+        // result = function fn2(){
+        //     console.log(num);
+        // };
+        // result();//立即执行函数的书写格式(function fn2(){}();)
+        //         // 立即执行函数声明的变量外界无法干扰，这里就相当于把自己创建成了一个库
+
+
+        // function fn(){
+        //     var str = "我是一个对象";
+        //     return {
+        //         sum:str
+        //     };
+        // };
+        // console.log(fn());
+
+        // function fn(){
+        //     return 32;
+        // };
+        // console.log(fn);//fn是函数体
+        // console.log(fn());//fn()是函数的返回值
+
+
+
+
+        //  function fn(){
+        //     var str = "dgsjh";
+        //     function fn2(){
+        //         return str;//dgsjh
+        //     };
+        //     return fn2();//return 是按值返回的，dgsjh
+        //                 // 此时return后面的并不是函数，而是一个值。所以没有形成闭包
+        //  };
+        //  var result = fn();//dgsjh
+        // //  console.log(result());
+        //  console.log(result);
+        // // console.log(fn());
+
+        // function fn(){
+        //     var num = 100;
+        //     function fn1(){
+        //         num++;
+        //         console.log(num);
+        //     };
+        //     function fn2(){
+        //         num--;//此时用到的num已经是fn1()执行自增之后的值了
+        //         console.log(num);
+        //      };
+        //     return [fn1,fn2];//此时fn1,fn2是函数，fn1(),fn2()才是函数返回的值
+        // };
+        // var result = fn();
+        // // result[0]();//101
+        // result[1]();//100
+
+        // function fn(){
+        //     var arr = [];
+        //     for(var i = 0;i < 5;i++){
+        //         arr[i] = function fn1(){
+        //             document.write(i);
+        //         };
+        //     };
+        //     return arr;//这个时候还没形成闭包  arr = [fn1(0),fn1(1),fn1(2),fn1(3),fn1(4)]
+        // };
+        // var result = fn();//形成闭包,把函数放在一个变量里面储存起来才算形成闭包，只是返回一个变量不会形成闭包
+
+        // for(var i = 0;i < 5; i++){
+        //     arr[i]();//因为已经形成闭包，所以可以访问上面的局部变量               
+        //             //
+        // };
+
+        // function fn(){
+        //     var arr = [];
+        //     for(var i = 0;i < 5;i++){
+        //         arr[i] = function fn1(){
+        //             document.write(i);//i代表的是下标
+        //         }; 
+        //     };
+        //     console.log(i);
+        //     // return arr;//返回的是数组
+        // };
+        // console.log(arr);
+
+        // document.write(4);//写在页面里面的内容
+
+
+
+        function fun(n,o){
+            console.log(o);//undefined
+
+            // 返回一个对象
+            return {
+                fn:function (m){
+                    return fun(m,n);//return辉县将后面的值执行完全，然后才会返回出去
+                }
+            };
+
+        };
+        var a = fun(1);//当参数有两个，而只传进去一个实参时，是给第一个形参赋值
+                        // 形参和实参一一对应
+                        // n = 1, console.log(o = undefined);
+                        //形成闭包
+        console.log(a);//对象fn:f
+        console.log(a.fn);//fn属性的值，就是一个函数。所以a.fn是一个函数
+        console.log(a.fn(4));//fun(m,n) = fun(4,1)绕了一圈又回去了，一开始o是undefined，绕了一圈之后，o是1，将n的值赋值给了o
+
+
+        // function fn(a,b){
+        //     console.log(b);
+        // };
+        // var a = fn(1);
+
+        function fun(n,o){
+            console.log(o);
+            return {
+                fn:function(m){
+                    return fun(m,n);
+                }//这里是一个对象，不加分号
+            };
+        };
+
+        // 第一种情况
+        var a = fun(3);
+        a.fn(3);//调用返回值，匿名函数
+                //fun(m,n)
+                //o = n
+
+        // 第二种情况
+        var result  = fun(1).fn(2).fn(3).fn(4);//fun(1).fn(2)形成闭包fun(2,1),n就变成2
+                                                 // fun(1).fn(2).fn(3)形成闭包fun(3,2),n就变成3
+        
+    </script>
+</body>
+</html>

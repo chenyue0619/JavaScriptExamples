@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo4样式操作与属性操作Document</title>
+</head>
+<body>
+    <script>
+        console.log(1 + 1);
+        console.log(1.41 + 1.6);
+        console.log(1.4 + 1.6);
+        console.log(0.5 + 0.7);
+
+        console.log((0.1*100 + 0.2*100)/100);
+        
+        console.log(NaN+2);
+        console.log(NaN*2);
+        console.log(NaN/2);
+
+        console.log(Infinity+2);
+        console.log(Infinity*2);
+        console.log(Infinity/2);
+        console.log(Infinity + -Infinity);//NaN
+
+        console.log(Infinity + NaN);//NaN
+        //Number String Null Boolean Undefined Object Array Function 
+        var str1='236';
+        var str2='gkjdgsh';
+        console.log(str1 + ' ' + str2);
+        console.log(1 + '2' );
+        console.log(typeof(1 + '2') );
+        console.log(1 + '2dgsjh' );
+        console.log({} + '2dgsjh' );
+        console.log([] + '2dgsjh' );
+        console.log(null + '2dgsjh' );
+        console.log(undefined + '2dgsjh' );
+        console.log([3,3,5,7] + '2dgsjh' );//没有空格
+
+        console.log(undefined + null);//被转化为数字
+        console.log(1 + null);//null转化为数字
+        console.log(parseInt(null));//null转化为数字0
+        console.log(Number(null));//0
+        console.log(parseFloat(null));//NaN
+        console.log('abc' + null);//abcnull
+
+        console.log(1 + {});
+        console.log(1 + []);
+        console.log(1 + [2,3,4]);
+        console.log(1 + {name:'xiaoming1'});
+        console.log(1 + {age:6});
+        console.log(undefined + []);
+        console.log(undefined + {});
+        console.log(undefined + [{}]);
+        console.log(null + []);
+
+
+        console.log(4-2);
+        console.log(4-21);
+        console.log(0.4-0.21);
+        console.log((0.4*100-0.21*100)/100);
+        console.log(Infinity-2);//Infinity
+        console.log(-Infinity-2);//-Infinity
+        console.log(Infinity-Infinity);//NaN
+        console.log(null-2);//-2
+        console.log(Infinity-null);//Infinity
+        console.log(Infinity-NaN);//NaN
+
+
+        console.log('3756' - 7);
+        console.log('a375e6' - 7);
+        console.log('3756.1' - 7);
+        console.log(undefined - 7);
+        console.log(null - 7);
+
+        console.log(1 - {});
+        console.log(1 - []);
+        console.log(1 - [2,3,4]);
+        console.log(1 - {name:'xiaoming1'});
+        console.log(1 - {age:6});
+        console.log(undefined - []);
+        console.log(undefined - {});
+        console.log(undefined - [{}]);
+        console.log(null - []);
+
+        console.log(7 * 8);
+        console.log('7' * '8');
+        console.log('a' * '8');
+        console.log(undefined * '8');
+        console.log(null * '8');
+        console.log(NaN * '8');
+        console.log([] * '8');//Number([])=0
+        console.log([20] * '8');
+        console.log([20,90] * '8');
+        console.log({} * '8');
+        console.log({age:10} * '8');
+        console.log(true * '8');//Number(true)=1
+        console.log(false * '8');//Number(false)=0
+
+        console.log(7 / 8);
+        console.log('7' / '8');
+        console.log('a' / '8');
+        console.log(undefined / '8');
+        console.log(null / '8');
+        console.log(NaN / '8');
+        console.log([] / '8');//Number([])=0
+        console.log([20] / '8');
+        console.log([20,90] / '8');
+        console.log({} / '8');
+        console.log({age:10} / '8');
+        console.log(true / '8');//Number(true)=1
+        console.log(false / '8');//Number(false)=0
+        console.log(Infinity / Infinity);////NaN
+        console.log(7 / 0);//Infinity
+        console.log(-7 / 0);//Infinity
+        console.log(Infinity / false);////NaN
+        console.log(true / false);//Infinity
+        console.log(false / true);//0
+        console.log(Infinity / NaN);////NaN
+        console.log(true / {});//NaN
+
+
+        console.log(7 % 8);//7
+        console.log('7' % '8');//7
+        console.log('a' % '8');//NaN
+        console.log(undefined % '8');//NaN
+        console.log(null % '8');//0
+        console.log(NaN % '8');//NaN
+        console.log([] % '8');//0  Number([])=0
+        console.log([20] % '8');//4
+        console.log([20,90] % '8');//NaN
+        console.log({} % '8')//NaN
+        console.log({age:10} % '8');//NaN
+        console.log(true % '8'); //1    Number(true)=1
+        console.log(false % '8');//0   Number(false)=0
+        console.log(Infinity % Infinity);//NaN
+        console.log(7 % 0);//NaN
+        console.log(-7 % 0);//NaN
+        console.log(Infinity % false);////NaN
+        console.log(true % false);//NaN
+        console.log(false % true);//0
+        console.log(Infinity % NaN);////NaN
+        console.log(true % {});//NaN
+
+
+        var num=123;
+        num++;
+        console.log(num);
+
+        var obj={
+            name:'feng'
+        };
+        obj++;
+        console.log(obj);//会先将obj转换为数字NaN
+
+        var arr=[];
+        console.log(arr);
+        arr++;
+        console.log(arr);
+
+        var num_b=23;
+        var result=num_b++ +1;//先运算再自增
+        console.log("我是num_b:",num_b);//24
+        console.log("我是result:",result);//24
+
+        var num_c=23;
+        var result=++num_c +1;//先自增在运算
+        console.log("我是num_c:",num_c);//24
+        console.log("我是result:",result);//25
+
+        var num_c=23;
+        var result=++num_c * 3;//先自增在运算
+        console.log("我是num_c:",num_c);//24
+        console.log("我是result:",result);//72
+
+        var num_b=23;
+        var result=num_b++ * 2;//先运算再递减
+        console.log("我是num_b:",num_b);//24
+        console.log("我是result:",result);//46
+
+        var num_b=23;
+        var result=num_b-- +1;//先运算再递减
+        console.log("我是num_b:",num_b);//22
+        console.log("我是result:",result);//24
+
+        var num_c=23;
+        var result=--num_c +1;//先递减在运算
+        console.log("我是num_c:",num_c);//22
+        console.log("我是result:",result);//23
+
+        var num_c=23;
+        var result=--num_c * 3;//先递减在运算
+        console.log("我是num_c:",num_c);//22
+        console.log("我是result:",result);//66
+
+        var num_b=23;
+        var result=num_b-- * 2;//先运算再自增
+        console.log("我是num_b:",num_b);//22
+        console.log("我是result:",result);//46
+
+       // false   0 NaN ' ' null undefined false
+        console.log(!0);//Boolean(0)=false，!false=true
+        console.log(![]);
+        console.log(Boolean([]));//true
+        console.log(Number([]));//0
+        console.log(Boolean(''));//false
+
+        console.log(1 || 2);//1
+        console.log(2 || 1);//2
+        console.log(Boolean(2));//true
+        console.log(false || ' ');//空
+        console.log(false || 0);//0
+        console.log(null || 0);//0
+
+        console.log(1 && 2);//2
+        console.log(2 && 1);//1
+        console.log(Boolean(2));//true
+        console.log(false && ' ');//false
+        console.log(false && 0);//false
+        console.log(null ** 0);//bull
+        
+
+    </script>
+</body>
+</html>

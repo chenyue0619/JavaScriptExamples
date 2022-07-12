@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo15日期对象</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            background-color:orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+
+    <script>
+        // var boxs = document.querySelectorAll(".box");
+        // for(let  i = 0;i < boxs.length;i++){//for里面定义的变量相当于全局变量
+                                            // i用let声明也会形成一个闭包
+        //     (function (a){
+        //         boxs[a].onclick = function(){
+        //             console.log(a);
+        //         }
+        //     })(i);
+        // };
+
+
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].onclick = function(){
+        //         boxs[i].style.color = "white";//i已经变为4了，但是没有下标为4的元素
+        //     }
+        // };
+
+        // var boxs = document.querySelectorAll(".box");
+        // function fn(){
+        //     this.style.color = "white";//点击谁就相当于指向谁
+        // };
+
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].onclick = fn;//不能写fn()，因为没有返回值，会undefined
+        //                         // boxs[i]调用了函数，所以this指向boxs[i]
+        // };
+
+
+        // //立即执行函数
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     (function fn(a){
+        //         boxs[a].onclick = function (){
+        //             console.log(a);
+        //         };
+        //     })(i)
+        // };
+
+
+        // //this
+        // var boxs = document.querySelectorAll(".box");
+        // function fn(i){
+        //     this.console.log(i);
+        // };
+        // for(var i = 0;i < boxs.length;i++){
+        //     // this.onclick = fn(i);//不能这样写，因为这样的话就相当于默认指向window
+        //     // boxs[i].onclick = function (){
+        //     //     console.log(i);
+        //     // }
+        //     boxs[i].onclick = fn;
+        // }
+
+
+        
+
+        // // 使用闭包来实现
+        // var boxs = document.querySelectorAll(".box");
+        // for(var i = 0;i < boxs.length;i++){
+        //     (function fn(a){
+        //         boxs[a].onclick = function(){
+        //             boxs[a].style.color = "white";//i已经变为4了，但是没有下标为4的元素
+        //         };
+        //     })(i);
+        // };
+
+        // // 点击元素改变字体颜色固定
+        // var boxs = document.querySelectorAll(".box");
+        // function fn(){
+        //     this.style.color = "white";
+        // }
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].onclick = fn;//boxs调用fn函数，所以this指向boxs
+        // }
+
+
+        // // 点击元素改变字体颜色（自己定义）
+        // var boxs = document.querySelectorAll(".box");
+        // function fn(r,color){
+        //     console.log(this);
+        //     this.style.color = color;
+        // }
+        // for(var i = 0;i < boxs.length;i++){
+        //     boxs[i].onclick = fn.bind(boxs[i],123,"red");//
+        // }
+
+        // // 点击元素改变字体颜色（自己定义）
+        // var boxs = document.querySelectorAll(".box");
+        // function fn(e,color){
+        //     console.log(this);
+        //     this.style.color = color;
+        // }
+
+        // var colorful = ["red","gree","yellow","purple"]
+        // for(var i = 0;i < colorful.length;i++){
+        //     if(i === 0){
+        //         boxs[i].onclick = fn.bind(boxs[i],123,colorful[i]);
+        //     }else if(i === 1){
+        //         boxs[i].onclick = fn.bind(boxs[i],123,colorful[i]);
+        //     }else if(i === 2){
+        //         boxs[i].onclick = fn.bind(boxs[i],123,colorful[i]);
+        //     }else{
+        //         boxs[i].onclick = fn.bind(boxs[i],123,colorful[i]);
+        //     }
+
+           
+        // }
+
+        // function fn(a){
+        //     console.log(this);
+        // };
+        // fn.call(8, 3);//8this
+
+        // var obj = {
+        //     some:function(){
+        //         console.log(this);//指向obj，谁调用函数就指向谁
+        //     }
+        // };
+        // obj.some.call(null);//还是指向window
+
+        // var a = {
+        //     b:{
+        //         c:function(){
+        //             console.log(this);
+        //         }
+        //     }
+        // };
+        // a.b.c();//指向b
+        // a.b.c.call(null);//还是指向window
+
+
+        // function fn(a,b){
+        //     console.log(a);//除了第一个this指向的参数外的第一个参数
+        //     console.log(this);//除了第一个this指向的参数外的第一个参数和第二个参数
+        //     console.log(a,b);//就算是设置两个形参，也是除了第一个this指向的参数，外的所有参数
+        // };
+        // fn.apply("dsjg",["dsuyg"]);//apply是利用数组去传参的，所以后面的实参要用数组的形式表示
+        // fn();//this指向window
+
+        // var arr = [13,34,45,234];
+        // console.log.apply(null,arr);//数组来传参，所以可以打印出数组里面的每一项，不用一个一个来写
+        // function fn(a,b,c,d){
+        //     console.log(a+b+c+d);
+        // };
+        // fn.apply(null,arr);//因为第一个参数是只跟this有关，所以要把第一个参数避开
+
+        // bind（绑定）
+        // var obj = {
+        //     nickname:"xioaming"
+        // };
+        // function fn(){
+        //     console.log(this);
+        // };
+        // // console.log(fn.bind(obj));//会输出一个函数
+        // // fn.bind(obj);//是一个新的函数fn
+        // var result = fn.bind();
+        // console.log(result);
+        // console.log(result === fn);//false
+        // result(243);
+
+        
+
+
+
+
+
+
+
+
+
+
+        // // 加法运算
+        // // function add(){
+        // //     var result = 0;
+        // //     for (var i in arguments){
+        // //         result += arguments[i];
+        // //     };
+        // //     console.log(result);
+        // // };
+        // // add(243,345,4,45546,3222);
+
+
+
+        // // // this指向一个对象，默认指向window
+        // // console.log(this);
+
+        // // var arr = [this];
+        // // console.log(arr);
+
+        // // var obj = {
+        // //     some:this
+        // // };
+        // // console.log(obj);
+
+        // // function fn(){
+        // //     console.log(this);
+        // // };
+        // // fn();
+        // // window.fn();
+        // // console.log(window);//window里面可以找到fn这个对象
+
+        // // function fn1(){
+        // //     function fn2(){
+        // //         console.log(this);//函数挂载在哪个对象上面，this就会指向谁
+                               
+        // //     };
+        // //     fn2();
+        // // };
+        // // fn1();
+
+
+        // // // this还可以是调用函数的主体对象
+        // // var obj = {
+        // //     nickname:"xiaoming",
+        // //     sayName:function(){
+        // //         console.log("hello! 我是:",this.nickname);
+        // //     }
+        // // };
+        // // obj.sayName();//调用对象方法
+        
+
+
+        // // var nickname = "xiaoming";
+        // // var a = {
+        // //     nickname : "xiaoming_a",
+        // //     b:{
+        // //         nickname : "xiaoming_b",
+        // //         c:function(){
+        // //             nickname = "xiaoming_c";
+        // //             console.log(this.nickname);
+        // //         }
+        // //     }
+        // // };
+        // // a.b.c();，
+
+
+
+        // // function some(){
+        // //     // console.log(this);//window
+        // //     console.log("我是名字是:",this.nickname);//this指向yinshi,因为函数f:introduce()在yinshi对象里面
+        // // };
+
+
+        // // var yinshi = {
+        // //     nickname:"yinshi",
+        // //     introduce : some//为什么不是some()，因为会把some()的值给introduce，
+        // //                     // 而some没有返回值，所以这里就会返回一个undefined
+        // // };
+        // // yinshi.introduce();//必须调用函数才会执行
+
+        // // var hanlu = {
+        // //     nickname:"hanlu",
+        // //     introduce:some
+        // // };
+        // // hanlu.introduce();//s调用函数
+
+        // // var yinshi = {
+        // //     nickname:"yinshi",
+        // //     some:function introduce(){
+        // //         console.log("我是名字是:",this.nickname);//this指向yinshi,因为函数f:introduce()在yinshi对象里面
+        // //     }
+        // // };
+
+
+        // // yinshi.introduce();
+
+        
+        
+
+
+
+
+
+        // // // 点击元素会打印出下标
+        // // var boxs = document.querySelectorAll(".box");//拿到所有元素
+        // // for(var i = 0;i < boxs.length;i++){
+        // //     (function fn(a){
+        // //         boxs[a].onclick = function (){
+        // //             console.log(a);
+        // //         };
+        // //     })(i);
+        // // };
+
+        // // // 加属性：点击元素会打印出下标
+        // // var boxs = document.querySelectorAll(".box");//拿到所有元素
+        // // for(var i = 0;i < boxs.length;i++){
+        // //     boxs[i].num = i;
+        // //     boxs[i].onclick = function (){
+        // //         console.log(this.num);//this默认指向window，还可以是调用函数的主体对象
+        // //     };
+        // // };
+
+        // function fn(){
+        //     console.log(this);
+        // };
+        // fn();//指向window
+        // fn.call(5,2);//改变了this的值的指向，指向fn函数本身第一个参数，如果没有call，那么还是指向window
+        // fn.apply([3],[4]);//apply也会改变this值的指向，不过参数要以数组的形式传递
+        // var result = fn.bind();
+        // result(23,32);
+
+
+        // // apply数组形式传参
+        // function add(a,c,d){
+        //     console.log(a+c+d);
+        // };
+        // add.apply(null,[213,34,324]);//apply数组形式传参
+
+        var o = {
+            prop:37
+        };
+        function independent(){
+            // return this.prop;//this指向
+            console.log(this.prop);//this指向window
+                                // this指向o
+        };
+
+        o.f = independent;//给o设置一个属性f，属性值等于independent函数
+        // 上面一句就相当于下面这个对象
+        // var o = {
+        //     f:independent(){
+        //         console.log(this.prop);
+        //     }
+        // }
+        console.log(o.f());//37
+                            // 相当于o.f  ->  o.f()调用函数independenta
+
+
+        // var o = {
+        //     prop:37
+        // };
+        // function independent(){
+        //     console.log(this.prop);
+        // };
+
+        // o.f = independent;//给o添加一个属性f
+        // // 对象中的函数指向调用该函数的对象
+        // console.log(o.f());
+
+
+    </script>
+</body>
+</html>

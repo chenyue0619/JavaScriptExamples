@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo12函数作用域</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        
+        
+        // function fn(){
+        //     console.log("我是一个全局变量");
+        // };
+        // console.log(fn === window.fn);//true
+        // fn();//调用函数
+        // window.fn()//调用函数全局变量    作用域
+
+        // var a = 1;//全局变量
+        // function fn(){
+        //     console.log(a) ;
+        // };
+        // fn();//全局变量
+        // console.log(a);//找到全局变量，不会报错
+
+
+        // function abc(){
+        //     var str = "hello world";
+        // };
+
+        // function xyz(){
+        //     console.log(str);
+        // }
+        // xyz();
+
+        // var str = "我是外边的作用域";
+        // function fn(){
+        //     var str = "我是里面的作用域";
+        //     console.log(str);//就近原则，会输出最近的一个，
+        //                     // 也就是说局部作用域有的话就不会访问全局作用域
+        // };
+        // fn();//记得调用函数
+
+
+        // function sum(){
+        //     var result = 0;
+        //     for(var a in arguments){
+        //         result += arguments[a];//a是arguments里面的参数，而不是小标，而且arguments不是一个类数组
+        //     };
+        //     console.log(result);
+        // };
+        // sum(2,34,45,453,32);
+
+        //var声明的变量提升
+        // console.log(str);//存在变量str，只是没有定义，undefined
+        //                 //var 在声明变量时，会把变量提升到当前作用域的顶端，（提升的只是变量，不是值）；
+        //                 //所以虽然这里之前并没有声明变量，但是下面一句声明的变量已经提升在当前作用域的最前面，
+        //                 //所以变量是存在的，只是没有赋值而已，所以返回值是undefined
+        // var str = "aghfh";
+        // console.log(str);
+
+        // //function函数声明的提升:函数表达式
+        // console.log(fn);
+        // function fn(){
+        //     console.log("我是生命的函数");
+        // };
+
+        // // function函数提升（函数声明），遵循的是var声明提升规则
+        // console.log(fn);//因为下面的fn函数是用var来声明的，所以只会提升变量，不会提升变量值
+        // var fn = function(){
+        //     console.log("我是声明的函数");
+        // };
+
+        // var num = 123;
+        // function fn(){
+        //     console.log(num);
+        //     var num = 12;//会提升到当前作用域的顶层，也就是提升一个  var num
+        // };
+        // fn();//undefined
+
+        // var num = 123;
+        // function fn(){
+        //     var num = 12;
+        //     console.log(num);
+        // };
+        // fn();//函数遵循就近原则，局部作用域有的话就会直接用局部作用域里面的，若没有，就会跳出一层一层往上面找
+
+        // var a = 1;
+        // function fn(){
+        //     console.log("第一次a的值为:",a);//undefined  有a这个变量，
+        //                                     //只提升变量，不提升值
+
+        //     a = 2;
+        //     console.log("第二次a的值为:",a);//2
+
+        //     var a ;
+        //     console.log("第三次a的值为:",a);//2
+        // };
+        // fn();
+
+        // 嵌套函数
+        // var str = "我是外面的文本";
+        // function out(){
+           
+        //     function inner(){
+        //         var str = "我是inner里面的文本"
+        //         console.log(str);
+        //     };
+        //     inner();
+        //     function inner2(){
+        //         // var str = "我是inner2里面的文本"
+        //         console.log(str);//不存在str这个变量，会报错
+        //     };
+            
+        // };
+        // out();
+        // // inner2();//全局不可以用局部变量，会报错
+
+        // var a = 1;
+        // function fn(){//打印出来1
+        //     var a = 2;
+        //     console.log(window.a);//打印出来1，而不是2
+        // };
+        // fn();
+
+        // 函数表达式，有返回值
+        // function fn_a(){};
+        // // 函数声明
+        
+
+        // // 变量提升
+        // // var声明,提升到当前作用域的最顶层，只提升变量，不提升值
+        // console.log(a);//undefined
+        // var a = 1;提升到当前作用域的最顶层
+
+        // function函数表达式全部提升
+        // console.log(fn);
+        // function fn(){
+        //     console.log("我是函数表达式提升");
+        // };
+
+
+        // var result = 0;
+        // var str1 = "hello";
+        // function add(){
+        //     var str2 = "world";
+        //     result = str1 + str2;
+        //     function some(){  //str2[some] -> str2,add[add] -> str1,result[window]
+        //         var str3 = "!";
+        //         result += str3;
+        //     };
+        //     some();
+        //     console.log(result);
+        // };
+        // add();
+
+        // // 从大到小排列
+        // var arr = [1,23,546,54,32,1213];//arr.length = 6
+        // // 从第一个开始遍历整个数组
+        // // 因为不足需要遍历整个数组，所以跟k的遍历长度应该是一样的，遍历到最后i与k的值相等，最后相减就等于0
+        // for(var i = 0,length = arr.length; i < length-1; i++){//0，1，2，3，4
+        //     // 最小的排在后面，每一次比较的数目都少一
+        //     // 因为不需要遍历到最后一个k+1，所以会length-1
+        //     // 每一次遍历完之后，最后一个都是最小的数字
+        //     for(var k = 0; k < length-1-i; k++){//k = 0,1,2,3,4  0,1,2,3  0,1,2  0,1  0
+        //         //从大到小排列
+        //         if(arr[k] < arr[k+1]){//因为这里每次都会跟+1来比较，所以上面的length会-1
+        //             var little = arr[k];//先将小的储存在一个变量里面
+        //             arr[k] = arr[k+1];
+        //             arr[k+1] = little;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+
+        // for(var i = 0;i < 5;i++){
+        //     console.log(i);//0,1,2,3,4
+        // }
+        
+
+        // if(arr[k] < arr[k+1]){
+        //     var little = arr[k];
+        //     arr[k] = arr[k+1];
+        //     arr[k+1] = little;
+        // }
+        
+
+        // // 将数组里面的值从大到小排列
+        // var arr = [213,342,54,656,23,121];
+        // for(var i = 0,length = arr.length; i < length - 1;i++){
+        //     for(var k = 0;k < length-1-i; k++){
+        //         if(arr[k] < arr[k+1]){
+        //             var little = arr[k];
+        //             arr[k] = arr[k+1];
+        //             arr[k+1] = little;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+
+
+
+
+
+
+
+
+
+        // // 函数的封装
+        // function sort(arr){      
+        //     for(var i = 0,length = arr.length; i < length - 1;i++){
+        //         for(var k = 0;k < length-1-i; k++){
+        //             if(arr[k] < arr[k+1]){
+        //                 var little = arr[k];
+        //                 arr[k] = arr[k+1];
+        //                 arr[k+1] = little;
+        //             }
+        //         }
+        //     }
+        //     console.log(arr);
+        // }
+        // sort([213,342,54,656,23,121]);
+        // sort([1,23,546,54,32,1213]);
+
+        // var box = document.querySelector(".box");
+
+
+
+
+
+        // // 将数组里面的值从小到大排列
+        // var arr = [213,342,54,656,23,121];
+        // for(var i = 0,length = arr.length;i < length-1;i++){
+        //     for(var k = 0;k < length-1-i;k++){
+        //         if(arr[k] < arr[k+1]){
+        //             var max = arr[k+1];
+        //             arr[k+1] = arr[k];
+        //             arr[k] = max;
+        //         }
+        //     }
+        // }
+        // console.log(arr);
+
+
+        // function fn(){
+        //     return a;
+        //     var a = 1;//undefined会把变量提升到定顶层，并不会提升值
+        //     console.log("我是函数fn");//不会打印执行
+        // }
+        // console.log(fn());
+
+        // function add(){
+        //     var result = 0;
+        //     for(var i in arguments){
+        //         result += arguments[i];
+        //     }
+        //     return(result);
+        // }
+        // console.log(add(213,34,453,45));
+
+        // function add(){
+        //     var result = 0;
+        //     for(var i = 0,length = arguments.length;i < length; i++){
+        //         result += arguments[i];
+        //     }
+        //     return(result);
+        // }
+        // console.log(add(213,34,453,45));
+
+    </script>
+</body>
+</html>

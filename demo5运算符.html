@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo5运算符</title>
+</head>
+<body>
+    <script>
+        //运算符 ：+ - * / % ++ -- || && ! 
+
+        //所有数据与字符串运算相加都会转换成字符串
+        //undefined+null=NaN
+        console.log(1 + 1);//2
+        console.log(true + '1');//true1
+        console.log(undefined + '1');//undefined1
+        console.log(null + '1');//null1
+        console.log([] + '1');//1
+        console.log({} + '1');//[Object,Object]1
+
+
+        console.log(false + true);//1
+        //在加法中，{}[]都会转换成字符串toString  undefined与null用string()来转换
+        console.log({} + true);//[Object,Object]true
+        console.log([1] + true);//1true
+        console.log([1] + 1);//11
+        //在减法运算中，会将非数字数据转换为数字类型Number()
+        console.log([2] - true);//1
+        console.log([2] - 1);//1
+
+        console.log(2 > 1);//true
+        console.log(-2 > 1);//false
+        console.log(2 == 1);//false
+        console.log(Infinity > 1);//true
+        console.log(null > NaN);//false
+        console.log(null < NaN);//false
+        console.log(null < 3);//false
+        console.log(3 < NaN);//false
+        console.log(null == NaN);//false
+        console.log(true > false);//true
+
+        console.log('5' > '10');//true  5>1
+        console.log('11' > '10');//true  1==1,2>0
+        console.log('5' > '60');//false   5<6
+        console.log(['5'] > '40');//true   5>4
+        console.log('5' > 60);//false
+        console.log(true > '60');//false,false   Number(' 60 ')=60 , 0<60
+        console.log(undefined > '60');//false   Number(undefined)=NaN , NaN与任何数字比较都是false
+        console.log(null < '60');//true  Number(null)=0
+        console.log({} > -1);//false
+        console.log(true > '60');//false,false   Number(' 60 ')=60 , 0<60
+        console.log(true > {});//false,任何数字与对象比较都是false
+        console.log(true > []);//true
+        console.log(true > [1]);//false,现将[1]转换为字符串'1',Number('1')=NaN
+        console.log('1367f' > 89);//false
+
+
+        console.log(undefined == null);//true
+        console.log('hello world' == 'hello world');//true
+        console.log('hello world' == 'helloworld');//false
+        console.log(NaN != NaN);//true
+        console.log(true == 1);//true
+        console.log(true == '1');//true
+        console.log(Infinity == Infinity);//true
+        console.log({} == {});//false
+        console.log({name:'xiaoming'} == {name:'xiaoming'});//false
+        console.log([1,2,3] == [1,2,3]);//false
+
+
+        var obj1={
+            name:'xiaoming'
+        };
+        var obj2=obj1;//把obj1的地址告诉了obj2
+        console.log(obj1 == obj2);
+
+
+        var obj3={
+            name:'xiaoming'
+        };
+        var obj4={
+            name:'xiaoming'
+        };
+        obj4 = obj3;
+        var obj2=obj1;//把obj1的地址告诉了obj2
+        console.log(obj1 == obj2);//true
+        
+        console.log(1 === 1);//true
+        console.log([1] === 1);//false
+        console.log([1] == 1);//true
+        var obj5={
+            name:'xiaoming'
+        };
+        var obj6={
+            name:'xiaoming'
+        };
+        obj6= obj5;
+        console.log(obj5 === obj6);//true
+
+
+        var num_v=8;
+       
+        console.log(num_v += 2);//10
+        console.log(num_v);//10
+        console.log(num_v *= 1);//10
+        console.log(num_v /= 1);//10
+        console.log(num_v %= 2);//0
+    </script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo17数组的方法</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* .box{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+        .radius{
+            border-radius: 50%; */
+        /* } */
+        table{
+            margin: 40px auto;
+            width: 500px;
+            border-collapse: collapse;/*表格边框合并，边框塌陷*/
+        }
+        tr,td,th{
+            border: 1px solid #000;
+            line-height: 40px;
+            text-align: center;/*文本水平居中 */
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box"></div> -->
+    <table></table>
+    <script>
+        // var th = document.createElement('td');
+        // // 这是一个数组，要写成中括号，不能都写成花括号
+        // var students = [
+        //     {
+        //         nickname:"xiaoming",
+        //         property:"handsome",
+        //         score:80
+        //     },
+        //     {
+        //         nickname:"dagang",
+        //         property:"handsome",
+        //         score:80
+        //     },
+        //     {
+        //         nickname:"fengfeng",
+        //         property:"handsome",
+        //         score:80
+        //     }
+        // ];
+        // console.log(students);
+
+        // var fragment = document.createDocumentFragment();//创建文档碎片，节省性能
+        // // 遍历students数组
+        // students.forEach((item) => {
+        //     // 1、创建tr行标签
+        //     // 2、创建td列标签
+        //     // 3、将属性值添加进列标签里面
+        //     // 4、将td列标签添加进行tr里面
+        //     var tr = document.createElement("tr");//createElement()创建新的tr元素标签
+            
+        //     for(var key in item){// 循环遍历数组里面每一项的值，后续把遍历到的属性值添加进表格里面
+        //         // console.log("属性名为:",key,"属性值为:",item[key]);//可以item看做一个数组，属性名就是下标，属性值就是数组对应的项
+        //                                                             // 因为是在遍历对象，所以不能写成obj.nickname
+        //         var td = document.createElement("td"); 
+        //         td.innerText = item[key];//把每一项值加进td列中
+        //         tr.append(td);//将td添加进tr中                                
+        //     };
+        //     fragment.append(tr);
+        // });
+        // console.log(fragment);
+        // var table = document.querySelector("table");
+        // table.append(fragment);//把文档碎片添加进table标签里面
+        
+
+
+
+
+        // var td = document.createElement('td');
+
+        // var obj = {
+        //     nickname:"xiaoming",
+        //     age:19
+        // };
+        // obj.nickname = "xiaohua";
+        // console.log(obj);
+
+
+
+
+
+
+
+        // var box = document.querySelector(".box");//只有一个元素的话不要加All，不然会报错
+        // box.classList.add("radius");
+        // var arr = new Array("sdjk");
+        // console.log(arr);
+
+
+        // var arr_a = [324,4,4,5,43,5];
+        // console.log(arr === arr_a);//false
+
+        // var arr = Array(213,3,55,4363);
+        // console.log(arr);
+        // for(var i in arr){//i是数组值,不是数组下标
+        //     console.log([arr[i]]);
+        // };
+
+        // // new构造函数声明数组
+        // var arr = new Array(213,34,45);
+        // console.log(arr);
+
+        // // 冒泡程序
+        // // 从小到大排序
+        // var arr = [2134,3,54647,56,325]
+        // for(var a = 0,length = arr.length;a < length-1;a++){
+        //     var num = 0;
+        //     for(var b = 0; b < length-1-a;b++){
+        //         if(arr[b] > arr[b+1]){
+        //             num = arr[b];
+        //             arr[b] = arr[b+1];
+        //             arr[b+1] = num;
+        //         };
+        //     };
+        // };
+        // console.log(arr);
+
+        // 从大到小排序
+        // var arr = [2134,3,54647,56,325]
+        // for(var a = 0,length = arr.length;a < length-1;a++){
+        //     var num = 0;
+        //     for(var b = 0; b < length-1-a;b++){
+        //         if(arr[b] < arr[b+1]){
+        //             num = arr[b];
+        //             arr[b] = arr[b+1];
+        //             arr[b+1] = num;
+        //         };
+        //     };
+        // };
+        // console.log(arr);
+
+        // // 四种构建数组的方法
+
+        // // Arrayof()
+        // var arr = Array.of(2);
+        // console.log(arr);
+
+        // // Array()
+        // var arr_a = Array(231,342,45316);
+        // console.log(arr_a);
+
+        // // new构造函数
+        // var arr_b = new Array(32,45,3);
+        // console.log(arr_b);
+
+        // // 直接赋值[]
+        // var arr_c = [34,64,57,4];
+        // console.log(arr_c);
+
+        // 改变数组，新加内容
+        // var arr = [23,43,64,546];
+        // arr[arr.length] = 89;
+        // console.log(arr);
+        
+        // () => {};//箭头函数
+
+        // var arr = [345,46,576,754];
+        // arr.push(324,54,"35",5);
+        // console.log(arr);
+        // console.log(arr.length);
+        // var result = arr.push(324,54,"35",5);//打印出数组的长度
+        // console.log(result);
+
+        // 自己写一个方法，实现和原生JS提供的push()方法一样效果
+        // 函数名可以用push，因为这是全局的，而push()需要用arr来调用，所以相同名字不影响
+        // var some = [24,3,545];
+        // arrAdd = (arr) => {//箭头函数没有arguments参数，所以一直打印出undefined
+        //     // 判断是否为数组Array.isArray()，是数组了才可以往里面添加新的内容
+        //     if(!Array.isArray(arr)){
+        //         return "请输入一个数组";
+        //     };
+
+        //     console.log(arguments);//undefined箭头函数没有arguments参数
+        //     for(var i = 0,length = arguments.length;i < length-1;i++){
+        //         arr[arr.length] = arguments[i+1];//数组的长度项等于其他参数的第一项
+        //     };
+        //     return some;
+        // };
+        // arrAdd(some,[324,4,65,47],[534,654,,7658,7],2);
+
+
+        // var some = [1,2,3];
+        // function push(arr){
+        //     // 判断是否为数组Array.isArray()，是数组了才可以往里面添加新的内容
+        //     if(!Array.isArray(arr)){
+        //         return "请输入一个数组";
+        //     };
+        //     console.log(arguments);
+        //     for(var i = 0,length = arguments.length;i < length-1;i++){
+        //         arr[arr.length] = arguments[i+1];//数组的长度项等于其他参数的第一项
+        //     };
+        //     return arr.length;
+        // };
+        // push(some,324,4,65,47,534,654,7658,7,2);
+
+      
+        // // 箭头函数没有arguments参数
+        // function push(arr){
+        //     if(!Array.isArray(arr)){
+        //         return "请输入一个数组";
+        //     };
+        //     for(var i = 0,length = arguments.length; i < length-1;i++){
+        //         arr[arr.length] = arguments[i+1];
+        //     };
+        //     console.log(arr);
+        //     return arr.length;
+        // };
+        // push([23,34,35],324,4,65,47,534,654,7658,7,2);
+
+    //    var arr = [23,3,5,46,5];
+    //    arr.push([43,,54,5,67]);
+    //    console.log(arr);//push()放数组的话会直接把数组放进去，不会把数组拆开
+
+    // // 写一个函数，实现与push()一样的效果，arr.push()
+    // function push(arr){
+    //     if(!Array.isArray(arr)){
+    //         return "请输入一个数组";
+    //     };
+    //     for(var i = 0,length = arguments.length;i < length-1;i++){
+            // arr[arr.length] = arguments[i+1];//这句话的意思就是目标数组的后面加上新的元素，因为arguments的第一个值是arr目标数组，所以要从arguments第二个值开始操作，所以是arguments+1
+    //     };
+    //     return arr;
+    // };
+    // console.log(push([13,4,3454,3],45,546,43));
+
+    // pop()方法
+    // var arr = [23,543,56,654];
+    // // arr.pop();
+    // // console.log(arr);
+    // console.log(arr.pop());
+
+    // // 用函数封装实现pop()相同效果
+    // function pop(arr){
+    //     if(!Array.isArray(arr)){
+    //         return "请输入一个数组";
+    //     }else if(arr.length === 0){
+    //         return "此为一个空数组";
+    //     }
+    //     // var length = arr.length;
+    //     var last = arr[arr.length-1];//保存最后一项的值
+    //     arr.length = arr.length-1;//删除最后一项
+    //     console.log(arr);//输出删除最后一项之后的数组
+    //     return last;//返回最后被删除的一项
+    // };
+    
+    // pop([234,4,5,536,"rgfd"]);
+    // console.log(pop([234,4,5,536,"rgfd"]));
+    // pop([]);
+        
+    // var arr = [];
+    // arr.pop();
+    // console.log(arr);
+
+    // var arr = 1;
+    // arr.pop();
+    // console.log(arr);
+
+    // // 用函数封装实现删除多项数组内容
+    // function pop(arr,a){
+    //     if(!Array.isArray(arr)){
+    //         return "请输入一个数组";
+    //     }else if(arr.length === 0){
+    //         return "此为一个空数组";
+    //     }
+    //     // var last = arr[arr.length-1];//保存最后一项的值
+    //     // arr.length = arr.length-1;//删除最后一项
+    //     for(var i  = 0;i <= a; i++){
+    //         console.log(arr[arr.length - i]);//输出删除的每一项
+    //     };
+    //     arr.length = arr.length - a;//输出删除规定数目之后的数组
+    //     console.log(arr);//输出删除最后一项之后的数组
+    //     // return last;//返回最后被删除的一项
+    // };
+    // pop([34,45,56,564,65,5,64],3);
+
+    // unshift()
+    // var arr = [234,43,65,7,65];
+    // arr.unshift(54,45);
+    // console.log(arr);
+    // console.log(arr.unshift());
+
+    // shift()
+    // var arr = [234,43,65,7,65];
+    // arr.shift();
+    // console.log(arr);
+    // console.log(arr.shift());
+
+    // forEach()遍历数组
+    // var arr = [23,35,44,46,57,654];
+    // arr.forEach(() => {
+    //     console.log(1);//打印出6个1
+    //                     // 浏览器会给我们传入的函数分配参数
+    // });
+
+    //  var arr = [213,34,4,6,46,43];
+    //  arr.forEach((item,index,array) => {
+    //      item  *= 2;
+    //     console.log("数组第",index,"项的值为", item);//item的只会相应改变
+    //  })
+    //  console.log(arr);//还是原数组
+
+    // var arr_obj = [{name:"xiaoming",age:16},{name:"dagang",age:6},{name:"fengfeng",age:18}];
+    // arr_obj.forEach((item,index,array) => {
+    //     item.age++ ;
+    // });
+    // console.log(arr_obj);
+
+    // var some = [1,2,3];
+    // var result = some.forEach((item,index,array) => {
+    //     array[index] *= 2;
+    //     return some;
+    // });
+    // console.log(result);
+
+    // forEach的案例
+    // 从后端拿数据通过js生成标签把内容添加到标签里，然后再渲染页面
+
+    // var arr = [213,3,5,43];
+    // var result = arr.map((item,index,array) => {
+        
+    //     // console.log("数组的第",index,"项的值为:",item *= 2);
+    //     return item *= 2;//可以返回，需要我们自己安排返回值
+    // });
+
+    // console.log(result);
+
+    // var arr = [34,34,5,4225];
+    // var result = arr.forEach((item,index,array) => {
+    //     return item *= 2;//forEach没有返回值
+    //                         // 不可以通过item改变简单数据
+    // });
+    // // console.log(result);//undefined
+    // console.log(result === arr);
+    
+
+    // pop();//从后面删除，只能删一个，返回删除的一项
+    // push();//从后面添加
+
+    // shift();//从前面添加
+    // unshift();//从后面删除，只能删一个，返回删除的一项
+
+    // forEach();//无返回值，可以通过ayyar改变数组，但不推荐  arr.forEach(() => {})
+    // map();//有返回值，可以通过item改变数组，还保留原数组，  arr.map(() => {})
+    // item index array  
+
+    // var arr = [34,34,4,546];
+    // var result = arr.map(item => {
+    //     item *= 2;
+    //     return item;//需要我们自己定义返回值，不然返回默认undefined
+    // // })
+    // // console.log(result);//可以通过item操作数组里的每一项
+    // console.log(arr);//保留原数组
+
+    var students = [
+        {
+            nickname:"xiaoming",
+            sex:"男",
+            age:17
+        },
+        {
+            nickname:"xiaoming",
+            sex:"男",
+            age:17
+        },
+        {
+            nickname:"xiaoming",
+            sex:"男",
+            age:17
+        },
+        {
+            nickname:"xiaoming",
+            sex:"男",
+        age:17
+        }
+    ];
+    // 渲染表头函数
+    var render_thead = (obj) => {
+        var tr = document.createElement('tr');
+        for(var key in obj[0]){
+            var th = document.createElement('th');
+            th.innerText = key;
+            tr.append(th);
+        };
+        var table = document.querySelector('table');//获取table标签，而不是新创建
+        table.append(tr);
+        console.log(table);
+    };
+    render_thead(students);
+
+    // 渲染表体函数
+    var render_tbody = (obj) => {
+        var fragment = document.createDocumentFragment();
+        obj.forEach(item => {
+            var tr = document.createElement('tr');
+            for(var key in item){
+                var td = document.createElement('td');
+                td.innerText = item[key];
+                tr.append(td);
+            };
+            fragment.append(tr);
+        });
+        var table = document.querySelector('table');//获取table标签，而不是新创建
+        table.append(fragment);
+        console.log(table);
+    };
+    render_tbody(students);
+    
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo20 event时间对象</title>
+    <style>
+        .box{
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <script>
+        // var boxs = document.querySelectorAll(".box");
+        // boxs.forEach((item,index) => {
+        //     // 给每一个盒子都绑定一个点击事件
+        //     boxs[index].onclick = function(){
+        //         console.log("我是第" + (index+1) + "个盒子");
+        //     }
+        // })
+
+        // console.log(a);//变量a已经被提升到当前作用域的最顶端，
+        //                 // 变量a是存在的。但是没有赋值，所以就是undefined
+        // var a = 0;//var声明的变量存在变量提升，提升在当前作用域的最顶端
+        // console.log(a);//已经赋值了，所以就可以输出a的值
+
+        // // console.log(b);//在舒适化之前不能接受b
+        // let b = 0;
+        // console.log(b);
+
+    //     var b1 = 0;
+    //    var b1= 9;
+    //     console.log(b1);
+
+
+
+        // let b = 0;
+        // let b = 9;
+        // console.log(b);
+
+        
+        // console.log(a);
+        // function fn (){
+        //     let a = 9;
+        //     console.log(a);
+        // }
+        // fn();
+
+
+        // let a = 0;
+        // console.log(window.a === a);
+        // console.log(global.a === a);
+
+        // function fn(){
+        //     let a = 9;
+        //     console.log(a);
+        // }
+        // fn();
+        // {
+        //     let a = 0;
+        //     console.log(a);
+        // }
+
+
+        // let a = 7;
+        // // 立即执行函数IIFE:immediately invoked function expressing
+        // (function(){
+        //     let a = 8;
+        //     console.log(a);
+        // })();
+        // console.log(a);
+
+
+        // for(let i = 0;i < 3;i++){
+        //     console.log(i);
+        // }
+        // console.log(i);
+
+        // let a = 0;
+        // {
+        //     console.log(a);
+        //     let a = 9;
+        // }
+
+
+        // let b = 0;
+        // function fn(){
+        //     if(true){
+        //         let b = 89;
+        //     }//已经形成一个单独的作用域
+        //     console.log(b);//此作用域里面没有变量，遵循作用域链规则找上一级
+        // }
+        // fn();
+
+        // let boxs = document.querySelectorAll(".box");
+        // for(const i = 0;i < 3;i++){
+        //     boxs[i].onclick = function(){
+        //         console.log(i);
+        //     }
+        // }
+
+        // const a = {
+        //     nickname:"xiaoming",
+        //     sex:"nan"
+        // };
+        // a.nickname = "dagang";
+        // a.age = 17;
+        // console.log(a);
+
+        // let a;
+        // console.log(a);
+
+        // 先声明再使用：不能变量提升
+        // 块级作用域
+        // 不能重复声明
+        // 暂时性死区：变量不能提升
+
+
+
+
+        // const b = 1234;
+        // {
+        //     console.log(b);
+        //     const b = 9;
+        // }
+        // const abm = [43];
+        // console.log(window.abm);
+        // function fn(){
+        //     console.log(abm);//报错，在同一个作用域里面有同一个变量，不能在声明之前使用
+        //     {
+        //         const abm = [43];//暂时性死区
+        //     }
+        // };
+        // fn();
+
+        // const
+        // 先声明后使用：不存在变量提升
+        // 必须初始化
+        // 没有挂载在window全局作用域上面
+        // 暂时性死区：先声明后使用
+        // 不能重复声明
+        
+        
+        // // 声明数组的方法
+        // const arr1 = [12,3,35];
+        // const arr2 = new Array(232,4,5,6,56);
+        // const arr3 = Array.of(12,34,45,54,6);
+        // const arr4 = Array("324","34");
+        // console.log(arr4);
+
+
+        // const arr = [123,34,32443,'shdgfvgh',43,{nickname:"xiaoming"}]
+        // const result = arr.some(item => item.nickname === "xiaoming");
+        // console.log(result);
+        // const result1 = arr.includes('shdgfvgh');//复杂数据类型拷贝的是地址，只要地址不变，里面的数据随便怎么变，前后都是相等的，数据不变，变量名称改变，地址不一样
+        // console.log(result1);
+
+        // const arr1 = [1,2,3,4,5];
+        // const arr2 = arr1.slice();//slice()拷贝过来的是数据，内存地址改变
+        // console.log(arr1 === arr2);
+
+        // const arr3 = arr1.concat();//slice()拷贝过来的是数据，内存地址改变
+        // console.log(arr1 === arr3);
+
+        // const arr4 = [{ninckname:"xioaming"}];
+        // const some = JSON.parse(JSON.stringify(arr4));
+        // console.log(arr4 === some);
+        // some[0].ninckname = "dagang1";
+        // console.log(arr4,some);
+
+        // const arr = [1,2,3,4,5,6];
+        // let result = arr.splice(0,0,0);
+        // console.log(arr,result);
+
+        // let result = arr.fill(0,0,2);
+        // console.log(arr,result);
+        // console.log(arr.join("/"));
+
+        // const arr4 = [
+        //     {
+        //         ninckname:"xioaming",
+        //         age:16
+        //     },
+        //     {
+        //         ninckname:"xioaming",
+        //         age:17
+        //     },
+        //     {
+        //         ninckname:"xioaming",
+        //         age:19
+        //     }
+        // ];
+        // let result = arr4.reduce((acc,item) => acc + item.age,0);
+        // console.log(result);
+
+        const arr1 = [32];
+        {
+            const arr1 = [35];
+            console.log(arr1);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

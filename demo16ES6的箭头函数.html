@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo16ES6的箭头函数</title>
+</head>
+<body>
+    <script>
+        // () => {};
+        // // function (){};//报错，函数声明需要一个函数名字function函数声明，var函数表达式
+        // function fn(){};//不报错
+        // var fn_a = function(){
+        //     console.log("我是函数fn_a");
+        // };
+        // fn_a();//调用函数表达式
+        // var fn_b = () => {
+        //     console.log("我是函数fn_b");
+        // };
+        // fn_b();//调用箭头函数
+
+
+        // // 立即执行函数IIFE(immediate invoked function expression)
+        // (function(){
+        //     console.log("我是普通立即执行函数");
+        // })();
+
+        // (() => {
+        //     console.log("我是箭头立即执行函数")
+        // })();
+
+        // var fn_c = () => {
+        //     console.log("我没有形参，所以不可以省略小括号");
+        // };
+        // fn_c();
+
+        // var fn_d = b => {
+        //     console.log("我是参数d:",1);
+        // };
+        // fn_d();
+
+        // var fn_e = () => {
+        //     console.log("我没有形参不可以省略小括号");
+        // }
+        // fn_e();
+        // var fn_f = (a,b) =>{
+        //     console.log("我有形参不可以省略小括号:",a,b);
+        // }
+        // fn_f(1,2);
+
+        // var arr = [];
+        // var fn_g = function(){
+        //     for(var i in arguments){
+        //         if(typeof arguments[i] !== "number"){
+        //             return fn_g();
+        //         }else{
+        //             arr[i] = arguments[i];
+        //         };
+        //     };
+        //     console.log(arr);
+        // };
+        // fn_g(243,435,645,6,73,'dfs','g','xz334',[243,35,321,35],45);
+
+        // () => {};//箭头函数
+        // var fn_a = () => {
+        //     console.log("我是没有参数的箭头函数");
+        // };
+        // fn_a();
+        // var fn_b = (a) => {
+        //     console.log("我是有参数的箭头函数:",a);
+        // };
+        // fn_b(1);
+
+        // var fn = () => {
+        //     console.log(arguments);
+        // };
+        // fn(1,334,55);
+
+        // var fn = function(){
+        //     console.log(arguments);
+        // };
+        // fn(3,4,342,1);
+
+        // var a = () => {
+        //     console.log(arguments);
+        //     var b = () => {
+        //         console.log(arguments);//这里面的arguments是函数a里面的，根据作用域链找到了上层的参数
+        //         var c = () => {
+        //             console.log(arguments);//这里面的arguments是函数a里面的，根据作用域链找到了上层的参数,b里面没有参数arguments
+        //                                     // 就近原则
+        //         };
+        //         c();
+        //     };
+        //     b();
+        // };
+        // a(23,434,5435);
+
+        // var c = function(){
+        //     console.log(arguments);
+        //     var d = function(){
+        //         console.log(arguments);//这里面的arguments是函数a里面的
+        //     };
+        //     d();
+        // };
+        // c(234,5435);
+            
+        // var fn_a = () => {
+        //     console.log(this);
+        // };
+        // fn_a();
+
+        // var fn_b = function(){
+        //     console.log(this);
+        // };
+        // fn_b();
+
+        // function fn_c(){
+        //     var fn_d = () => {
+        //         console.log(this);//父作用域fn_c指向window，所以fn_d也是指向window
+        //         var fn_e = () => {
+        //             console.log(this);//父作用域fn_c指向window，所以fn_d也是指向window
+        //         };
+        //         fn_e();
+        //     };
+        //     fn_d();
+        // };
+        // fn_c.call(2,3);//指向2
+
+        // var fn = () => {
+        //     console.log(this);
+        // };
+        // fn.call(0,3244);//箭头函数免疫call，所以还是指向window
+        // fn.apply([21],[3244]);//形参以数组的形式传递
+        
+        // var result = fn.bind();//要装进一个变量里面
+        //                         // bind会生成一个跟原函数相同的新函数
+        // result(0,3244);
+
+        // var fn = () => {
+        //     return "我是箭头函数的返回值";
+        // }
+        // console.log(fn());
+
+        // var fn = () => "我是箭头函数的返回结果，没带花括号";
+        // console.log(fn());
+
+        // var a = 100;
+        // var fn = () => a < 100;
+        // console.log(fn());
+
+        // var morethan = (a) => {
+        //     console.log(a < 100);
+        // };
+        // morethan(200);
+
+        // var lessthan100 = b => b < 100;
+        // console.log(lessthan100(10));
+
+        // var add = (a,b) => {
+        //     a++;
+        //     b++;
+        //     return a * b;
+        // };
+        // console.log(add(2,4));
+
+        // 箭头函数嵌套箭头函数可以形成闭包
+        // var a = () =>{
+        //     var str = "dsfjk";
+        //     return () => {
+        //         console.log(str);
+        //     };
+        // };
+        // var result = a();//形成闭包
+        // result();//立即执行函数(IIFE)
+
+        // // 普通函数嵌套箭头函数可以形成闭包
+        // var a = function(){
+        //     var str = "dsfjk";
+        //     return () => {
+        //         console.log(str);
+        //     };
+        // };
+        // var result = a();//形成闭包
+        // result();//立即执行函数(IIFE)
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo9循环</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+
+    </div> -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+    <script>
+        var num = 0;
+        for(var a = 0;a < 3;a++){//0  1  2  
+            for(var b = 0;b < 3;b++){//0  1  2  
+                // console.log("所有输出的b值:",b);
+                num++;
+            };
+        };
+        console.log("num的值为:",num);
+
+        ducument.write("<p>你好</>");
+
+
+
+
+
+
+        // var a = 1;
+        // var b = ++a + 1;
+        // console.log(a,b);//2 3
+
+
+
+
+
+
+        // var lis = document.querySelectorAll('ul li ');
+        // var red = document.querySelector(".red");
+        // var blue = document.querySelector(".blue");
+        // for(var a = 0;a < 8 ;a++){
+        //     if(a % 2 === 0){//括号里面的值会自动转换为布尔值，所以不需要===结果
+        //         console.log("男生是:",lis[a].innerText);
+        //         lis[a].classList.add("blue");//增加新类名
+        //         //lis[a].style.cssText += "color:blue";//添加新的样式
+        //     }else{
+        //         console.log("女生是:",lis[a].innerText);
+        //         lis[a].classList.add("red");
+        //         //lis[a].style.cssText +="color:red";//添加新的样式
+        //     };
+        // };
+           
+
+
+
+        //         console.log("男生是:",lis[a]);
+        //     }else{
+        //         console.log("女生是:",lis[a]);
+        //     };           
+        // };
+        
+        // for(var a = 0; a < 100;a++){ 
+        //     console.log(a);
+        // };
+        //初始条件写在for循环之前
+        //false   :    false  0  NaN  undefined  ''  null
+        // for( var b = 0 ; b<100 ; b++){
+        //     console.log("b的值为：",b);
+        // };
+        // console.log("循环结束后b的值为：",b);
+
+
+        // console.log(b);//b=100
+    </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo21字符串的方法</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        p{
+            text-indent: 2em;/*test-indent代表文字首行缩进两格，indent(缩进)*/
+        }
+        .red{
+            color:red;
+        }
+        .noRed{
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+    <p>这是一首简单的小情歌,这是一首简单的小情歌,这是一首简单的小情歌,
+        这是一首简单的小情歌,这是一首简单的小情歌,这是一首简单的小情歌,
+        这是一首简单的小情歌,这是一首简单的小情歌,这是一首简单的小情歌
+    </p>
+    <!-- 
+        section标签是用来明确的定义某个文档的，
+        article标签是用来定义文章标题区域的
+        div是定义某一个区域盒子
+     -->
+    <form>
+        <span>查找</span>
+        <input type="text" class="search_input" placeholder="请输入需要查找的内容" value="">
+        <button class="confirm">确定</button>
+    </form>
+    <form>
+        <span>把</span>
+        <input type="text" class="start" placeholder="请输入需要替换的内容" value=""> 
+        <span>替换成</span>
+        <input type="text" class="end" placeholder="请输入需要替换后的内容" value="">
+        <button class="confirm_replace">确定</button>
+    </form>
+    <section>
+        <button class="restore">还原</button>
+    </section>
+    <script>
+
+        // let op = document.querySelector("p");
+        // console.log(op.innerHTML,op.innerText);//innerHTML会获取到标签里面所有的内容，包括文本和标签，除非document对象getElementByTgName()获取相应标签
+                                // innerText只会获取到文本，会自动过滤掉标签
+        // let str = "dshcbd";
+        // let reg = new RegExp("123","gi");
+        // let newStr = str.match(reg);
+        // console.log(newStr);
+        // if(newStr === null){
+        //     console.log(1);
+        // }
+        
+
+
+
+        const form = document.querySelectorAll("form");//只获取到第一个，所以后续只有第一个form标签才可以使用相应的reset()方法
+
+
+        // 查找关键字并标红
+        const confirm = document.querySelector(".confirm");//获取点击按钮
+        const p = document.querySelector("p");//获取标签
+        // let p_html = p.innerHTML;//innerHTML和innerText都用let来声明
+                                // 标签用const来声明
+                                // 这样设置的话p_text就是常量了，再次点击对函数进行调用是不会保留上一次点击执行的结果
+        const search_input = document.querySelector(".search_input");
+
+        let search_arr = [];
+
+        //点击确定按钮触发函数
+        confirm.onclick = function(e){
+            e.preventDefault();
+            let search_value = search_input.value.trim();//获取到搜索框search_input里面的输入的关键字value并且删除前后端的空格
+            if(search_value === ""){
+                alert("不能输入空值");
+                form[0].reset();
+                return;
+            }
+            let reg = new RegExp(search_value,"g");//设置正则，在全局g查找输入的关键字search_value
+            let newString = p.innerHTML.replace(reg,"<span class='red'>" + search_value + "</span>");//将关键字替换成带有span标签的关键字，所以这里就要对p标签进行操作
+                                                                                // replace()会返回一个新的替换之后的字符串
+                                                                                // 不会改变原字符串
+            if(newString === p.innerHTML){
+                alert("输入的关键字不存在");
+                form[0].reset();
+                return;
+            }
+            p.innerHTML = newString;//因为p_html在此不属于同那个一个作用域，可以使用p_html，但是p_html的值不是P.innerHTML
+            search_arr.push(search_value);
+            // console.log(p_html);
+            form[0].reset();//代码执行之后输入框清空
+        }
+
+
+        // 查找关键字并替换
+        const confirm_replace = document.querySelector(".confirm_replace");
+        let p_text = p.innerText;
+        confirm_replace.onclick = function (e){
+            e.preventDefault();
+            let start_value = document.querySelector(".start").value.trim();
+            let end_value = document.querySelector(".end").value.trim();
+            if(start_value === ""){
+                alert("需要替换的内容不能输入空值");
+                form[1].reset();
+                return;
+            }
+            let reg_start = new RegExp(start_value,"gi");//正则也可以定义为const，因为后期并不会改变
+            if(!p_text.includes(start_value)){
+                alert("输入的需要替换的内容在文本中不存在");
+                form[1].reset();
+                return;
+            }
+            // let newStringStart = p_text.replace(reg_start,start_value);//这样写的话不管是差不查找得到字符串都是跟原来一样的
+            // let newStringStart = p_text.match(reg_start);//会返回一个数组对象
+            // if(newStringStart === null){
+            //     alert("输入的需要替换的内容在文本中不存在");
+            //     form[1].reset();
+            //     return;
+            // }
+            // let newString = p_text.replace(reg_start,end_value);//只是替换内容
+            let newString = p.innerHTML.replace(reg_start,"<span class='red'>" + end_value + "</span>");//查找替换并标红
+            p.innerHTML = newString;//把替换之后的内容赋值给p标签，一定要是innerHTML，不能是innerText,不然会把标签当做文本替换掉
+            form[1].reset();
+        }
+
+        // 还原功能
+        // 建立一个数组接收每次替换的值，之后每点击一次还原就会对其进行操作
+        // match()  replace()不会改变原字符串
+        const restore = document.querySelector(".restore");
+        restore.onclick = function(){
+            if(search_arr.length === 0) {
+                alert("已经还原到初始状态");
+                return;
+            }
+            // console.log(search_arr);//已经成功获取到搜索的关键字的数组
+            let item_delete = search_arr.pop();//每点击一次就会删除一个关键字
+                                        // pop()返回值是删除的数组内容
+            const reg = new RegExp(item_delete,"g");
+            let deleteString = p.innerHTML.replace(reg,"<span class='noRed'>" + item_delete + "</span>")
+            p.innerHTML = deleteString;
+            // console.log(item_delete);
+            // console.log(search_arr);//每点击一次就会删除掉一个关键字
+            
+            // p.innerHTML = p.innerText;
+        }
+
+        // 中午四十分钟
+        // 下午四十分钟
+        // 今天一个半小时
+
+        
+
+
+
+
+
+
+
+
+
+
+        // // 查找关键字并替换
+        // const start = document.querySelector(".start");
+        // const end = document.querySelector(".end");
+        // const confirm_replace = document.querySelector(".confirm_replace");
+        // confirm_replace.onclick = function(e){
+        //     e.preventDefault();
+        //     let start_value = start.value;
+        //     let end_value = end.value;
+        //     if(start_value === ""){
+        //         alert("需要替换的内容不能输入空值");
+        //         form[1].reset();
+        //         return;
+        //     }
+        //     let reg_start = new RegExp(start_value,"g");
+        //     // let reg_end = new RegExp(end_value,"g");
+        //     let p_text = p.innerText;
+        //     let newStringStart = p_text.replace(reg_start,start_value);
+        //     console.log(newStringStart);//replace()不会改变原字符串
+        //     if(newStringStart === p.innerText){//因为start_value在文本中找不到，所以reg_start就不会发生替换没所以就导致与原数组相等·
+        //         alert("需要替换的内容在文本中不存在");
+        //         form[1].reset();
+        //         return;
+        //     }
+        //     let newString = p_text.replace(reg_start,end_value);//将reg_start替换成reg_end
+        //     p.innerText = newString;
+        //     // console.log(newString);//已经替换成功
+        //     form[1].reset();
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // const form = document.querySelector("form");
+        // const p = document.querySelector("p");
+        // let p_text = p.innerText;
+        // // console.log(p_text);//已经成功获取到p标签里面的文本内容
+        // // 输入关键字进行查找并替换成红色
+        // const confirm = document.querySelector(".confirm");
+        // confirm.onclick = function(e){
+        //     e.preventDefaule();//清空form默认值
+        //     let search_value = document.querySelector(".search_text").value.trim();//将目标搜索字符前后的空格去掉
+        //     // console.log(search_value);//已经获取到输入框里面的值
+        //     // const span = document.createElement("span");//创建新的span标签
+        //     // span.innerText = search_value; //将搜索的关键字装进span标签里面
+        //     // span.style.color = "red";
+        //     // p.append(span);//这一句话会在p标签内容的后面加上span标签
+        //     if(search_value === ""){
+        //         alert("不能输入空值");
+        //         form.reset();
+        //         return;
+        //     }
+        //     const p_html = p.innerHTML;
+        //     let reg = new RegExp(search_value,"gi");//将目标搜索字符search_value定义为正则reg
+        //     // let result = p_text.match(reg,"gi");//在p_text字符串里面查找reg关键词
+        //                                     // match()只会找到关键字然后返回一个数组，但是没办法替换成目标,在这里不适合用match()
+        //     let newString = p_html.replace(reg,"<span class = 'red'>" + search_value + "</span>");//单双引号嵌套使用
+        //                                                                         // replace()会返回修改替换之后的字符串
+        //                                                                         //replace()不会改变原字符串
+        //     // console.log(newString,p_html);//已经成功将目标搜索字符串添加span标签
+        //     if(newString === p_html){
+        //         alert("搜索的关键字不存在");
+        //         form.reset();
+        //         return;
+        //     }
+        //     console.log(newString);
+        //     p.innerHTML = newString;//将替换之后的新字符串newString再添加进p标签里面
+        //                             // 不能用innerText的原因是：
+        //                                     // innerText是替换文本
+        //                                     // innerHTML是替换文本加标签
+        //     form.reset();
+        // }
+
+
+        
+            
+            // console.log(reg);
+
+
+            
+            // replace(reg,)
+            // const p_text_orange = p_text.match(reg);
+            // p_text_orange.style.color = "orange";
+        
+        
+
+
+        // let str = " dshjh ";
+        // let result = str.trim();
+        // console.log(result);
+
+
+
+
+
+
+        // let str1 = "1232";
+        // let str2= new String("fdg");
+        // let str3 = String("efdefe");
+        // console.log(str2);
+        // let str = str2.toString();
+        // console.log(str);
+
+        // let str = "324";
+        // str.some = "dsdghu";
+        // console.log(str);
+        // /*
+        //     str.some = "dscd"，先创建了一个字符串包装对象，对其进行赋值，打印出来之后就会被销毁掉，所以后面在打印就是undefined
+        // */ 
+        // console.log(str.some = "dscd",str.some);
+
+        // let str = new String("cbjhdsk");
+        // console.log(str);
+        // console.log(str.length);
+
+
+        
+
+        // for(let i = 0;i < str2.length;i++){
+        //     console.log(i);
+        // }
+
+        // for(let key in str2){
+        //     console.log(key);
+        // }
+  
+        // console.log(str2[1]);
+
+
+        // let str2 = "3244";
+        
+        // console.log(str2.charCodeAt(0));
+
+
+        // console.log(str2.charAt(1));
+
+
+        // let str = "在吗，今天吃了没?"
+        // for(let key in str){
+        //     console.log(str.codePointAt(key));
+        // }
+
+        // 字符转编码
+        // charCodeAt();
+        // codePointAt();
+
+        // // 编码转字符
+        // fromCharCode();
+        // formCodePoint();
+
+
+        // let str1 = "dnjv";
+        // let str2 = "dcsjh";
+        // let str = str1.concat(str2);
+        // console.log(str);
+
+
+        // console.log(''.concat(1,2,3));//将括号1/2/3里面的转换成字符串
+        // console.log(''.concat("1,2,3"));//将括号里面的"1,2,3"转换成字符串
+
+        // let str1 = "dsfs";
+        // console.log(str1.endsWith("s",3));//查找长度为3的字符串(dsf),false
+
+
+        // let str = "dsfttfc" ;
+        // console.log(str.lastIndexOf("t",3));
+        // console.log(str.indexOf("t",4));
+
+
+        // console.log(str.indexOf("t"));
+
+
+        // console.log(str.includes(""));
+
+        // console.log(str.startsWith("t",3))
+
+        // console.log(str.startsWith("d"));
+        // console.log(str.startsWith(""));
+
+        // Array.isArray()//判断是否是一个数组
+        // let reg = new RegExp("hello","g");//RegExp()是一个方法
+        // let str = " hello world hello world hello world hello world ";
+
+        // console.log(str.replace(reg,"hi"));
+
+        // let reg = new RegExp("hello","g")
+
+        // let str = "  djchsf";
+        // console.log(str.trim());
+
+
+
+    </script>
+</body>
+</html>

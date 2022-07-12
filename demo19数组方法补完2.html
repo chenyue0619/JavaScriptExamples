@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo19数组方法补完2</title>
+</head>
+<body>
+    <script>
+        // var arr = [12,2,3,532];
+        // var result = arr.filter((item,index,array) => {
+        //                 //item是数组里面的每一项，array是整个数组
+        //     return item > 3;//添加筛选指令,筛选出大于3的一项
+        //                     // 不定义返回值会返回一个空数组
+        // });
+        // console.log(result);//有返回值
+
+        // var students = [
+        //     {
+        //         nickname:"xiaoming",
+        //         age:15
+        //     },
+        //     {
+        //         nickname:"xiaoming",
+        //         age:20
+        //     },
+        //     {
+        //         nickname:"xiaommming",
+        //         age:8
+        //     }
+        // ];
+        // var result = students.filter(item => item.age > 10);
+        // console.log(result);//输出的结果还是数组
+        // result[0].age = 34;
+        // console.log(result);
+        // console.log(students);//会改变原数组，复制的是地址
+        // var findMing = students.filter(item => item.nickname === "xiaoming");//浏览器自动分配item参数给filte()方法
+        // console.log(findMing);
+
+        // var arr = [213,34,53,5];
+        // var result = arr.every(item => {
+        //     return item > 1;
+        // })
+        // console.log(result);
+
+        // var arr = [23,34,45,364,4];
+        // var result = arr.fill(44,1);//
+        // console.log(arr);
+        // console.log(result);
+
+        // var arr = [32,4,5,64,45,56];
+        // var result = arr.copyWithin(0,3);//从下标3开始往后截取，从下标0开始替换
+        // console.log(result,arr);
+
+        // var arr = [32,4,5,64,45,56];
+        // var result = arr.find(item => {
+        //     return item >= 30;
+        // });
+        // console.log(result);
+
+        // var arr = [32,4,5,64,45,56];
+        // var result = arr.findIndex(item => item > 50);
+        // console.log(result);
+
+        // var arr = [32,4,5,64,56,56];
+        // var result = arr.lastIndexOf(56,5);
+        // console.log(result);
+
+        // var arr = [32,4,5,64,56,56];
+        // var result = arr.includes(0);//false
+        // console.log(result);
+
+        // var arr = [32,4,5,64,56,56];
+        // var result = arr.some(item => item > 90)
+        // console.log(result);
+
+        // var arr = [32,4,5,64,56,56];
+        // var result = arr.join("/");
+        // console.log(result);
+
+        // var arr = [32,4,5,[64,[34,35],56],56];
+        // var result = arr.flat(2);
+        // console.log(result);
+
+        // var arr = [32,4,5,56,56];
+        // var result = arr.reverse();
+        // console.log(result);
+
+        // var arr = [32,4,5,56,56];
+        // var result = arr.splice(2,2,6,6,6);
+        // console.log(result,arr);//[32,4,6,6,6,56]
+
+        // var arr = [32,4,5,56,56];
+        // var result = arr.reduce((acc,item,index,array) => {
+        //     console.log("acc:",acc,"item:",item,"index:",index);
+        //     return acc + item;//累记器
+        // });
+        // console.log(result);
+        
+        // var arr = [32,4,5,56,56];
+        // var result = arr.reduce((acc,item) => acc + item);
+        // console.log(result);
+
+        var arr = [32,4,5,56,56];
+        var result = arr.reduceRight((acc,item) =>{
+            console.log("acc:",acc,"item:",item);
+            return  acc - item;
+        })
+        console.log(result);
+    </script>
+</body>
+</html>

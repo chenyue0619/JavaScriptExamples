@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo3基础DOM操作</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var obj={
+            name:'feng',
+            age:18
+        };
+        var arr1=[1,1];
+        var arr2=[];
+        function some(){
+            console.log(1);//函数里面可以嵌套函数log()也是一个函数
+        };
+        some();//只有调用之后，控制台才会打印出log()的内容
+        function factory(data){//参数：data形参
+            //data就相当于在函数代码块里面定义一个变量var data;
+            console.log(data);
+        };
+       // factory('鸡肉');//参数：鸡肉是实参
+        factory();
+        console.log(factory);
+        console.log(typeof factory);
+        var str='feng';//非空字符串true
+        console.log(Boolean(str));
+        var str1='';//空字符串false
+        console.log(Boolean(str1));
+        var str2=' ';//空格true
+        console.log(Boolean(str2));
+        console.log(Boolean(0));//false
+        console.log(Boolean(1));//true
+        console.log(Boolean(-1));//true
+        console.log(Boolean(3.1));//true
+        console.log(Boolean(Infinity));//正无穷大true
+        console.log(Boolean(-Infinity));//负无穷大true
+        console.log(Boolean(NaN));//不是一个数字false
+        console.log(Boolean(undefined));//false
+        console.log(Boolean(null));//false
+        console.log(Boolean(factory));//函数true
+        console.log(Boolean(obj));//对象true
+        console.log(Boolean(arr1));//true非空数组
+        console.log(Boolean(arr2));//true空数组
+
+
+        console.log(String(str2));
+        console.log(String(0));//0
+        console.log(String(1));//1
+        console.log(String(-1));//-1
+        console.log(String(3.1));//3.1
+        console.log(String(Infinity));//Infinity
+        console.log(String(-Infinity));//-Infinity
+        console.log(String(NaN));//NaN
+        console.log(String(undefined));//undefined
+        console.log(String(null));//null
+        console.log(String(factory));//函数体内容显示出来
+        console.log(String(obj));//[object Object]
+        console.log(String(arr1));//非空内容数组，数组里面的
+        console.log(String(arr2));//空数组，输出为空
+        console.log(String(true));//true
+        console.log(String(false));//false
+        
+        var Null=null;
+        var True=true;
+        var unde=undefined;
+        console.log(arr1.toString());//非空内容数组，数组里面的
+        console.log(arr2.toString());//空数组，输出为空
+        console.log(True.toString());//true
+        // console.log(unde.toString());//报错，不可以使用toString()
+        // console.log(Null.toString());//报错
+
+        var num_a=254;
+        console.log(num_a.toString(2));//转换为2进制
+        console.log(num_a.toString(8));//转换为8进制
+        console.log(num_a.toString(16));//转16为2进制
+
+        console.log(Number(arr1));//非空内容数组，数组里面的
+        console.log(Number(arr2));//空数组，输出为空
+        console.log(Number(True));
+        console.log(Number(undefined));
+        console.log(Number(true));
+        console.log(Number(false));
+        console.log(Number(null));
+        console.log(Number({name:'feng'}));//NaN
+        console.log(Number([]));//字符串0，数字0
+        console.log(Number([1]));//字符串1，数字1
+        console.log(Number([1,2]));//字符串1,2，数字NaN
+
+        console.log(String({name:'',sex:'',age:''}));//[Object,Object]
+        console.log(Number({name:'',sex:'',age:''}));//NaN
+        console.log(parseInt({name:'',sex:'',age:''}));//NaN
+        console.log(Number({}));//NaN
+        console.log(parseInt({}));//NaN
+        console.log(parseInt('10',2));
+        console.log(parseInt('20',8));
+        console.log(parseInt('30',16));
+
+
+        var num_d='3827cbxn';
+        console.log(parseInt('125416f'));//125416
+        console.log(parseInt(num_d));//3827
+        console.log(parseInt(123.9));//123取整
+
+        console.log(parseFloat(12534.9));//12534.9
+        console.log(Number('12534.9'));//12534.9
+        console.log(parseFloat('12534.9hdjx'));//12534.9
+
+        console.log(parseFloat({}));//NaN
+        console.log(parseInt({}));//NaN
+        var True=true;
+        console.log(parseInt(true));//NaN
+        console.log(parseFloat(true));//NaN
+        console.log(Number(true));1
+        console.log(parseInt(null));//NaN
+        console.log(parseFloat(null));//NaN
+        console.log(Number(null));
+
+        //0 NaN undefined null '' ->false
+        //Infinity -Infinity 1 其他数字 [] {} ->true
+        console.log(Boolean(''));
+    </script>
+</body>
+</html>

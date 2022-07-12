@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo18数组补完</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        table{
+            margin: 40px auto;
+            width: 500px;
+            border-collapse: collapse;/*表格边框合并，边框塌陷*/
+        }
+        tr,td,th{
+            border: 1px solid #000;
+            line-height: 30px;
+            text-align: center;/*文本水平居中 */
+        }
+        .show_sum,.show_average{
+            display: inline-block;
+            width: 30px;
+            height: 20px;
+            border: 1px solid #000;
+            line-height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table></table>
+    <div>
+        <button class = "restore">还原</button>
+    </div>
+    <div>
+        <button class = "hide_to_low">年龄从大到小排序</button>
+        <button class = "low_to_hide">年龄从小到大排序</button>
+    </div>
+    <form class ="collect_data">
+        <input type="text" name="nickname" value ="" placeholder="请输入姓名">
+        <input type="text" name ="sex" value ="" placeholder="请输入性别">
+        <input type="number" name = "age" value ="" placehokder="请输入年龄" min="0" max="100">
+        <button class ="add_student">添加</button>
+    </form>
+    <form class="rank">
+        <span>查看第</span>
+        <input class ="start" type="number" value="" placeholder="开始" min="1" >
+        <span>名到第</span>
+        <input class ="end" type="number" value="" placeholder="结束" min="1" >
+        <span>名同学信息</span>
+        <button class="confirm">确定</button>
+    </form>
+    <div>
+        <button class="sum">总分</button>
+        <span class="show_sum"></span>
+    </div>
+    <div>
+        <button class="average">平均分</button>
+        <span class="average_sum"></span>
+    </div>
+    <script>
+        var students = [
+        {
+            nickname:"小明",
+            sex:"男",
+            age:17
+        },
+        {
+            nickname:"大纲",
+            sex:"男",
+            age:15
+        },
+        {
+            nickname:"花花",
+            sex:"女",
+            age:34
+        },
+        {
+            nickname:"冯冯",
+            sex:"女",
+            age:21
+        },
+        {
+            nickname:"月月",
+            sex:"女",
+            age:21
+        },
+        {
+            nickname:"小李",
+            sex:"男",
+            age:24
+        },
+        {
+            nickname:"老秦",
+            sex:"女",
+            age:50
+        }
+    ];
+    var tbody = document.querySelector('table');//获取table标签，而不是新创建
+    // 渲染表头函数
+    var render_thead = (obj,ele) => {
+        var tr = document.createElement('tr');
+        for(var key in obj[0]){
+            var th = document.createElement('th');
+            th.innerText = key;
+            tr.append(th);
+        };
+        // var ele = document.querySelector('table');//获取table标签，而不是新创建
+        // ele.innerHTML = "";//先把元素清空，后面再添加内容渲染元素
+        ele.append(tr);
+        // console.log(tbody);   
+    };
+    render_thead(students,tbody);
+
+    // 渲染表体函数
+    var render_tbody = (obj,ele) => {
+        var fragment = document.createDocumentFragment();
+        obj.forEach(item => {
+            var tr = document.createElement('tr');
+            for(var key in item){
+                var td = document.createElement('td');
+                td.innerText = item[key];
+                tr.append(td);
+            };
+            fragment.append(tr);
+        });
+        ele.innerHTML = "";
+        ele.append(fragment);
+        // console.log(table);
+    };
+    render_tbody(students,tbody);
+
+    // 排序功能实现
+    var hide_to_low = document.querySelector(".hide_to_low");
+    var low_to_hide = document.querySelector(".low_to_hide");
+    // console.log(hide_to_low,low_to_hide);//检查已经拿到这两个元素
+    var newStudents = students.slice();//因为数组的排序sort()方法会改变原数组，所以要先保存源数组
+                                    // slice()  concat()  都可以拷贝数组，因为这里不需要修改数组，所以用浅拷贝就好了
+                                    // 深拷贝  JSON.stringify()序列化    JSON.parse()反序列化
+                                    // 全局变量
+    // var newStudents  = JSON.parse(JSON.stringify);//深拷贝
+    // console.log(newStudents === students);//false与原数组不相同
+
+    // 从大到小排序
+    hide_to_low.onclick = function (){
+        newStudents.sort((a,b) => b.age - a.age);
+        // var table = document.querySelector("table");
+        // tbody.innerHTML = "";//清空table元素，不然后续将内容渲染到页面的时候会合并两个数组
+        // console.log(newStudents);
+        // render_thead(newStudents,tbody);
+        render_tbody(newStudents,tbody);
+    }
+
+    // 从小到大排序
+    low_to_hide.onclick = function(){
+        newStudents.sort((a,b) => a.age - b.age);
+        // var table = document.querySelector("table");
+        // tbody.innerHTML = "";//已经在函数里面清空
+        // render_thead(newStudents,tbody);
+        render_tbody(newStudents,tbody);
+    }
+
+    // 还原功能
+    var restore = document.querySelector('.restore');
+    restore.onclick = function(){
+        // var table = document.querySelector("table");
+        tbody.innerHTML = "";
+        // render_thead(students,tbody);
+        render_tbody(students,tbody);
+    }
+
+    // 添加功能
+    var add_student = document.querySelector(".add_student");
+    var collect_data = document.querySelectorAll(".collect_data input");
+    var form = document.querySelector("form");
+    // console.log(collect_data);//已经成功获取到
+    add_student.onclick = function(e){
+        e.preventDefault();//阻止form默认事件
+        var obj = {};//新创建一个对象用来装添加进去的内容
+        collect_data.forEach((item) => {//因为要对每一项操作，所以要传进去一个item变量
+                                        // forEach()没有返回值，map()有返回值，返回一个数组，需要我们自己定义条件
+            if(item.value === ""){//判断传进去的值是否为空，若为空怎弹出提示框
+                alert(item.name + "的值不能为空!");
+            }else{
+                obj[item.name] = item.value;
+            };
+            var result = Object.keys(obj);//Object.keys()功能是装载对象所有属性的数组
+            if(result.length === 3){
+                // var newStudents = students.slice();//拷贝数组，因为push()会改变数组,前面已经在全局设置过了
+                newStudents.push(obj);//把对象装进students数组里面
+                                    //push()会改变数组，所以当添加内容之后点击还原没有效果
+                render_tbody(newStudents,tbody);//用students渲染页面   
+            };
+            form.reset();     
+        });
+    };
+
+    // 查看规定排名的同学功能
+    var rank = document.querySelector(".rank");
+    var start = document.querySelector(".rank .start");
+    var end = document.querySelector(".rank .end");
+    var confirm = document.querySelector(".rank .confirm");
+
+    confirm.onclick = function(e){
+        e.preventDefault();//阻止表单的默认事件
+        // 先排序
+        newStudents.sort((a,b) => b.age - a.age );//newStudents保存原来的数组，保存源数据
+        start_value = parseInt(start.value);
+        end_value = parseInt(end.value);
+        if(start_value > end_value){
+            alert("开始值必须小于结束值!");
+            rank.reset();
+            return;//必须要添加返回值一个空，还是会执行下面的代码，就算是输入的数据不符合规则，还是会执行下面渲染页面的代码，渲染一个空数组
+        }
+        if(start_value > newStudents.length || end_value > newStudents.length){
+            alert("输入的最大长度是:" + newStudents.length)
+            rank.reset();
+            return;
+        }
+        if(start_value === 0 || end_value === 1){
+            alert("最小开始值大于0,最小结束大于1");
+            rank.reset();
+            return;
+        }
+        // 因为表单的类型设置为数目，所以字符串是没办法输入的
+        var some = newStudents.slice(start_value - 1,end_value);//截取start.value开始项到end.value结束项之间的所有内容，
+                                                // 然后放到一个新的数组内保存
+                                                // 因为数组中下标是从0开始的，而正常人们意识是1开始的，所以要把下标-1，
+                                                // 但是slice这个方法的参数是左闭右开的，所以右边的值是取不到的，就不用 - 1
+        // console.log(some);
+        // parseInt(start.value);
+        // parseInt(end.value);
+        render_tbody(some,tbody);
+        rank.reset();//谈出结果后清空表单数据
+
+    }
+
+
+    // 计算总分
+    const show_sum = document.querySelector(".show_sum");
+    const sum = document.querySelector(".sum") ;
+    sum.onclick = () => {
+        let newStudents = students.slice();//拼接，把新添加的对象也可以计算总分
+        let score_data = [];
+        newStudents.forEach((item,index) => score_data[index] = item.age);
+        // console.log(score_data);
+        let result = score_data.reduce((acc,item) => acc + item);;
+        console.log(result);
+        show_sum.innerText = result;
+    }
+
+    // 计算平均分
+    const average = document.querySelector(".average");
+    const show_average = document.querySelector(".show_average");
+    average.onclick = () => {
+        let newStudents = students.slice();
+        let score_data = [];
+        newStudents.forEach((item,index) => score_data[index] = item.age);
+        let result = score_data.reduce((acc,item) => acc + item);
+        let average_data = result / newStudents.length;
+        show_average.innerText = average_data;
+    }
+
+
+    // 封装一个函数
+    const filter = score => {
+        let newStudents = students.slice();//更新数组
+        return newStudents.filter(item => item.score >= score);
+    }
+
+    // const filter = score => {
+    //     let newStudents = students.slice();
+    //     newStudents.filter(item => return item.score >= score);
+    // }
+
+    // pass.onclick = (e) => {
+    //     e.preventDefault();//阻止默认事件的发生
+    //     let pass_data = filter(60);
+    //     render_tbody(pass_data);
+    // }
+
+
+
+
+
+// var arr = [342,45,56,456,546,546,546];
+// arr.slice(1,3);
+// console.log(arr);
+
+
+
+const arr = [2,3];
+let result = arr.slice();
+result[0] = 1;
+console.log(arr);
+
+
+
+
+
+
+    // // 添加功能
+    // var collect_data = document.querySelectorAll(".collect_data input");//获得需要新添加的学生信息，单个数组
+    // var add_student = document.querySelector(".add_student");//获取到点击按钮元素
+    // // console.log(collect_data);//检验是否成功获取到了所有的input
+    // add_student.onclick = function(){
+    //     var obj = {};
+    //     collect_data.forEach(item => {//循环遍历新添加的单个students数组
+    //         if(item.value === ""){
+    //             alert(item.name + "的值不能为空!");
+    //             return;//无所谓添加不添加
+    //         }
+    //         else{
+    //             obj[item.name] = item.value;//新添加的值赋给相应的表单
+    //                                     // 在对象里面key是属性名obj[key]是对应的属性值
+    //         };
+    //         var result = Object.keys(obj);//对象属性数组
+    //         if(result.length === 3){
+    //             students.push(obj);//将新对象添加进数组里面
+    //             render_tbody(students,tbody);//是对数组进行遍历，然后再对里面的每一个对象进行遍历，所以不可以直接赋值对象调用函数
+    //         }
+    //     });
+
+       
+    //     // console.log(obj); //undefined    
+    //     // console.log(Object.keys(obj));
+    // }
+
+    // console.log(Object.keys(collect_data));
+
+
+    // var obj = [
+    //     {//item
+    //         nickname:"小明",
+    //         property:{
+    //             ball:"football",
+    //             food:"potato"
+    //         }
+    //     },
+    //     {
+    //         nickname:"小明",
+    //         property:{
+    //             ball:"football",
+    //             food:"potato"
+    //         }
+    //     }
+    // ]
+    // console.log(obj[0].nickname);//可是item不是下标，index才是下标，item是每一项的值
+    // obj.nickname
+    // obj[0].nicknamwe
+    // // item.nickname  = nickname的值   nickname是item的属性
+    // obj[item.nickname]
+    // // 每一个input都是一个item  item.value是表单里面的值
+    // obj.item.name
+
+    // var key in obj   key是对象中里面的值
+    // // obj[key]是对象里面属性的值
+    // obj[key]key代表属性名，，obj[key]代表key属性值，key可以理解为下标,但实际上不是下标
+    // arr[key]key代表数组里面的项，不可以写成arr[key],key不是下标
+    // item  key   等价  在数组里面都是数组的每一项值
+                        // 在对象里面都是对象的每一项：属性名+属性值：而obj[key]  obj[item]相应的属性值，可以理解为下标，但不是下标
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     var arr = [2,634,545];
+    //     var result = arr.sort((a,b) => {//a是后面大的值，b是小的值
+    //         console.log(a,b);//a是后面的值，b是前面的值   
+    //         // return b-a;//从大到小排序 返回true，b是前面的值，所以从大到小排序  
+    //         // return a-b;//从小到大排序
+    //     });
+    //     console.log(result);//返回值是从小到大排序
+
+    //     var arr = [452,4,56,23,45,5,64];
+    //     var result = arr.sort(() => {});
+    //     console.log(result);
+
+    //     var student1 = [
+    //         {nickname:"xiaoming",age:14},
+    //         {nickname:"fengfeng",age:13},
+    //         {nickname:"dagang",age:17}
+    //     ];
+    //     var result = student1.slice();
+    //     console.log(result);
+    //     result[0].age = 56;
+    //     console.log(result,student1);//都会改变
+    //     console.log(typeof student1);//object复杂数据类型
+    //     console.log(toString(student1));//输出object
+
+    //     var result = JSON.stringify(student1);//变成简单数据类型：字符串
+    //     console.log(typeof result);//string
+    //     console.log(JSON.stringify(student1));
+
+    //     var str = {nickname:"xiaoming"};
+    //     console.log(typeof str);//string
+    //     var result = JSON.stringify(str);
+    //     console.log(result);//object
+    //     console.log(JSON.parse(result));//JSON.parse()反序列化
+
+    //     result[0].age = 89;
+    //     console.log(result,student1);
+
+    //     var student2 = [
+    //         {nickname:"xiaoming",age:34},
+    //         {nickname:"fengfeng",age:23},
+    //         {nickname:"dagang",age:27}
+    //     ];
+
+    //     var result = student1.concat(student2);
+    //     console.log(result);
+    //     result[0].age = 56;
+    //     console.log(result,student1) ;
+
+
+
+    //     var result = students.slice();
+    //     console.log(result);
+    //     result[0].nickname = "daming";
+    //     console.log(result);
+    //     console.log(students);
+
+
+
+
+
+
+    //     students.sort((a,b) => a.age - b.age);//从小到大排序
+    //     console.log(students);
+
+
+    //     var arr = [24,5,5,45435,43,434,]
+    //     var result = arr.slice();//begin end  左
+    //     result[0] = 90;
+    //     console.log(result);
+    //     console.log(arr);
+
+
+
+    //     console.log(result === arr);
+
+
+
+    //     冒泡程序的封装
+    //     var big_small = (arr) => {
+    //         for(var a = 0,length = arr.length;a < length-1;a++){
+    //             for(var b = 0;b < length-1-a;b++){
+    //                 if(arr[b] < arr[b+1]){
+    //                     var num = arr[b];//小
+    //                     arr[b] = arr[b+1];
+    //                     arr[b+1] = num;//小的给后面
+    //                 };
+    //             };
+    //         };
+    //         return arr;
+    //     };
+    //     console.log(big_small([34,546,6,5,67,5766,54]));
+        
+            
+    //     arr1 = [324,45,64,564];
+    //     console.log(typeof arr1);//object
+    //     arr2 = [345,56,6,577];
+    //     arr3 = [34,54,463,46,"fdg"];
+    //     var result = arr1.concat(arr2,arr3);
+    //     console.log(result);
+    //     result[0] = 341;
+    //     console.log(result,arr1);//数组会保留原数据
+
+    //     var arr = [
+    //         function fn1(){
+    //             console.log(1);
+    //         },
+    //         function fn2(){
+    //             console.log(2);
+    //         },
+    //         function fn3(){
+    //             console.log(3);
+    //         }
+    //     ];
+    //     console.log(typeof arr);//object
+
+    //     function fn1(){
+    //         console.log(1);
+    //     };
+    //     console.log(typeof fn1);//function
+    //     var result = arr.slice();
+    //     console.log(result);
+    //     result[0] = function fn5(){};
+    //     console.log(result,arr);//只有result会改变,arr原数组不会改变
+
+    //     深拷贝函数(数组的方法) 不保存地址，原数组不会随着数组内容改变而改变
+    //     对象object -> 字符串 -> 对象    储存的是地址，不会保留源数据，需要深度拷贝
+    //     函数function -> 直接返回
+    //     数组里面是 -> 简单数据类型：数字、字符串 -> 直接返回    简单数据类型存储的不是地址，会保留源数据
+    //     function deepCopy(obj){
+    //         // 传进来的数据类型必须是对象
+    //         if(typeof obj !== "object" && typeof obj !== "function") return "传进来的数据必须是对象";//简单数据类型直接返回，函数直接返回，只有对象才会进行深度拷贝
+    //                                                     //  ||遇true则停，否则返回最后一个的布尔值
+    //         return JSON.parse(JSON.stringify(obj));//序列化 -> 反序列化
+    //                             // 返回结果是一个简单数据类型
+    //     };
+    //     var arr = [{},{},{}];
+    //     var result = deepCopy(arr);//储存的不是地址，所以当改变数组内容的时候，原数组不会发生改变
+    //     result[0].nickname = "xiaoming";
+    //     console.log(result,arr);//arr已经转变为简单数据类型，不会发生改变
+
+
+    //     var arr = [23,35,45,4334];
+    //     var result = arr.shift();//shift()返回被删除的一项[0]
+    //     console.log(result,arr);
+
+    //     封装shift()函数实现一样效果
+    //     删除数组的[0]
+    //     // 返回被删除的一项[0]
+    //     function shift(arr){
+    //         if(!Array.isArray(arr))return "请输入一个数组";
+    //         var result = arr[0];//把数组的第0项保存下来
+    //         for(var i = 0,length = arr.length;i < length -1;i++){//for循环条件里面的变量是临时变量，当for循环结束后，临时变量会被销毁
+    //             arr[i] = arr[i+1];
+    //         };
+    //         arr.length =arr.length - 1;//把最后一项减掉
+    //             // 不可以写成length = length - 1，for循环结束之后已经被销毁了
+            
+    //         console.log(arr);
+    //         return result;//返回数组的第0项
+    //     };
+    //    console.log(shift([1,2,3,4,5]));
+
+    // 实现从前面删除多项,num项
+    // function shift_more(arr,num){
+    //     if(!Array.isArray(arr))return "请输入一个数组";
+    //     num = num || 1;//num最小值为1，若没有传值，则默认为1
+    //     if(num === 1){//删除一个
+    //         var result = num[0];
+    //         arr.length = arr.length - 1;//长度减1
+    //         console.log(arr);
+    //     }else{//删除多个
+    //         var result = [];//用来保存被删除的项
+    //         for(var i = 0;i < num;i++){
+    //             result[i] = arr[i];
+    //         };
+    //     };
+    //     for(var i = 0,length = arr.length;i < length-num;i++){
+    //         arr[i] = arr[i + num];
+    //     };
+    //     arr.length = arr.length - num;
+    //     console.log(arr);
+    //     return result;
+    // };
+    // shift_more([1,2,3,4,5,6,7,7],3);
+    // console.log(shift_more([1,2,3,4,5,6,7,7],3));
+
+    // 函数封装实现unshift()一样效果
+    // 1、添加多项
+    // 2、从前面添加
+    // 3、返回数组的长度
+    // 4.数组所有的实参都在arguments
+
+    // function unshift(arr){
+    //     // 判断是否为数组
+    //     if(!Array.isArray(arr))return "请输入一个数组";
+
+    //         var len = arguments.length - 1;//去除掉第一项目标数组,需要移动或者添加的数量
+    //         arr.length = arr.length + len;// 初始化长度，arr的length已经不是原来的length了
+
+    //         // 遍历目标添加数组
+    //         for(var i = 0;i < arr.length - len;i++){//移动几个数字就是循环几次。现在arr的长度已经变成了原来的arr.length + arguments - 1
+    //             arr[len + i] = arr[i];//把原数组的内容往后移len个长度 
+    //             console.log(arr[5]) ;//2
+    //         };
+
+    //         // 遍历arguments
+    //         for(var a = 0;a < len;a++){
+    //             arr[a] = arguments[1 + a];
+    //         };
+        
+    //     console.log(arr);
+    //     return arr.length;
+    // };
+    // unshift([2,34,5,67,4,5,6],43,55,67,67,3);
+
+
+
+
+
+    // // 封装数组实现unshift()一样效果
+    // function unshift(arr){
+    //     if(!Array.isArray(arr)) return "请输入一个数组";
+    //     var result = arr.length  + arguments.length - 1;//新数组的长度
+
+    //     // console.log(arr.length);
+    //     // console.log(arguments.length - 1);
+
+    //     var len = arguments.length - 1;//需要添加的内容的长度，除了目标数组以外的长度
+
+    //     // 遍历目标数组，将目标数组后移len
+    //     for(var i = 0;i < len;i++){
+    //         arr[len + i] = arr[i];//添加几个就后移几个
+    //     };
+
+
+    //     // 遍历添加的内容，将添加的内容的内容
+    //     for(var i = 0;i < len;i++){
+    //         arr[i] = arguments[i + 1];
+    //     };
+    //     console.log(arr);
+
+    //     return result;//返回数组长度
+
+    // };
+        
+    // unshift([34,4,5,446,5,34],435,4,64,436,6);
+    </script>
+</body>
+</html>

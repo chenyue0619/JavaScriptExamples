@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo22字符串的方法补完</title>
+</head>
+<body>
+    <script>
+        // 字符串的方法
+            // 改变字符串的方法: match(正则),matchAll(正则),replace(正则,替换后的字符串)
+            // 查找字符串的方法:
+                        // 返回布尔值:includes(),endsWith(),startsWith()
+                        // 返回下标  :indexOf(下标),lastIndexOf(倒数第几个)   传入值（查找字符串，查找开始下标）  charAt(下标)   
+            // 字符编码转换
+                        // 字符转编码:charCodeAt()   codePointAt()
+                        // 编码转字符:fromharCode()  fromCodePoint()
+            // 删除空格
+                        // trim(),trimLeft()/trimStart,trimRight()/trimEnd()
+            // 合并字符串
+                        // concat()
+    
+    // let str1 = "   shjgjfh";
+    // let result = str1.trim();
+    // console.log(str1,result);
+
+    // let str2 = "shcjhds";
+    //     str1.concat(str2);
+    //     console.log(str1);
+
+    // // let result = str.toUpperCase();
+    // console.log(str,result);
+    
+    // let str = "HBDKJGH";
+    // let result = str.toLowerCase();
+    // console.log(str,result);
+
+    // let str1 = "hello";
+    // console.log(str1);
+    // // let str1_1 = "cgds"hj"dbchsgjh"g"ch";
+    // // console.log(str1_1);//会报错
+    // let str2 = `hello`;
+    // console.log(str2);  //输入反单引号里面的字符串
+
+
+
+    // let str3 = `hello
+    // world`;             
+    // console.log(str3);  //可以换行
+
+
+    // let str4 = `cgds"hj"dbchsgjh"g"ch`;
+    // console.log(str4);  //直接打印出，不会报错
+
+
+
+    // let str5 = `chdjchgyu`;
+    // console.log(`<span>${str5}</span>`);//${变量}
+    // // 不需要给标签单独加引号，直接全部写在模板``里面就行了
+
+
+
+    // console.log(`<span>${1 + 2}</span>`);//可以加表达式，表达式计算结果再返回原字符串里面
+
+
+    // console.log(`<span>${(() => 1 + 2)()}</span>`);//立即执行函数，函数返回值计算出来之后再返回原字符串
+
+
+
+    // let arr1 = [1,2,3];
+    // let result1 = `<span>${arr1.forEach(item => console.log(item))}</span>`;//undefined
+    // //forEach()不可以通过item改变数组内容map()可以
+    // console.log(result1);//undefined
+
+
+
+
+    let arr2 = [
+        {nickname:"xiaoming",age:12},
+        {nickname:"xiaoming",age:12},
+        {nickname:"xiaoming",age:12},
+        {nickname:"xiaoming",age:12}
+    ];
+    let some_c = 
+    `
+        <table>
+            ${
+                arr2.map(item => 
+                `
+                    <tr>
+                        <td>${item.nickname}</td>
+                        <td>${item.age}</td>
+                    </tr>
+                `
+                ).join("")
+            }
+        </table>
+    `
+    console.log(some_c);
+    document.body.innerHTML = some_c;
+     
+    // let some = 
+    // `
+    //     <table>
+    //         ${
+    //             arr2.forEach(item => 
+    //                 `
+    //                     <tr>
+    //                         <td>${item.nickname}</td>
+    //                         <td>${item.age}</td>
+    //                     </tr>
+    //                 `
+    //             )
+    //         }
+    //     </table>
+    // `;
+    // console.log(some);
+    // document.body.innerHTML = some;
+
+
+    // let some_a = arr2.forEach(item => 
+    //             `
+    //                 <tr>
+    //                     <td>${item.nickname}</td>
+    //                     <td>${item.age}</td>
+    //                 </tr>
+    //             `
+    //         );
+    
+    // console.log(some_a);
+    // let some_b = 
+    // `
+    //     <table>
+    //         ${some_a}
+    //     </table>
+    // `
+    // console.log(some_b);
+    // document.body.innerHTML = some_b;
+
+
+
+
+    
+
+
+
+    // console.log(arr2.forEach(item => {
+    //     for(let key in item){
+    //         console.log(item[key]);
+    //     }
+    // }));//undefined   arr.forEach()返回值是undefined，而不是数组或者一个对象
+//    let table = 
+//    `
+//         <table>
+//             ${
+//                 arr2.forEach(item => {
+//                     `
+//                         <tr>
+//                             ${
+//                                 for(let key in item){
+//                                 `
+//                                     <td>
+//                                         ${item[key]}
+//                                     </td>
+//                                 `
+//                                 }
+//                             }
+//                         </tr>
+//                     `
+//                 }) 
+//             }
+//         </table>
+//     `
+
+    // arr2.forEach(item => {
+    //                 `
+    //                     <tr>
+    //                         <td>${item.nickname}</td>
+    //                         <td>${item.age}</td>
+    //                     </tr>
+    //                 `
+    //             }) 
+    // arr2.forEach(item => {
+    //                 `
+    //                     <tr>
+    //                         <td>${item.nickname}</td>
+    //                         <td>${item.age}</td>
+    //                     </tr>
+    //                 `
+    //             })
+
+   
+
+  
+
+    
+
+
+    // const reg = new RegExp("hw");
+    // let result = str.search(reg);
+    // console.log(str,result);
+
+
+    // let result = str.split("h");
+    // console.log(str,result);
+
+    // let result = str.substring(0,3);
+    // console.log(str,result);
+
+
+    // let result = str.slice(0,3);
+    // console.log(str,result);
+
+
+    // let result = str.repeat(3);
+    // console.log(str,result);
+
+
+    // let result = str.padEnd(2,"some");
+    // console.log(result,str);
+
+
+    // let result = str.padStart(18,"some");
+    // console.log(str,result);
+
+
+    // let obj = [
+    //     {
+    //         score:100
+    //     },
+    //     {
+    //         score:190
+    //     },
+    //     {
+    //         score:180
+    //     },
+    //     {
+    //         score:70
+    //     }
+    // ]
+    // let result = obj.sort((a,b) => b.item - a.item);//sort()会改变原数组
+    // console.log(result,obj);
+
+    </script>
+</body>
+</html>

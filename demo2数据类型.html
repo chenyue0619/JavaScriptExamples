@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo2数据类型</title>
+</head>
+<body>
+    <script>
+        var obj={};
+        console.log(obj);
+        console.log(typeof obj);
+        var nul=null;
+        console.log(typeof nul);
+        var student={
+            name : '冯晨月',
+            age : 21,
+            sex : '女'
+        };
+        console.log(student);
+        console.log(student.name);
+        console.log(student['age']);
+        var some_a='name';
+        console.log(student[some_a]);
+        console.log(student.some_a);
+        student.class='计算机18-1班';//添加新的属性
+        console.log(student.class);
+        console.log(student['class']);
+        console.log(student);
+        student['address']="河南省";//添加新的属性
+        console.log(student);
+        console.log(student['address']);
+        student.birth='2000.08.25';//给student对象添加birth属性
+        console.log(student.birth);
+        console.log(student);
+        student['birth']='2000.08.25';
+        console.log(student['birth']);
+        console.log(student);
+        delete student.birth;
+        console.log(student);
+        student.birth='2000.08.16';
+        console.log(student.birth);
+        student.son={
+            name:'小明',
+            age:3
+        };
+        console.log(student);
+        console.log(student.son);
+        var arr=['小明','李华','大狗'];
+        console.log(arr);
+        console.log(typeof arr);
+        console.log(arr[1]);
+        arr[3]='老冯';
+        console.log(arr);
+        console.log(arr.length);
+        arr[arr.length]='我是新加的一项';
+        console.log(arr);
+        arr[arr.length]='我是新加的一项';
+        console.log(arr);
+        arr.length=5;//通过改变数组长度来删除数组内容，从后往前删，会改变数组长度
+        console.log(arr);
+        delete arr[1];//不会改变数组长度
+        console.log(arr);
+
+        //设置一个变量存储多个同学的姓名，年龄，性别
+        var students=[
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+            {name:'xioafeng',age:'18',sex:'女'},
+        ];
+        console.log(students);
+        console.log(students[1].name);//输出其中一个学生的名字
+        console.log(students[0]['name']);
+
+        //数据类型转换
+        var a=123;
+        var str='feng';
+        var obj={
+            name:'冯晨月',
+            age:18,
+            sex:'女'
+        };
+        var unde=undefined;
+        var bool=true;
+        var arr=[19,18,10];
+        console.log(Number(str));//Number(值/变量)将一个值或对象转换为数字，Number()是一个函数
+        console.log(Number(arr[1]));
+        console.log(Number( ));
+        console.log(Number(" "));
+        console.log(Number(true));
+        console.log(Number(false));
+        console.log(Number(null));
+        console.log(Number(undefined));
+    </script>
+</body>
+</html>

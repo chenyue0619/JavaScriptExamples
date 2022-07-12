@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo10循环补完</title>
+</head>
+<body>
+    <script>
+        // for(var a = 0; a <= 100; a++){
+        //     console.log(a);//从0开始打印到100
+        // };
+
+
+
+
+
+        // var arr = [0,1,2,3,4];
+        // for(var i = 0;i < arr.length; i++){//最大的true输出，每次都要获取length长度
+        //     console.log(arr[i]);
+        // };
+
+        // var arr = [0,1,2,3,4];
+        // for(var key in arr){//遍历数组
+        //     console.log(arr[key]);
+        // };
+
+        // var str = "hello world";
+        // for(var key in str){//遍历字符串
+        //     console.log(str[key]);
+        // };
+
+
+
+
+
+
+
+
+
+
+
+
+        // var obj = {
+        //     nickname:"xiaoming",
+        //     sex:"男",
+        //     age:18,
+        //     hobbies:["sing","dance","football"]
+        // };
+        // //只打印出纯数字项
+        // for(var key in obj){
+        //     if(typeof obj[key] === 'object'){//判断是否为对象
+        //         for(var key0 in obj[key]){
+        //             console.log(obj[key][key0]);//若有一项是对象，则展开该对象
+        //         };
+        //     }else{
+        //         console.log(obj[key]);
+        //     };
+        // };
+
+        // console.log(typeof obj.length);//undefined
+
+
+
+        // for(var a = 0; a < 20; a++){
+        //     console.log(a);
+        //     if(a>10) break;//最小false值
+        // };
+
+        // abc://循环的名字，可以在内部打断外部的for循环
+        // for(var a = 0; a < 20; a++){
+        //     if(a === 3) break abc;//最小false值
+        //     console.log(a);//没有打印10
+        // };
+
+        // for(var a = 0;a < 4; a++){
+        //     for(var b = 0;b < 5; b++){
+        //         if(b === 2)break;//01  01  01  01
+        //         console.log("b的值为:",b);
+        //     };
+        //     console.log("a的值为:",a);//0 1 2 3 
+        // };
+
+
+        // var num = 0;
+        // abc:
+        // for(var a = 0;a < 5; a++){//外层走5次
+        //     for(var b = 0;b < 5; b++){//内层走25次
+        //         if(b === 2)break abc;//每次走4次，等于2的左右情况都没打断跳过了
+        //         num++;
+        //         console.log("b的值为:",b);
+        //     };
+        //     console.log("a的值为:",a);//0 1 2 3 
+        //  };
+        // console.log("num的值为:",num);//20
+
+        // var a = 0;//初始条件
+        // while(a < 10){//终止条件
+        //     a++;//迭代条件
+        //     console.log(a);
+        // };
+
+        // var a = 0;
+        // do{
+        //     a++;
+        //     console.log(a);
+        // }while(a<5);
+
+        // alert('你好！');
+        // prompt('123','7328');
+        // console.log(123);
+
+
+        // var result;
+        // do{
+        //     result = prompt("你好吗？","很好");
+        // }while(result !== "很好");//false停止
+
+        var arr = [1,2,3,4,5];
+        switch(arr[1]){
+            case 1://分号写在值后面，switch括号里面判断对象的值
+                console.log("arr[1]=1");
+            // break;//结束此项操作
+            case 3:
+                console.log("arr[1]=3");
+            // break;
+            default ://若前面都为false，则默认为此
+            console.log("arr[1]=2");
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo6基础dom操作</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box,#container{
+            margin: 10px;
+            width: 100px;
+            height: 300px;
+            background-color: red;
+        } 
+        .box .big{
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="big big1">大盒子1</div>
+        <div class="big big2">大盒子2</div>
+        <div class="big big3">大盒子3</div>
+    </div>
+    <!-- <div class="box">2</div>
+    <div class="box">3</div>
+    <div id="container">
+        <div class="big">大盒子</div>
+    </div> -->
+
+    <!-- 
+        name：用来给后台传递数据，属性值唯一
+        placeholder：短语码
+     -->
+   <!-- <input type="text" name="username" class="username" placeholder="请输入用户名"> -->
+    <script>
+        // var big1 = document.querySelector('.big1');
+        // console.log(big1.innerText);
+
+        // var big1 = document.querySelector('.big1');
+        // big1.innerText += 'hello world !';
+        // console.log(big1.innerText);
+
+        // var big2 = document.querySelector('.big1');
+        // big2.innerText += '<div class="big big3">大盒子3</div> ';
+        // console.log(big2.innerText);
+
+        var big3 = document.querySelector('.big1');
+        big3.innerText += 'hello &nbsp; world !';
+        console.log(big3.innerText);
+
+
+
+        // var box = document.querySelector('.box');
+        // console.log(box.innerHTML);
+        // console.log(typeof box.innerHTML);//字符串
+
+        
+
+
+        // box.innerHTML = '<div>我是修改之后的标签</div>';//字符串要加'''
+        // console.log(box.innerHTML);
+
+        // var box1 = box.innerHTML;
+        // box1 = '<div>我是修改之后的标签</div>';//字符串要加'''
+        // console.log(box1);
+
+        //要先获取到这个标签，然后才可以对这个标签进行操作
+        // var box2 = document.querySelector('.box');
+        // box2.innerHTML += '<div>大盒子4新添加</div>';//字符串拼接
+        // console.log(box2.innerHTML);
+
+        // box.innerHTML += '<div class="big big4">大盒子4新添加</div>';//字符串拼接
+        // console.log(box.innerHTML);
+        
+        // var box3 = document.querySelector('.box');
+        // box3.innerHTML -= '<div class="big big3">大盒子3</div>';
+        // console.log(box3.innerHTML);//NaN
+
+        // var str1 = 'abcd';
+        // var str2 = 'ab';
+        // console.log(str1 - str2);//NaN相加转换成字符串，相减转换成数字，若前后没有数字，则返回输出NaN
+
+        // var box4 = document.querySelector('.box');
+        // box4.innerHTML = "";//清空标签内容
+        // console.log(box4.innerHTML);
+
+        
+
+
+
+
+
+        // var big = document.querySelector('.box').getElementsByClassName('big');
+        // console.log(big);
+
+
+        // var username = document.getElementsByName('username');
+        // console.log(username);//获取到的是节点列表，数组
+
+
+
+        // //id名唯一，所以getElementById，不加s
+        // var container = document.getElementById('container');
+        // console.log(container);
+
+
+
+
+
+
+        // var big =document.getElementsByClassName('big');
+        // //只会输出相应的类名标签列表，不会输出标签内容
+        // console.log(big);
+
+        // console.log(big[0]);
+
+        // var big1 =document.getElementsByClassName('big')[0];
+        // //会输出响应的标签内容
+        // console.log(big1);
+
+        // //两个类名之间也不加 .  
+        // var big2 =document.getElementsByClassName('box big');
+        // console.log(big2);
+        // console.log(big2[0]);
+
+        // //链式操作，因为getElementsByClassName获取到的是节点集合，是一个类数组
+        // var big3 =document.getElementsByClassName('box')[0].getElementsByClassName('big');
+        // console.log(big3);
+
+
+
+        // var big = document.querySelector('div');
+        // console.log(big)
+
+        // var big1 = document.querySelectorAll('div');
+        // console.log(big1)
+
+        // //因为querySelectorAll获取到的才是节点集合，而querySelector获取到的是单个节点
+        // //链式结构用的是querySelector，而不是querySelectorAll,因为querySelectorAll此相应的链式结构不是一个函数
+        // var big2 = document.querySelectorAll('div')[0].querySelector('.big');
+        // console.log(big2);
+
+        // // //一定要写下标，不然会报错
+        // // var big3 = document.querySelectorAll('div').querySelector('.big');
+        // // console.log(big3)
+
+        // var big4 = document.querySelector('div').querySelector('.big');
+        // console.log(big4)
+
+
+    
+
+
+
+
+        // var box = document.getElementsByTagName('div');
+        // console.log(box);
+
+        // console.log(box[0]);
+
+        // var box = document.getElementsByTagName('div')[0];
+        // console.log(box);
+
+        // var span = document.getElementsByTagName('span');
+        // console.log(span);//length:0
+
+        // var span1 = document.getElementsByTagName('span')[0];
+        // console.log(span1);//undefined
+
+        // var big = document.getElementsByTagName('div .big');
+        // console.log(big);//undefined
+
+        // var big1 = document.getElementsByTagName('div .big')[0];
+        // console.log(big1);//undefined
+
+
+
+
+
+
+
+        // console.log(typeof document);//document是Object对象
+        // //query[查询]Selector[选择器]
+        // //只会获取第一个
+        // var box = document.querySelector('.box');
+        // console.log(box);
+
+
+        // //会全部获取到
+        // var boxa = document.querySelectorAll('.box');
+        // console.log(boxa);
+
+        // console.log(boxa.length);
+        // console.log(boxa[1]);//box变成一个数组，用法与数组一样，boxa[1]选中的是第二个盒子，数组下标是从0开始的
+
+        // // var container = document.querySelector('#container');
+        // console.log(container);
+
+        // var big = document.querySelector('#container .big');//后代选择器
+        // console.log(big);
+
+        // var big_a = document.querySelector('#container>.big');//子代选择器
+        // console.log(big_a);
+
+        //能选中所有div的方法
+
+        //类名
+        // var box_1 = document.querySelectorAll('.box');//box_1变成一个数组
+        // console.log(box_1);
+        // //标签名
+        // var box_2 = document.querySelectorAll('div');//box_2变成一个数组,单引号里面的书写跟css选择器一样
+        // console.log(box_2);
+        // //div.box
+        // var box_3 = document.querySelectorAll('div.box');//box_2变成一个数组,单引号里面的书写跟css选择器一样
+        // console.log(box_3);
+
+        // //链式结构
+        // var box_4 = document.querySelector('div').querySelector('.big');
+        // console.log(box_4);
+
+
+
+
+        // //获取到.big元素的方法
+        // //直接选择类名
+        // var big_1 = document.querySelector('.big');
+        // console.log(big_1);
+        // //后代选择器
+        // var big_2 = document.querySelector('.box .big');
+        // console.log(big_2);
+        // //链式结构
+        // var big_3 = document.querySelector('.box ').querySelector('.big ');
+        // console.log(big_3);
+        // //子代选择器
+        // var big_4 = document.querySelector('.box > .big');
+        // console.log(big_4);
+        // //div.big标签加相应的类名
+        // var big_5 = document.querySelector('div.big');
+        // console.log(big_5);
+    </script>
+</body>
+</html>

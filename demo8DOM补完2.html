@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom8DOM补完2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            
+        } 
+        /* .box img{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            
+        } */
+    </style>
+</head>
+<body>
+    <div class="box" style="height:400px">
+    
+    </div>
+    <script>
+         var box = document.querySelector('.box');
+         console.log(box.style.height);//只能获取到行内样式
+
+
+         box.style.height = '500px';//带引号
+         console.log(box.style.height);
+         console.log(typeof box.style.height);//String
+
+        //  box.style.background-color = 'red';//报错，因为在JS中，- 表示减号
+        //  console.log(box.style.background-color);
+
+        box.style.backgroundColor = "red";
+
+        console.dir(box.style);
+       // box.style = "width:400px,height:400px,background-color:orange"
+
+        // box.style.cssText = "width:400px;height:400px;\
+        // background-color:orange";
+        // box.style = "width:400px;height:400px;background-color:orange";
+        // console.log(box);
+        // box.style += "margin:100px";
+        // console.log(box);
+        // box.style.cssText += "margin:100px";
+        // console.log(box);
+        // console.dir(box.style);
+
+
+        // box.style.backgroundColor = "";
+        // console.log(box);
+        // console.dir(box);
+        box.style.removeProperty("width");
+        console.log(box);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // var img = document.querySelector('.box img');
+        // // div.class = 'small';
+        // // console.dir(div.class);
+        // //img.style.height = 300;
+        // console.log(img.style.height);
+        // console.dir(img.style.height);
+       
+        
+
+
+        // var box = document.querySelector('.box');
+        // console.dir(box.className);//获取类名
+        // box.className = 'bigbox';//修改类名
+        // console.log(box);
+        // box.className += ' some';//添加类名
+        // console.log(box.className);//字符串
+        // console.log(typeof className);//undefined    className属性
+        // console.log(typeof nodeName);//undefined     nodeName属性
+        
+        
+        
+        // console.log(box.classList.contains('some'));//true
+
+
+        // box.classList.add('add');//增加类名
+        // console.log(box.classList);//输出类名列表
+
+        //  box.classList.add('add','add1');//逗号隔开添加多个类名
+        
+        
+        
+        //  // console.log(box.classList);//输出类名列表
+        // box.classList.replace('add' , 'big');
+        // console.log(box.classList);
+
+
+
+
+
+
+        // box.classList.remove('add','add1');
+        // console.log(box.classList);
+   
+        // box.classList.toggle('add');//原来有，删除
+        // console.log(box.classList);
+
+
+
+
+
+
+        // box.classList.toggle('small');//原来没有，添加
+        // console.log(box.classList);
+
+
+
+
+
+
+
+        //获取标签：query[]querySelector querySelectorAll get[getElementById  getElementByClassName  getElementsByTagName getElementsByName]
+        //获取标签内容：innerHTML innerText
+        //子元素：children[标签]  childNodes[文本节点+标签节点]
+        //父亲元素：parentNode ===parentElement
+        //兄弟元素：previousElementSibling[上一个兄弟元素]  nextElementSibling[下一个兄弟元素]：获取到的是标签内容
+        //           previousSibling[上一个兄弟节点]  nextSibling[下一个兄弟节点]：可能会获取到文本节点
+        //创造标签：createElement
+        //添加标签：appendChild()[只能添加一个]  
+        //          append()[可以添加多个]:碎片：fragment  document.createDocumentFragment()[相对于文本来说的，可以提高文本性能]
+        //插入标签：insertbefore(新标签,老标签)[在标签之前插入新标签]
+        //删除标签：remove()[删除所有标签]  removeChild()[删除子标签元素]
+        //替换标签：replaceChild(新元素,旧元素)[替换子元素]
+    </script>
+</body>
+</html>
