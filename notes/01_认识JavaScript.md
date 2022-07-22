@@ -1,12 +1,19 @@
-# 1、认识JavaScript
+# 认识JavaScript
+
+**书籍：**
+
+* ES6入门教程：https://es6.ruanyifeng.com/
+* 色彩网站：https://flatuicolors.com/
 
 #### 1、JS分为三个部分
 
+ECMA + DOM + BOM = JavaScript
+
 a、ECMAScript：核心语法
 
-b、DOM：文档对象模型
+b、DOM：文档对象模型(节点树) => document object model
 
-c、BOM：浏览器对象模型
+c、BOM：浏览器对象模型 => browser object model
 
 #### 2、JS代码写法规范
 
