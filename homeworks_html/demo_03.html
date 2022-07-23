@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击离开按钮变色</title>
+    <style>
+        .btn{
+            position:absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            margin:auto;
+            width: 100px;
+            height: 100px;
+            font-size: 20px;;
+        }
+        .btn.red{
+            color:red;
+        }
+        .btn.green{
+            color:green;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            let btn = document.querySelector(".btn");
+            // console.log(btn);
+            btn.onclick = function(){
+                this.classList.remove("green");
+                this.classList.toggle("red");
+            };
+            btn.onmouseleave = function(){
+                this.classList.remove("red");
+                this.classList.add("green");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button class="btn">按钮</button>
+</body>
+</html>
