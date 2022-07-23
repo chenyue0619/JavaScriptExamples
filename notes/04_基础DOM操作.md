@@ -626,15 +626,43 @@
 
       ![1649320398450](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1649320398450.png)
 
-  * **replace('旧类名','新类名');   替换**
+    * 可以实现收起效果，有就添加/没有就删除
 
+      ```html
+    <style>
+          .small{
+              width:100px;
+              height:100px;
+              background-color:orange;
+          }
+          .big{
+              width:200px;
+              height:200px;
+              background-color:blue;
+          }
+      </style>
+      <body>
+          <div class="small"></div>
+          <script>
+              let small = document.querySelector(".small");
+              small.onclick = function(){
+                  this.classList.toggle("big");
+              }
+          </script>
+      </body>
+      ```
+  
+      
+  
+  * replace('旧类名','新类名');   替换**
+  
     * box.classList.replace('add' , 'big');
-
+  
       ![1649320637053](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1649320637053.png)
 
 ### 21、操作元素的css样式
 
-* **元素的合法属性**
+* **操作元素的合法属性**
 
   * 元素的所有合法属性都可以修改
 
@@ -642,7 +670,44 @@
 
   * img.height = 500;
 
-* **获取到的是行内样式：无法通过元素style属性去获取元素写在CSS里面的样式，**
+  * 所有元素都有title属性
+
+    ```html
+    <div>1</div>
+    <script>
+        let odiv = document.querySelector("div");
+        odiv.title = "我很好！";
+        odiv.className="box";
+    </script>
+    ```
+
+    ![1658562084050](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1658562084050.png)
+
+* **操作元素的不合法属性（自定义属性）**
+
+  * getAttribute()          获取
+
+  * setAttribute()          设置
+
+  * removeAttribute()  删除
+
+    ```html
+    <div mingzi="小王" age="13"></div>
+    <script>
+        let odiv = document.querySelector("div");
+        console.log(odiv.getAttribute("mingzi"));
+        odiv.setAttribute("mingzi","大林");
+        console.log(odiv.getAttribute("mingzi"));
+        odiv.removeAttribute("age");
+        console.log(odiv);
+    </script>
+    ```
+  
+    ![1658562579036](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1658562579036.png)
+  
+  * 也可以操作元素的合法属性，操作方式同上
+  
+* 获取到的是行内样式：无法通过元素style属性去获取元素写在CSS里面的样式，**
 
   * console.log(box.style.height);//只能获取到行内样式
 
@@ -700,7 +765,32 @@
 
       ![1649332855608](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1649332855608.png)
 
+* 通过类名className操作css样式
 
+  ```html
+  <style>
+      #wrap{
+          width:100px;
+          height:100px;
+          background-color:orange;
+      }
+      /*代表交集*/
+       #wrap.active{
+          width:200px;
+          height:200px;
+          background-color:green;
+      }
+  </style>
+  <body>
+      <div id="wrap"></div>
+      <script>
+  		let owrap = document.querySelector(".wrap");
+          owrap.onclick = function(){
+              this.className = "active";
+          }
+      </script>
+  </body>
+  ```
 
 ### 总结
 
