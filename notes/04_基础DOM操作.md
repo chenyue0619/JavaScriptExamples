@@ -3,8 +3,22 @@
 ### 1、DOM文档对象模型特征
 
 * 允许JS操作html  css
+
 * 页面中的所有html与css都掌握在document手中，都通过document来获取
+
 * document是一个对象
+
+* console.dir(document);dir获取元素的操作和方法
+
+* 特殊元素的获取
+
+  * ```
+    console.log(document.title);
+    console.log(document.head);
+    console.log(document.body);
+    ```
+
+  * 
 
 ### 2、querySelector
 
@@ -173,6 +187,34 @@
 
         ![1649228563625](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1649228563625.png)
 
+* 任何情况下都返回一个数组，即使是一个标签(elements)
+
+  ```html
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <script>
+  	let obox = document.getElementsByClassName("box");
+      console.log(obox);//obox[]
+  </script>
+  ```
+
+  ![1658555610125](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1658555610125.png)
+
+* 属性选择器
+
+  * [class ^=b]：选择类名以b开头的元素
+
+  ```html
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <script>
+  	let obox = document.getElementsByClassName("[class ^=b]");
+      console.log(obox);//obox[]
+  </script>
+  ```
+
 ### 5、getElementById  (通过id名获取)
 
 * var container = document.getElementById('container');
@@ -186,6 +228,15 @@
   （getElementsByClassName  getElementsByTagName  querySelectorAll）
 
   ![1649240595198](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1649240595198.png)
+
+* 可以直接获取id:任何情况下不建议使用
+
+  ```html
+  <div id="wrap"></div>
+  <script>
+      console.log(wrap);
+  </script>
+  ```
 
 ### 6、getElementsByName
 
