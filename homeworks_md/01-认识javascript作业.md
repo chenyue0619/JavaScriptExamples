@@ -1,6 +1,6 @@
 **1.下列哪个不是JavaScript的部分组成？（选择一项）**D
 
-A.ECMAScript    B.DOM  C.BOM  D.<u>JAVA</u>
+A.ECMAScript    B.DOM  C.BOM  D.JAVA
 
 
 
