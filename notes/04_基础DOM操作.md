@@ -12,13 +12,20 @@
 
 * 特殊元素的获取
 
-  * ```
+  * ```html
     console.log(document.title);
     console.log(document.head);
     console.log(document.body);
     ```
 
-  * 
+* 获取数组
+  * getElementsByClass()
+  * getElementsByTagName()
+  * querySelectorAll()
+
+* 获取单个元素
+  * tag.nth-of-type()
+  * class.nth-child()
 
 ### 2、querySelector
 
