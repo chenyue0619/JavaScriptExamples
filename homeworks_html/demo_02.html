@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover实现不了的效果</title>
+    <style>
+        div{
+            margin: 40px auto;
+            width: 200px;
+            height: 100px;
+            background-color: grey;
+            color: #fff;
+            font-size:10px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        let box1 = document.querySelector(".box1"),
+            box2 = document.querySelector(".box2");
+        box1.onmouseenter = function(){
+            box2.innerText = "我很好！";
+        };
+        box1.onmouseleave = function(){
+            box2.innerText = "";
+        };
+        box2.onmouseenter = function(){
+            box1.innerText = "我很好！";
+        };
+        box2.onmouseleave = function(){
+            box1.innerText = "";
+        };
+    </script>
+</body>
+</html>
