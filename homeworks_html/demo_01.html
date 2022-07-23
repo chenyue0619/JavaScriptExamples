@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹出框案例</title>
+    <style>
+        .cover{
+            /*  position:fixed;相对浏览器位置不变，fixed会浮起来*/
+            position:fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.1);
+            transform:scale(0);
+            transition: .4s;
+        }
+        .cover .box{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin:auto;
+            width: 200px;
+            height: 200px;
+            background-color: aliceblue;
+            font-size: large;
+            text-align: center;
+            line-height: 200px;
+        }
+        .show{
+            transform:scale(1);
+            transition: .4s;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">按钮</button>
+    <div class="cover">
+        <div class="box">弹窗</div>
+    </div>
+    <script>
+        let btn = document.querySelector(".btn"),
+            cover = document.querySelector(".cover");
+        btn.onclick = function(){
+            cover.classList.toggle("show");
+        };
+        cover.onclick = function(){
+            this.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
