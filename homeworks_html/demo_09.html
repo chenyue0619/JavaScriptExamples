@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮切换颜色(user-select: none;禁止文本复制 )</title>
+    <style>
+        .box{
+            margin: 100px auto;
+            width: 200px;
+            height: 100px;
+            border: 2px solid green;
+            text-align: center;
+            line-height: 100px;
+            /* user-select: none;禁止文本复制 */
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">按钮</div>
+    <script>
+        let obox = document.querySelector(".box");
+        let colorArr = ["red","yellow","blue"];
+        let index = 0;
+        obox.onclick = function(){
+            this.style.backgroundColor = colorArr[index % 3];
+            index += 1;
+        }
+    </script>
+</body>
+</html>
