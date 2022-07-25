@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮设置盒子属性</title>
+    <style>
+        .wrap{
+            display: flex;
+            justify-content: space-between;
+            margin: 50px auto;
+            width: 400px;
+        }
+        .btn{
+            margin: 20px;
+            background-color: #ccc;
+        }
+        .box{
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <butttn class="btn b1">按钮1</butttn>
+        <butttn class="btn b2">按钮2</butttn>
+        <butttn class="btn b3">按钮3</butttn>
+    </div>
+    <div class="box">元素</div>
+    <script>
+        let b1 = document.querySelector(".b1"),
+            b2 = document.querySelector(".b2"),
+            b3 = document.querySelector(".b3"),
+            box = document.querySelector(".box");
+        b1.onclick = function(){
+            box.style.backgroundColor = "red";
+        }
+        b2.onclick = function(){
+            box.style.color = "purple";
+        }
+        b3.onclick = function(){
+            box.style.borderRadius = "50%";
+            console.log(box.style);
+        }
+    </script>
+</body>
+</html>
