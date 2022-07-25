@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示隐藏</title>
+    <style>
+        .box{
+            margin:40px auto;
+            width: 200px;
+            height: 50px;
+            background-color: #ccc;
+            font-size: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box one"></div>
+    <div class="box two"></div>
+    <script>
+        let one = document.querySelector(".one"),
+            two = document.querySelector(".two");
+        one.onmouseenter = function(){
+            two.innerText = "移入了box1";
+        }
+        one.onmouseleave = function(){
+            two.innerText = "";
+        }
+        two.onmouseenter = function(){
+            one.innerText = "移入了box2";
+        }
+        two.onmouseleave = function(){
+            one.innerText = "";
+        }
+    </script>
+</body>
+</html>
