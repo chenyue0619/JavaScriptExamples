@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错位点击盒子增加文本</title>
+    <style>
+        .box{
+            margin: 30px auto;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* text-align: center;
+            line-height: 100px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box b1"></div>
+    <div class="box b2"></div>
+    <script>
+        let b1 = document.querySelector(".b1"),
+            b2 = document.querySelector(".b2");
+        b1.onclick = function(){
+            b2.innerText +="你好！"
+        }
+        b2.onclick = function(){
+            b1.innerText += "我很好！"
+        }
+    </script>
+</body>
+</html>
