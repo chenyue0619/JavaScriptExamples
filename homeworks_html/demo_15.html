@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品价格计算</title>
+    <style>
+        .list{
+            margin: 20px auto;
+            width: 400px;
+            height: 100px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        .list tr,th,td{
+            text-align: center;
+            border: 1px solid #000;
+            user-select: none;
+        }
+        .list tr:nth-child(2){
+            height: 80px;
+        }
+        .list tr td:nth-child(3){
+            width: 200px;
+        }
+        .list tr td:nth-child(2),td:nth-child(4){
+            width: 60px;
+        }
+        .list tr td img{
+            width: 60%;
+            height: 60%;
+        }
+        .list tr td span{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: grey;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <table class="list">
+        <tr>
+            <th>图片</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td><img src="./images/tiger.jpg" alt="老虎"></td>
+            <td class="up">20</td>
+            <td>
+                <span class="sub">-</span>
+                <span class="num">0</span>
+                <span class="add">+</span>
+            </td>
+            <td>
+                <span class="price" value="0">0</span>
+            </td>
+        </tr>
+    </table>
+    <script>
+        let up = document.querySelector(".up"),
+            sub = document.querySelector(".sub"),
+            num = document.querySelector(".num"),
+            add = document.querySelector(".add"),
+            price = document.querySelector(".price");
+        let n = Number(num.innerText);
+        sub.onclick = function(){
+            if(n == 0){
+                num.innerText = n;
+            }else{
+                n--;
+                num.innerText = n;
+            }
+            price.innerText = n * Number(up.innerText);
+        };
+        add.onclick = function(){
+            n++;
+            num.innerText = n;
+            price.innerText = n * Number(up.innerText);
+        };
+        // price.innerText = n * Number(up.innerText);
+    </script>
+</body>
+</html>
