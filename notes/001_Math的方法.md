@@ -5,3 +5,5 @@
 * Math.floor()向下取整
 * Math.ceil()向上取整
   * Math方法会自动将字符串转换为数字
+* Math.random();
+  * 随机生成一个[0,1)之间的数字
