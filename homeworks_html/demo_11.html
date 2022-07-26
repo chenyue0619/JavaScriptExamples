@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年龄价格判断</title>
+</head>
+<body>
+    <script>
+        let age = Number(prompt("请输入您的年龄:"));
+        let week = Number(prompt("请输入星期:"));
+        if(age >= 10){
+            if(week < 6 && week > 0){
+                alert("票价为300");
+            }else{
+                alert("票价为500");
+            }
+        }else{
+            if(week == 6 && week == 7){
+                alert("票价为140");
+            }else{
+                alert("票价为210");
+            }
+        }
+    </script>
+</body>
+</html>
