@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言提交</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap,.list{
+            margin: 10px auto;
+            width: 400px;
+        }
+        .wrap #text{
+            width: 400px;
+            border: 1px solid #000;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .wrap .btn{
+            display: block;
+            float: right;
+        }
+        .wrap .list li{
+            box-sizing: border-box;
+            padding-left: 10px;
+            height: 40px;
+            border-bottom: 1px dotted #000;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <textarea name="" id="text" cols="60" rows="10"></textarea>
+        <button class="btn">按钮</button>
+        <ul class="list">
+        </ul>
+    </div>
+    <script>
+        let oText = document.querySelector("#text"),
+            btn = document.querySelector(".btn"),
+            oList = document.querySelector(".list");
+        btn.onclick = function(){
+            oList.innerHTML += "<li>" + oText.value + "</li>";
+            oText.value = "";
+        }
+    </script>
+</body>
+</html>
