@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水仙花(三位数:每一位数的三次方和等于该数)数学方法</title>
+</head>
+<body>
+    <script>
+        let num = Number(prompt("请输入一个三位数:"));
+        let a = Math.floor(num / 100);
+        let b = Math.floor(num % 100 / 10 );
+        let c = Math.floor(num % 10);
+        let sum = Math.pow(a,3) + Math.pow(b,3) + Math.pow(c,3);
+        // console.log(a,b,c,sum);
+        if(num == NaN && num < 100 && num >= 1000){
+            alert("输入数字不合法！")
+        }else if(sum == num){
+            alert(num + "是合法的水仙花数");
+        }else{
+            alert(num + "不是合法的水仙花数");
+        }
+    </script>
+</body>
+</html>
