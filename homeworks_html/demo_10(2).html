@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水仙花(三位数:每一位数的三次方和等于该数)字符串方法(charAt())</title>
+</head>
+<body>
+    <script>
+        let num = (prompt("请输入一个三位数:"));
+        let a = Number(num.charAt(0));
+        let b = Number(num.charAt(1));
+        let c = Number(num.charAt(2));
+        let sum = Math.pow(a,3) + Math.pow(b,3) + Math.pow(c,3);
+        if(isNaN(num) && num < 100 && num >= 1000){
+            alert(num + "不是一个合法的数字");
+        }else if(sum == num){
+            alert(num + "是一个合法的数字");
+        }else{
+            alert(num + "不是一个合法的数字");
+        }
+    </script>
+</body>
+</html>
