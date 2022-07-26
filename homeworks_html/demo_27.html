@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纸张对折(加入有一张厚度为1mm的纸,对折多少次可以达到珠穆朗玛峰的高度)</title>
+</head>
+<body>
+    <script>
+        //8848m === 8848000mm
+        for(let n = 0;n < 8848000;n++){
+            if(Math.pow(2,n) > 8848000){
+                console.log(n);
+                break;
+            }
+        };
+        let a = 1;
+        let i = 0;
+        while(true){
+            i++;
+            a *= 2;
+            if(a > 8848000){
+                break;
+            }
+        };
+        console.log(i);
+    </script>
+</body>
+</html>
