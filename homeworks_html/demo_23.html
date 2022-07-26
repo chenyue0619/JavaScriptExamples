@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻找100以内能被3和5整除的数字</title>
+</head>
+<body>
+    <script>
+        let n = Number(prompt("请输入一个100以内的数字"));
+        if(n < 0 || n > 100){
+            alert("输入数字不合法")
+        }else if(n % 15 == 0){
+            alert("输入数字能被3和5整除");
+        }
+    </script>
+</body>
+</html>
