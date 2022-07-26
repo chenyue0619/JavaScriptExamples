@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鸡兔同笼(有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何)</title>
+</head>
+<body>
+    <script>
+        for(let a = 0;a <= 35;a++){
+            for(let b = 1;b <= 35;b++){
+                if(a + b == 35 && 2*a + 4*b == 94){
+                    console.log("鸡的数量为:" + a + ";兔的数量为:" + b);
+                }
+            }
+        }
+        for(let a = 0;a <= 35;a++){
+            let b = 35 - a;
+            if(a + b == 35 && 2*a + 4*b == 94){
+                console.log("鸡的数量为:" + a + ";兔的数量为:" + b);
+            }
+        }
+    </script>
+</body>
+</html>
