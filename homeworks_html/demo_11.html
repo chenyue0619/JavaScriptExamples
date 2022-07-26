@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>年龄价格判断</title>
+    <title>年龄价格判断(三元运算符替代嵌套else……if)</title>
 </head>
 <body>
     <script>
         let age = Number(prompt("请输入您的年龄:"));
         let week = Number(prompt("请输入星期:"));
         if(age >= 10){
-            if(week < 6 && week > 0){
-                alert("票价为300");
-            }else{
-                alert("票价为500");
-            }
+            alert(week < 6 && week > 0 ? "票价为300":"票价为500");
+            // if(week < 6 && week > 0){
+            //     alert("票价为300");
+            // }else{
+            //     alert("票价为500");
+            // }
         }else{
             if(week == 6 && week == 7){
                 alert("票价为140");
