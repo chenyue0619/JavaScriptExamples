@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机一个数字(2~99),判断是否相等while……do</title>
+</head>
+<body>
+    <script>
+        let r = parseInt(Math.random() * 97 + 2);
+        // 不断的执行循环
+        while(true){
+            let guess = Number(prompt("请输入一个数字:"));
+            if(guess == r) {
+                alert("恭喜你，判断正确！");
+            }else if(guess > r){
+                alert("你输入的数字太大了");
+            }else {
+                alert("你输入的数字太小了");
+            }
+        }
+    </script>
+</body>
+</html>
