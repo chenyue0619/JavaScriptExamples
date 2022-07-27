@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深克隆数组(递归函数)</title>
+</head>
+<body>
+    <script>
+        let arrClone = [];
+        let deepClone = function(arr){
+            for(let i = 0;i < arr.length;i++){
+                if(Array.isArray(arr[i])){
+                    deepClone(arr[i]);
+                }else{
+                    arrClone.push(arr[i]);
+                }
+                // console.log(arrClone);
+            }
+            return arrClone;
+        }
+        console.log(deepClone([1,2,33,[45,656,[546,546,56,65,[566,56,6,5]]]]));
+    </script>
+</body>
+</html>
