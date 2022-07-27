@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片循环单边切换结合</title>
+    <style>
+        .wrap{
+            margin: 20px auto;
+            width: 400px;
+            height: 200px;
+        }
+        .wrap .images{
+            position: relative;;
+            width: 400px;
+        }
+        .wrap .images img{
+            position: absolute;
+            width: 400px;
+            height: 200px;
+            opacity: 0;
+        }
+        .wrap .images img.show{
+            opacity: 1;
+        }
+        .wrap .btn{
+            position: absolute;
+            top: 20%;
+            width: 400px;
+        }
+        .wrap .btn .right{
+            float: right;
+        }
+        .wrap .type{
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 40%;
+            width: 400px;
+        }
+        .wrap .type p{
+            width: 100px;
+            height: 30px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 30px;
+            user-select: none;
+            background-color: #aaa;
+        }
+        .wrap .type p.active{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="images">
+            <img src="./images/1.jpg" alt="">
+            <img src="./images/2.jpg" alt="">
+            <img src="./images/3.jpg" alt="">
+            <img src="./images/4.jpg" alt="">
+            <img src="./images/5.jpg" alt="" class="show">
+        </div>
+        <div class="btn">
+            <button class="left">&lt;</button>
+            <button class="right">&gt;</button>
+        </div>
+        <div class="type">
+            <p class="single">单边切换</p>
+            <p class="circle">循环切换</p>
+        </div>
+    </div>
+    <script>
+        let left = document.querySelector(".left"),
+            right = document.querySelector(".right"),
+            aImg = document.querySelectorAll("img"),
+            aP = document.querySelectorAll("p");
+        let mode;
+        aP[0].onclick = function(){
+            mode = true;
+            console.log(1);
+            aP[1].classList.remove("active");
+            this.classList.add("active");
+            while(mode){
+                let i = 4;
+                left.onclick = function(){
+                    if(i == 0){
+                        return;
+                    }else{
+                        aImg[i].classList.remove("show");
+                        i--;
+                        aImg[i].classList.add("show");
+                    }
+                }
+                right.onclick = function(){
+                    if(i == 4){
+                        return;
+                    }else{
+                        aImg[i].classList.remove("show");
+                        i++;
+                        aImg[i].classList.add("show");
+                    }
+                }
+            }
+        }
+        aP[1].onclick = function(){
+            mode = false;
+            console.log(1);
+            aP[0].classList.remove("active");
+            this.classList.add("active");
+            let i = 4;
+            left.onclick = function(){
+                aImg[i].classList.remove("show");
+                i--;
+                if(i == -1) i = 4;
+                aImg[i].classList.add("show");
+            }
+            right.onclick = function(){
+                aImg[i].classList.remove("show");
+                i++;
+                if(i == 5) i = 0;
+                aImg[i].classList.add("show");
+            }
+        }
+    </script>
+</body>
+</html>
