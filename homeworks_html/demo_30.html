@@ -15,7 +15,8 @@
     <div class="wrap"></div>
     <script>
         let owrap = document.querySelector(".wrap");
-        let str;
+        // 先定义，再传值，不然会先输出undefined
+        let str = '';
         for(i = 0;i <= 9;i++){
             str += "<div>第" + i + "圈</div>";
         }
