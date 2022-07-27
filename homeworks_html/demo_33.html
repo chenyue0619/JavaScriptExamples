@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击按钮文字放大缩小</title>
+    <style>
+        .wrap{
+            margin:0 auto;
+            width: 400px;
+            /* border: 1px solid #000; */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <button class="sub">-</button>
+        <button class="add">+</button>
+        <p>文章包括各种文体的著作、作品，如诗歌、戏剧、小说、科学论文，记叙文、议论文、说明文、应用文等等。“千古文章未尽才”“文章千古事”“文章憎命达”“板凳要坐十年冷、文章不写一字空”“积句而成章，积章而成篇”“言出为论，下笔成章”等，都是现在所说的文章的意思。更广义的文章，也包含“学问”“奥秘”等意思，如“洞明世事皆学问，人情练达即文章”就是。</p>
+    </div>
+    <script>
+        let sub = document.querySelector(".sub"),
+            add = document.querySelector(".add"),
+            op = document.querySelector("p");
+        let size = 12;
+        sub.onclick = function(){
+            if(size == 12){
+                return;
+            }else{
+                size--;
+                op.style.fontSize = size + "px";
+            }
+            return;
+        }
+        add.onclick = function(){
+            if(size == 24){
+                return;
+            }else{
+                size++;
+                op.style.fontSize = size + "px";
+            }
+            return;
+        }
+    </script>
+</body>
+</html>
