@@ -12,7 +12,7 @@
         let deepClone = function(arr){
             for(let i = 0;i < arr.length;i++){
                 if(Array.isArray(arr[i])){
-                    // 每一层都要push，要是走到一个嵌套数组直接push，那么这个嵌套数组里面的还是浅拷贝
+                    // 每一层都要push，要是走到一个嵌套数组直接push,那么这个嵌套数组里面的还是浅拷贝
                     arrClone.push(deepClone(arr[i]));
                 }else{
                     arrClone.push(arr[i]);
