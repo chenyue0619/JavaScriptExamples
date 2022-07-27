@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喇叭花数(三位数:每一位的数字阶乘之和等于它本身)</title>
+</head>
+<body>
+    <script>
+        let num = prompt("请输入一个三位数:");
+        let a = Number(num.charAt(0));
+        let b = Number(num.charAt(1));
+        let c = Number(num.charAt(2));
+        let sum = 0,
+            sumN = 1;
+        let narcissus = function(n){
+            for(let i = 1;i <= n;i++){
+                sumN *= i;
+            }
+            return sumN;
+        }
+        if(narcissus(a) + narcissus(b) + narcissus(c) == num){
+            console.log(num + "是喇叭花数");
+        }else{
+            console.log(num + "不是喇叭花数");
+        }
+        
+    </script>
+</body>
+</html>
