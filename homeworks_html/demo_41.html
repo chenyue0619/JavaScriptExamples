@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包练习题</title>
+</head>
+<body>
+    <script>
+        let addCount = function(){
+            let count = 0;
+            return function(){
+                count = count + 1;
+                console.log(count);
+            };
+        }
+        let fn1 = addCount();
+        let fn2 = addCount();
+        fn1();
+        fn2();
+        fn2();
+        fn1();
+    </script>
+</body>
+</html>

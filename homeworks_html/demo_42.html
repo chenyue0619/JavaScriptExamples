@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左侧点击展开和隐藏导航</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* position: absolute;相对父元素定位，相对父元素设置百分比宽高，若是position:relative;则会有里面的内容撑开，不会按照父元素百分比生效 */
+        .sidebar .list{
+            position: absolute;
+            width: 50px;
+            height: 100%;
+            background-color: #666;
+            transition: .6s ease;
+        }
+        .sidebar .list.show{
+            left: -50px;
+        }
+        .sidebar .list li{
+            margin: 6px;
+        }
+        .sidebar .list li:nth-child(1){
+            margin-top: 200px;
+        }
+        .sidebar .btn{
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            background-image: url("https://s1.ax1x.com/2020/09/26/0iDIS0.png");
+        }
+        .sidebar .btn.show{
+            background-position:0 -60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul class="list">
+            <li><img src="https://s1.ax1x.com/2020/09/26/0iDbmF.png" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irp6K.png" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irPmD.png" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0iri0e.png" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irEtA.png" alt=""></li>
+        </ul>
+        <button class="btn"></button>
+    </div>
+    <script>
+        let obtn = document.querySelector(".sidebar .btn"),
+            olist = document.querySelector(".sidebar .list");
+        let mode = true;
+        obtn.onclick = function(){
+            // 函数形式
+
+            // if(mode){
+            //     this.classList.add("show");
+            //     olist.classList.add("show");
+            //     mode = false;
+            // }else{
+            //     mode = true;
+            //     this.classList.remove("show");
+            //     olist.classList.remove("show");
+            // }
+            
+            //classList的方法 
+            this.classList.toggle("show");
+            olist.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
