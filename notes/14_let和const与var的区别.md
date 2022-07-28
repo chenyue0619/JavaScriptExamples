@@ -22,46 +22,44 @@
 
   * **let声明的变量不存在变量提升**：声明之后才能使用，为了就是有一个良好的编码习惯（暂时性死区）
 
-    ```
-  		console.log(a);//变量a已经被提升到当前作用域的最顶端，变量a是存在的。但是没有赋值，所							以就是undefined
-            var a = 0;//var声明的变量存在变量提升，提升在当前作用域的最顶端
-          console.log(a);//已经赋值了，所以就可以输出a的值
+    ```html
+    <script>
+        console.log(a);//变量a已经被提升到当前作用域的最顶端，变量a是存在的。但是没有赋值，所							以就是undefined
+        var a = 0;//var声明的变量存在变量提升，提升在当前作用域的最顶端
+        console.log(a);//已经赋值了，所以就可以输出a的值
             
-          console.log(b);//在舒适化之前不能接受b
-            let b = 0;
-          console.log(b);
+        console.log(b);//在舒适化之前不能接受b
+        let b = 0;
+        console.log(b);
+  </script>
     ```
 
     ![1650335692396](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1650335692396.png)
 
   * 在同一个作用域里面**let不能重复声明**：所有数据类型都会报错
-
+  
     ```html
-  <script>
+    <script>
         var a = 0;
-      let a = 8;
+        let a = 8;
         console.log(a);//报错
   </script>
     ```
-
+  
     ![1650335924497](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1650335924497.png)
 
   * 在不同的作用域里面let可以重复声明，不会报错
 
     ![1650336255384](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1650336255384.png)
 
-  * **let声明的变量不会挂载在window（全局）上**
-
-    * 但是仍在全局里面，也没有存在global里面
+  * let声明的变量不会挂载在window（全局）上，但是仍在全局里面，也没有存在global里面
 
     ```html
-  <script>
+    <script>
         var fn = function(){};
         console.log(fn === window.fn);//true
     </script>
     ```
-  
-    
   
   ![1650336532806](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1650336532806.png)
   
