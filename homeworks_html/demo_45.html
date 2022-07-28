@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机样本(在数组中随机取样本)</title>
+    <title>随机样本(在数组中随机取样本)=>随机生成下标</title>
 </head>
 <body>
     <script>
@@ -14,7 +14,7 @@
         for(let i = 0;i < 3;i++){
             let n = parseInt(Math.random() * arr.length);
             newArr.push(arr[n]);
-            arr.splice(n,1);
+            arr.splice(n,1) ;
         }
         console.log(arr,newArr);
     </script>
