@@ -7,3 +7,4 @@
   * Math方法会自动将字符串转换为数字
 * Math.random();
   * [a,b] => Math.random() * (b - a + 1) + a
+  * arr => [a,b] => Math.random() * arr.length
