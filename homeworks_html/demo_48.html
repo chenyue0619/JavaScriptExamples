@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除数组的所有方法</title>
+</head>
+<body>
+    <script>
+
+        // 第一种方法
+        let fn1 = function(){
+            let arr = [5,6,7];
+            arr = [];
+            console.log(arr);
+        }
+
+        // 第二种方法
+        let fn2 = function(a){
+            let arr = [5,6,7];
+            arr.length = 0;
+            console.log(arr);
+        }
+
+        // 第三种方法
+        let fn3 = function(){
+            let arr = [5,6,7];
+            arr.splice(0);
+            console.log(arr);
+        }
+
+        // 第四种方法
+        let fn4 = function(){
+            let arr = [5,6,7];
+            for(let i = 0;i < arr.length;i++){
+                arr.shift();
+            }
+            arr.shift()
+            console.log(arr);
+            
+        }
+
+        // 第五种方法
+        let fn5 = function(){
+            let arr = [5,6,7];
+            for(let i = 0;i < arr.length;i++){
+                arr.pop();
+            }
+            arr.pop()
+            console.log(arr);
+            
+        }
+        
+        fn1();
+        fn2();
+        fn3();
+        fn4();
+        fn5();
+    </script>
+</body>
+</html>
