@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab切换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap{
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .wrap .tab{
+            height: 30px;
+        }
+        .wrap .tab li{
+            float: left;
+            width: 100px;
+            background-image: url("https://s1.ax1x.com/2020/09/29/0eb7nI.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+            font-size: 13px;
+            text-align: center;
+            line-height: 30px;
+            user-select: none;
+            cursor: pointer;
+        }
+        .wrap .tab li.active{
+            background-image: url("https://s1.ax1x.com/2020/09/29/0ebWtO.gif");
+        }
+        .wrap .content{
+            position: relative;
+        }
+        .wrap .content ul{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            height: 270px;
+            opacity: 0;
+        }
+        .wrap .content ul.show{
+            opacity: 1;
+        }
+        .wrap .content ul li{
+            position: relative;
+            left: 20px;
+            flex: 1;
+            width: 260px;
+            border-bottom: 1px dotted #ccc;
+        }
+        .wrap .content ul li span{
+            position: absolute;
+            top: 33%;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            background-image: url("https://s1.ax1x.com/2020/09/29/0ebbHP.gif");
+        }
+        .wrap .content ul li p{
+            position: absolute;
+            top: 33%;
+            left: 30px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class=" tab">
+            <li>热门排行</li>
+            <li>美图速递</li>
+            <li>社区Top</li>
+        </ul>
+        <div class="content">
+            <ul class="show">
+                <li>
+                    <span>1</span>
+                    <p>营养不足，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>2</span>
+                    <p>营养不足，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>3</span>
+                    <p>营养不足，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>4</span>
+                    <p>营养不足，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>5</span>
+                    <p>营养不足，多吃点土豆</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span>1</span>
+                    <p>多吃点番茄，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>2</span>
+                    <p>多吃点番茄，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>3</span>
+                    <p>多吃点番茄，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>4</span>
+                    <p>多吃点番茄，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>5</span>
+                    <p>多吃点番茄，多吃点土豆</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <span>1</span>
+                    <p>少吃垃圾食品，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>2</span>
+                    <p>少吃垃圾食品，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>3</span>
+                    <p>少吃垃圾食品，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>4</span>
+                    <p>少吃垃圾食品，多吃点土豆</p>
+                </li>
+                <li>
+                    <span>5</span>
+                    <p>少吃垃圾食品，多吃点土豆</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let oli = document.querySelectorAll(".tab li"),
+            oul = document.querySelectorAll(".content ul");
+        for(let i = 0;i < oli.length;i++){
+            oli[i].onclick = function(){
+                for(let j = 0;j < oli.length;j++){
+                    oli[j].classList.remove("active");
+                }
+                for(let j = 0;j < oul.length;j++){
+                    oul[j].classList.remove("show");
+                }
+                this.classList.add("active");
+                oul[i].classList.add("show");
+            }
+        }
+    </script>
+</body>
+</html>
