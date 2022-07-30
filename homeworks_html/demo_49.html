@@ -4,13 +4,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>选项卡切换</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap{
+            margin: 20px auto;
+            width: 400px;
+        }
+        .wrap .list{
+            position: relative;
+            width: 400px;
+        }
+        .wrap .list li{
+            position: absolute;
+            width: 400px;
+            height: 200px;
+        }
+        .wrap .list li img{
+            width: 400px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        let arr = [4,6,7,8];
-        let result = arr.fill("");//["","","",""]
-        console.log(result);
-    </script>
+    <div class="wrap">
+        <ul class="list">
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irm1P.jpg" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irQ0g.jpg" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0ir8ts.jpg" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irUXT.jpg" alt=""></li>
+            <li><img src="https://s1.ax1x.com/2020/09/26/0irwBF.jpg" alt=""></li>
+        </ul>
+        <div class="btn">
+            div
+        </div>
+        <ul class="tab">
+            <li>我很好</li>
+            <li>我很好</li>
+            <li>我很好</li>
+            <li>我很好</li>
+            <li>我很好</li>
+        </ul>
+    </div>
 </body>
 </html>

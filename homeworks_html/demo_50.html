@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网址拼接</title>
+</head>
+<body>
+    <script>
+        let url = "https://www.shiguangkey.com/video/1346";
+        let addUrlParam = function(url,name,value){
+            url += url.endsWith("?") ? "&" : "?";
+            url += `${name}=${value}`;
+            return url;
+        }
+        console.log(addUrlParam("https://www.shiguangkey.com/video/1346","videoId",359586));
+    </script>
+</body>
+</html>
