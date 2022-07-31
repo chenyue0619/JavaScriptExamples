@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+
+        #wrap{
+        width:100px;
+        height:100px;
+        background-color:orange;
+        }
+        #wrap.active{
+            width:200px;
+            height:200px;
+            background-color:green;
+        }
+        .small{
+        width:100px;
+        height:100px;
+        background-color:orange;
+        }
+        .big{
+            width:200px;
+            height:200px;
+            background-color:blue;
+        }
+    </style>
+    <!-- <script>
+        //window.onload页面加载完再执行
+        window.onload = function(){
+            let obox = document.querySelector(".box");
+            console.log(obox);
+        }
+    </script> -->
+</head>
+<body>
+    <!-- <div class="small"></div> -->
+    <script>
+        // let small = document.querySelector(".small");
+        // small.onclick = function(){
+        //     this.classList.toggle("big");
+        // }
+
+        let fn = function(){
+            console.log(arguments);
+            console.log(arguments.length);
+        }
+        fn(2,3,4,5);
+    </script>
+
+
+    <!-- <div id="wrap"></div>
+    <script>
+		let owrap = document.querySelector("#wrap");
+        owrap.onclick = function(){
+            this.className = "active";
+        }
+    </script> -->
+
+
+    <!-- <div id="wrap"></div>
+    <script>
+		let owrap = document.querySelector("#wrap");
+        owrap.onclick = function(){
+            this.className = "active";
+        }
+    </script> -->
+
+
+    <!-- <div mingzi="小王" age="13"></div>
+    <script>
+        let odiv = document.querySelector("div");
+        console.log(odiv.getAttribute("mingzi"));
+        odiv.setAttribute("mingzi","大林");
+        console.log(odiv.getAttribute("mingzi"));
+        odiv.removeAttribute("age");
+        console.log(odiv);
+    </script> -->
+
+
+    <!-- <div>1</div>
+    <script>
+        let odiv = document.querySelector("div");
+        odiv.title = "我很好！";
+        odiv.className="box";
+    </script> -->
+    <!-- <div class="box"></div>
+    <script>
+        let obox = document.querySelector(".box");
+        obox.onmouseleave = function(){
+            console.log(obox);
+        }
+    </script> -->
+    <!-- <div class="box">1</div> -->
+    <!-- <script>
+        let obox = document.querySelector(".box");
+        console.log(obox);
+    </script> -->
+
+    <!-- <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+        let obox = document.getElementsByClassName("box");
+        console.log(obox);//obox[]
+
+
+        let str = "我说：\"我很好\"";
+        console.log(typeof str) ;
+        let arr = [1,2,3,4,5];
+        let arr1 = [1,,2,3,4,5];
+        arr.length = 10;
+        console.log(arr,arr1);//未
+
+
+        let obj = {
+            name:"diw",
+            age:17,
+            sex:"女",
+            say:function(){
+                alert("你好啊！")
+            }
+        }
+        delete obj.sex;
+        console.log(obj);
+        // console.log(obj.say());
+
+        // 应先定义对象之后才可以赋值新属性
+        // let obj1 = null;
+        // console.log(obj1);
+        // obj1.name = "nihao";
+        // console.log(obj1);
+
+        console.log(document);
+
+        let arr2 = [1,2,[3,4,[5,6]]];
+        console.log(arr2[2][2][1]);
+
+        console.log(0.3 - 0.2 === 0.8 - 0.7);
+
+        console.log(isNaN(''));
+        console.log(isNaN([]));
+        console.log(isNaN(null));
+        console.log(isNaN(undefined));
+        console.log(isNaN(NaN));
+
+        console.log(5e3);
+        console.log(5e-3);
+        console.log(1.5e3);
+
+        console.log(typeof true);
+
+        let obj3 = {
+            a:1,
+            b:2
+        };
+        let a = "b";
+        console.log(obj3.a);//对象里面的a
+        console.log(obj3["a"]);//对象里面的a
+        console.log(obj3[a]);//取变量a,再取变量a所代表的值"b",再取变量中"b"代表的值
+    </script> -->
+</body>
+</html>
