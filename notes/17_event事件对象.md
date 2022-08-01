@@ -80,13 +80,26 @@
   * onunload
     * 当用户退出页面
 
+### 系统事件
+
+* 分类
+
+  onload       页面加载完成后
+
+  onerror      页面加载出错后
+
+  onresize     浏览器窗口大小改变时
+
+  onscroll      页面滚动条滚动时
+
 ### DOM 2级事件 
 
 ### addEventListener()绑定事件
 
 * 与0级事件区别
-  * 0级事件on***只能监听冒泡阶段
-
+  
+* 0级事件on***只能监听冒泡阶段
+  
 * 语法：
 
   * dom.addEventListener("事件",function(){},false)
@@ -145,8 +158,9 @@
 ### removeEventListener移出事件
 
 * 语法：
-  - dom.removeEventListener("事件",fn())
-
+  
+- dom.removeEventListener("事件",fn())
+  
 * 注意
 
   * 函数function是引用数据类型，所以不能直接将函数体复制在事件参数里面，应先定义，然后直接引用，这样才能保证是同一个函数操作
@@ -246,13 +260,15 @@
   ```
 
 * 用途
+  
   * onmousewheel()当滚轮滑动时可以阻止页面随之滚动
 
 ### 阻止事件继续传播e.stopPropagation()
 
 * 定义
-  * e.stopPropagation()方法用来阻止事件继续传播
-
+  
+* e.stopPropagation()方法用来阻止事件继续传播
+  
 * 阻止冒泡：
 
   * 在一些场合，非常有必要切断使劲按继续传播，否则造成页面特效显示出bug
@@ -289,7 +305,119 @@
     </script>
     ```
 
-    
+### 事件委托(事件冒泡)
 
-  
+* 批量添加事件监听的问题
+
+  * 内存消耗会非常大：每一个事件监听注册都会消耗一定的系统内存，而批量添加时间会导致监听数量太多
+
+  * 举例
+    * 实际上，每一个<li>的事件处理函数都是不同的函数，这些函数本身也会占用内存
+
+  ```html
+  <ul class="list">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+  <script>
+  	let aLi = document.querySelectorAll(".wrap li");
+      aLi.forEach(item => {
+          item.onclick = function(){
+              this.style.color = "red";
+          }
+      })
+  </script>
+  ```
+
+* 动态绑定事件的问题
+
+  * 新增元素必须添加事件监听，不能自动获得事件监听
+
+  * 大量时间监听，大量事件处理函数都会产生大量消耗内存
+
+  * 举例
+
+    ```html
+    <button class="btn">按钮</button>
+    <ul class="list">
+      
+    </ul>
+    <script>
+        let oBtn = document.querySelector(".btn");
+        let oList = document.querySelector(".list");
+        oBtn.onclick = function(){
+            let ol = document.createElement("ol");
+            ol.innerText = "我很好!";
+            ol.onclick = function(){
+                this.style.color = "red";
+            }
+            oList.appendChild(ol);
+        }
+    </script>
+    ```
+
+* 分类
+
+  * e.target
+    * 触发此事件的最早元素，即“事件源元素”
+  * e.currentTarget
+    * 事件处理程序附加到的元素
+
+* 使用场景
+
+  * 当有大量类似元素需要批量添加事件监听时，使用事件委托可以减少内存开销
+
+  * 当有动态元素节点需要上树(appendChild子元素添加进父元素)时，使用事件委托可以让新上树的元素具有事件监听
+
+    ```html
+    <button class="btn">按钮</button>
+    <ul class="list">
+      
+    </ul>
+    <script>
+        let oBtn = document.querySelector(".btn");
+        let oList = document.querySelector(".list");
+        oBtn.onclick = function(e){
+            let ol = document.createElement("ol");
+            ol.innerText = "我很好!";
+            //e.target将目标元素绑定父元素的监听事件onclick
+        	e.target.style.color = "red";
+            oList.appendChild(ol);
+        }
+    </script>
+    ```
+
+* onmouseenter和onmouseover的区别
+
+  * onmouseenter不冒泡
+  * onmouseover冒泡
+
+* 其他监听事件
+
+  * 分类
+
+    不冒泡          冒泡
+
+    focusin        focus
+
+    blur              focusout
+
+    load
+
+    onmouseenter
+
+    onmouseleave
+
+  * 事件不会向父元素那里传递
+
+  * bubbbles判断事件是否是冒泡的
+
+    * true冒泡
+    * false不冒泡
+
+
 
