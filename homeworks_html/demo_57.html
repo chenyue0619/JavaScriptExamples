@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建一个延时器(确认清除)</title>
+</head>
+<body>
+    <div class="box">0</div>
+    <button class="start">开始</button>
+    <button class="end">结束</button>
+    <script>
+        let start = document.querySelector(".start");
+        let end = document.querySelector(".end");
+        let oBox = document.querySelector(".box");
+        let timeout;
+        start.onclick = function(){
+            // 因为setInterval会造成叠加，意思就是说在一个定时器上面再叠加一个定时器，这样间隔时间也是叠加的，所以在之前要先清除之前的定时器
+            clearTimeout(timeout);
+            // 这样定义timer的话，不是全局变量，是只能在setInterval()函数里面访问的局部变量
+            timeout = setTimeout(function(){
+                oBox.innerText ++;
+            },1000);
+        };
+        end.onclick = function(){
+            clearTimeout(timeout);
+        }
+    </script>
+</body>
+</html>
