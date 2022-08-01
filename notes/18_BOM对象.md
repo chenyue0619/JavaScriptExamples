@@ -1,6 +1,4 @@
-# setInterval()定时器
-
-# clearInterval()清除定时器
+# setInterval()定时器clearInterval()清除定时器
 
 * setInterval()定时器
 
