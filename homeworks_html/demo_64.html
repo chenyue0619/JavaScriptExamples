@@ -7,8 +7,18 @@
     <title>location对象</title>
 </head>
 <body>
+    <button class="btn">跳转</button>
+    <button class="reload">刷新</button>
     <script>
-        console.log(window.location);
+        // console.log(window.location);
+        let oBtn = document.querySelector(".btn");
+        let oReload = document.querySelector(".reload");
+        oBtn.onclick = function(){
+            window.location = "https://www.shiguangkey.com/i/course";
+        }
+        oReload.onclick = function(){
+            window.location.reload(true);
+        }
     </script>
 </body>
 </html>
