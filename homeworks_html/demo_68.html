@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回到顶部案例(onscroll)</title>
+    <style>
+        body{
+            position: relative;
+            height: 1000px;
+            background-image: linear-gradient(to bottom, green,red,pink,blue,yellow,orange);
+        }
+        .backtop{
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            /* margin: 0 auto; */
+            width: 100px;
+            height: 40px;
+            background-color: rgba(0,0,0,.3);
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="backtop">回到顶部</div>
+    <script>
+        let oBacktop = document.querySelector(".backtop");
+        let timer = null;
+        oBacktop.onclick = function(){
+            // 设表先关
+                clearInterval(timer);
+                timer = setInterval(function(){
+                document.documentElement.scrollTop -= 50;
+                if(document.documentElement.scrollTop <= 0){
+                    clearInterval(timer);
+                }
+            },100)
+            // let scrollTop = window.scrollY || document.documentElement.scrollTop;
+            // document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
