@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date的对象方法</title>
+</head>
+<body>
+    <script>
+        let date = new Date();
+        console.log(date);
+        console.log(typeof date);
+
+        let d1 = new Date("2022-10-20 12:22:34");
+        console.log(d1);
+
+        let d2 = new Date(2022,10,28,12);
+        console.log(d2);
+
+        let d3 = new Date(30000);
+        console.log(d3);
+
+        let d4 = new Date();
+        console.log(d4.getTime());
+        console.log(Date.parse(d4));
+        console.log(new Date(1659713993000));
+
+        let d5 = new Date();
+        console.log(d5 - 0);
+        setTimeout(function(){
+            let d6 = new Date();
+            let diff = d6 - d5;
+            console.log(diff);
+        },2000)
+    </script>
+</body>
+</html>
