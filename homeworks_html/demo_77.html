@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象-红绿灯小案例</title>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        function TrafficLight(){
+            // 颜色属性
+            this.color = 6;
+            this.init();
+            this.binEvent();
+        }
+        //初始化： 创建dom元素，将最初的红绿灯图片（红灯）放在页面上
+        let oBox = document.querySelector(".box");
+        TrafficLight.prototype.init = function(){
+            this.dom = document.createElement("img");
+            this.dom.src = `./images/${this.color}.jpg`;
+            oBox.appendChild(this.dom);
+        }
+
+        // 事件监听：当检测到事件改变时触发此方法
+        TrafficLight.prototype.binEvent = function(){
+            let _this = this;
+            this.dom.onclick = function(){
+                _this.color ++;
+                if(_this.color === 9){
+                    _this.color = 6;
+                }
+                _this.dom.src = `./images/${_this.color}.jpg`;
+            }
+        }
+
+        // TrafficLight.prototype.changeColor = function(){
+        //     this.color ++;
+        //     if(this.color === 9){
+        //         this.color = 6;
+        //     }
+        //     this.dom.src = `./images/${this.color}.jpg`;
+        //     // oBox.appendChild(this.dom);
+        // }
+
+        new TrafficLight();
+    </script>
+</body>
+</html>
