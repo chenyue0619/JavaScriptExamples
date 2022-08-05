@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炫彩小球-面向对象案例</title>
+    <style>
+        html{
+            background-color: #000;;
+        }
+        .box{
+            animation: changeColor 1s infinite;
+        }
+        @keyframes changeColor{
+            from{
+                filter:hue-rotate(0deg);
+            }
+            to{
+                filter:hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function Ball(x,y){
+            this.x = x;
+            this.y = y;
+            this.r = 20;
+            this.color = "orange";
+            this.opacity = 1;
+            this.init();
+
+            do {
+                this.dX = parseInt(Math.random() * 21 - 10);
+                this.dY = parseInt(Math.random() * 21 - 10);
+            } while (this.dX == 0 && this.dY == 0); 
+
+            // 将每一个实例小球都装进数组里面
+            arrBall.push(this);
+        }
+        // 初始化
+        Ball.prototype.init = function(){
+            // 创建dom
+            this.dom = document.createElement("div");
+
+            // dom样式初始化
+            this.dom.classList.add("box");
+            this.dom.style.width = 2 * this.r + "px";
+            this.dom.style.height = 2 * this.r + "px";
+            this.dom.style.backgroundColor = this.color;
+            this.dom.style.borderRadius = 50 + "%";
+            this.dom.style.position = "absolute";
+            this.dom.style.left = this.x - this.r + "px";
+            this.dom.style.top = this.y - this.r + "px";
+
+            // dom上树
+            document.body.appendChild(this.dom);
+        }
+
+        // 监听属性改变
+        Ball.prototype.update = function (){
+            this.x += this.dX;
+            this.y -= this.dY;
+            this.r += 0.2;
+            this.opacity -= 0.02
+            this.dom.style.left = this.x - this.r + "px";
+            this.dom.style.top = this.y - this.r + "px";
+            this.dom.style.opacity = this.opacity;
+
+            if (this.opacity <= 0) {
+            for (let i = 0; i < arrBall.length; i++) {
+                if (arrBall[i] == this) {
+                arrBall.splice(i, 1);
+                }
+            }
+
+            //还要删除dom
+            document.body.removeChild(this.dom);
+        }
+        }
+
+        let arrBall = [];
+        // 遍历小球数组，给每一个实例小球都绑定updata方法
+        setInterval(function(){
+            for(let i = 0;i < arrBall.length;i++){
+                arrBall[i].update();
+            }
+        },20)
+
+        document.onmousemove = function(e){
+            let x = e.clientX;
+            let y = e.clientY;
+            new Ball(x,y);
+        }
+
+    </script>
+</body>
+</html>
