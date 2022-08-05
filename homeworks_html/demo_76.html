@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链实现继承</title>
+</head>
+<body>
+    <script>
+        function People(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        People.prototype.sayHello = function(){
+            console.log(`我的名字是${this.name},我的年龄是${this.age},我的性别是${this.sex}`);
+        }
+        People.prototype.nationality = "中国";
+
+        // 实现继承的关键语句
+        Student.prototype = new People();
+
+        function Student(name,age,sex,score){
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.score = score;
+        }
+
+        let xiaoming = new Student("xiaoming",18,"男",98);
+        console.log(xiaoming);
+        console.log(xiaoming.sayHello());//undefined未实现继承
+
+        People.prototype.nationality = "美国";
+        console.log(xiaoming.nationality);
+
+        Student.prototype.sleep = function(){
+            console.log(`我的名字是${this.name},我要睡觉了~`);
+        }
+        console.log(xiaoming.sleep());
+    </script>
+</body>
+</html>
