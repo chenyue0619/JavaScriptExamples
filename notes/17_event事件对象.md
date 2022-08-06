@@ -146,7 +146,7 @@
             console.log(111);
         }
      );
-        oWrap.addEventListener("click",fucntion(){
+        oWrap.addEventListener("click",function(){
             console.log(222);
         }
      );
