@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+<body>
+    <script>
+        // let str1 = 1321334;
+        // let str2 = "fjdkdbvh";
+        // let reg1 = /^\d{7}$/;
+        // let reg2 = new RegExp("^\\d{7}$");
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg2.test(str1));
+        // console.log(reg2.test(str2));
+        // console.log(typeof reg1);
+        // console.log(typeof reg2);
+
+        // 题目一：123-4567-890 => 正则表达式表达
+        // let reg1 = /^\d{3}-\d{4}-\d{3}$/;
+        // let str1 = "3243-4545-343";
+        // let str2 = "123-4567-890";
+        // let str3 = "12-4567f-89f";
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg1.test(str3));
+
+        // 题目二：口口口-口口口口-口口口，祁宏表示字母数字或者下划线
+        // let reg1 = /^\w{3}-\w{4}-\w{3}$/;
+        // let str1 = "324-_545-h43";
+        // let str2 = "123-4567-890";
+        // let str3 = "12-4567f-89f";
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg1.test(str3));
+
+        // 题目一：请验证某字符是否是5位字母，大小写均可
+        // let reg1 = /^[A-Za-z]{5}$/;
+        // let str1 = "324-_";
+        // let str2 = "abcds";
+        // let str3 = "cdsjA";
+        // let str4 = "cdsjAe";
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg1.test(str3));
+        // console.log(reg1.test(str4));
+
+         // 题目二：请验证某字符是否是5位字母，且仅有小写字母.点构成
+        // let reg1 = /^[a-z\.]{5}$/;
+        // let str1 = "324-_";
+        // let str2 = "abcdsS";
+        // let str3 = "cdsj.";
+        // let str4 = "cd.Ae";
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg1.test(str3));
+        // console.log(reg1.test(str4));
+
+
+        // 题目一：请验证某字符是手机号，1开头的11位字符串
+        // let reg1 = /^1\d{10}$/;
+        // let str1 = 14906578910;
+        // let str2 = "1abcdsSddvc";
+        // let str3 = 348579834547;
+        // let str4 = 32487548587
+        // console.log(reg1.test(str1));
+        // console.log(reg1.test(str2));
+        // console.log(reg1.test(str3));
+        // console.log(reg1.test(str4));
+
+
+        // 题目二：以字母开头，中间是任意数字（最少1位），并以字母结尾
+        let reg1 = /^[a-zA-Z]{1}[0-9]{1,}[a-zA-Z]{1,}$/;
+        let str1 = "rtr0657891d";
+        let str2 = "1abcdsSddvc";
+        let str3 = 348579834547;
+        let str4 = "r48754858y";
+        console.log(reg1.test(str1));
+        console.log(reg1.test(str2));
+        console.log(reg1.test(str3));
+        console.log(reg1.test(str4));
+    </script>
+</body>
+</html>
