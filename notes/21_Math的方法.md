@@ -66,6 +66,7 @@
 * Math.aqrt()开方
 
 * Math.random();
+  * 该方法返回的是一个大于等于0并且小于1的随机数
   * [a,b] => Math.random() * (b - a + 1) + a
   * arr[n] n => [a,b] => Math.random() * arr.length
   
