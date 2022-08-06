@@ -92,4 +92,56 @@
   },2000)
   ```
 
-  
+* 时钟小案例
+
+```html
+<style>
+        .clock{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px auto;
+            width: 300px;
+            height: 50px;
+            border: 1px solid #000;
+        }
+        .clock div{
+            width: 30px;
+            height: 30px;
+            border-radius: 20%;
+            background-color: darkgrey;
+            color: #000;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+        <div class="hour"></div>
+        <span>:</span>
+        <div class="minute"></div>
+        <div class="minute"></div>
+        <span>:</span>
+        <div class="second"></div>
+        <div class="second"></div>
+    </div>
+    <script>
+        let oDiv = document.querySelectorAll(".clock div");
+        
+        // console.log(clock);
+        setInterval(function(){
+            let time = new Date();
+            let hour = time.getHours() + "";
+            let minute = time.getMinutes() + "";
+            let second = time.getSeconds() + "";
+            let clock = hour.padStart(2,0) + minute.padStart(2,0) + second.padStart(2,0);
+            for(let i = 0;i < clock.length;i++){
+                oDiv[i].innerHTML = clock[i];
+            }
+        },1000)
+    </script>
+</body>
+```
+
