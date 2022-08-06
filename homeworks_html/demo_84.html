@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析小案例(var/function)</title>
+</head>
+<body>
+    <script>
+        // console.log(typeof null);
+        // let str = "34";
+        // function fn(){
+        //     // 函数体自身有变量的话会先进行变量提升，如果没有才会找函数体外的变量声明
+        //     console.log(str);
+        //     var str = "fdg";
+        // }
+        // fn();
+
+        function Foo(){
+            // 没有this，说明此不是类的方法
+            getNum = function(){
+                console.log(1);
+            };
+            this.getNum = function(){
+                console.log(2);
+            }
+        }
+        // 此方法实例对象要用prototype来调用
+        Foo.prototype.getNum = function(){
+            console.log(3);
+        };
+        // function定义的函数会函数提升,提升之后此函数操作就相当于对函数进行重新赋值
+        var getNum = function(){
+            console.log(4);
+        };
+        // function定义的函数会函数提升
+        function getNum(){
+            console.log(5);
+        }
+        getNum();
+        var f = new Foo();
+        f.getNum();
+    </script>
+</body>
+</html>
