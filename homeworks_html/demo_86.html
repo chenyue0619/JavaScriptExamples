@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的解构赋值</title>
+</head>
+<body>
+    <div class="box">
+        <p>a</p>
+        <p>b</p>
+        <p>c</p>
+    </div>
+    <script>
+        // let [a, ,[ ,b]] = [1,2,[3,4],5];
+        // console.log(b);//b = 4
+
+        // let [a = 0,b = 8,c = 9] = [];
+        // let [a,b,c] = [];
+
+        // console.log(a,b,c);
+
+        // let fn = function(){
+        //     return 555;
+        // }
+        // let [a = fn()] = [777];
+        // let [b = fn()] = [];
+        // console.log(a);
+        // console.log(b);
+        // function fn(){
+        //     console.log(arguments);
+        //     let [a,b,c] = arguments;
+        //     console.log(a,b,c);
+        // };
+        // fn(2,3,4);
+
+        // let aP = document.querySelectorAll("p");
+        // let [a,b,c] = aP;
+        // console.log(a,b,c);
+
+        // let fn = ([a,b,c]) => a + b + c
+        // let arr = [1,2,3];
+        // console.log(fn(arr));
+
+        let a = 1;
+        let b = 2;
+        [a,b] = [b,a];
+        console.log(a,b)
+    </script>
+</body>
+</html>
