@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的解构赋值</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name:"xiaoming",
+            sex:"nan",
+            age:17
+        }
+        let {name,age,sex,nationality = "中国"} = obj;
+        // console.log(name,age,sex,nationality);
+
+        let fn = ({name,age}) => name;
+        // console.log(fn(obj));
+
+        let obj1 = {
+            x:1,
+            y:[2,3,4],
+            z:{
+                a:5,
+                b:6
+            }
+        }
+
+        let {z:{b}} = obj1;
+        console.log(b);//6
+
+        // let x = 30;
+        // ({x} = {x:90});
+        // console.log(x);
+
+        // let {max} = Math;
+        // console.log(max(1,2,3));
+
+        // let {log} = console;
+        // console.log(log(2));
+    </script>
+</body>
+</html>
