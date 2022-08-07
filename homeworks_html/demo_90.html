@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的Object.assign()方法</title>
+</head>
+<body>
+    <script>
+        let obj1 = {
+            name:"xiaoming",
+            sex:"nan"
+        };
+        let obj2 = {
+            sex:"nv",
+            age:19
+        }
+        let newObj = Object.assign({},obj1,obj2);
+        console.log(newObj);
+    </script>
+</body>
+</html>
