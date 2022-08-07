@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <!-- <div class="box">nihao</div>
+    <script>
+        let oBox = document.querySelector(".box");
+        oBox.onclick = () => {
+            console.log(this);
+        }
+
+        const fn = () => {
+            console.log(arguments);
+        }
+        fn(1,2,3,4);
+    </script> -->
+
+    <div class="box">开始</div>
+    <div class="timer"></div>
+    <script>
+        let oBox = document.querySelector(".box");
+        let timer = document.querySelector(".timer");
+        // let _this = this;
+        // console.log(window.time === this.time);
+        let obj = {
+            time:0,
+            start:function(){
+                let _this = this;
+                oBox.onclick = function(){
+                    setInterval(() => {
+                        _this.time++;
+                        timer.innerHTML = _this.time;
+                        console.log(_this);
+                    },1000)
+                }
+            }
+        }
+        // 含数自执行，this指向window
+        // fn();
+        obj.start();
+    </script>
+</body>
+</html>
