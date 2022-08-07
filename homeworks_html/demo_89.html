@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的相关操作以及放括号表示</title>
+</head>
+<body>
+    <script>
+        let obj = new Object();
+        obj.name = "xiaoming";
+        obj.sex = "nan";
+        // console.log(obj);
+
+        let obj1 = {
+            name:"xiaoming",
+            sex:"nan"
+        };
+        // console.log(obj1);
+
+        // let age = 19;
+        let obj2 = {
+            name:"xiaohong",
+            // age,
+            say(){
+                console.log(`我的名字是${this.name}`);
+            }
+        }
+        // obj2.say();
+
+        let prop = "age";
+        let obj3 = {
+            name:"xiaohong",
+            sex:"nan",
+            [prop]:19
+        }
+        // obj3[prop] = 19;
+        console.log(obj3);
+
+        let fn = function(){
+            return "company";
+        }
+        let obj4 = {
+            name:"xiaoming",
+            [fn()]:"上海",
+            ["a" + "b"]:19
+        }
+        console.log(obj4);
+    </script>
+</body>
+</html>
