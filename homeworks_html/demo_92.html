@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数初识</title>
+</head>
+<body>
+    <script>
+        // const add = (a,b,c,...args) => {
+        //     console.log(args);
+        // };
+        // add(1,2,3);//Array(0)
+        // add(4,5,6,7,8);//Array(2) => [7,8]
+        // add(9,10);//Array(0)
+        // add();
+
+
+        // const add = (...args) => {
+        //     args.push(10);
+        //     console.log(args);
+        //     arguments.push(90);//error
+        //     console.log(arguments);
+        // }
+        // add();//[10]
+        // add(1,2);//[1,2,10]
+        
+        const add = (...args,a,b,) => {
+            console.log(args);
+        }
+        add(1,2,3);//error
+    </script>
+</body>
+</html>
