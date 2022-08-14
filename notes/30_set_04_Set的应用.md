@@ -1,0 +1,39 @@
+# Set的应用
+
+* 数组去重
+
+  ```js
+  let arr = [1,2,3,4,2,1,2,2];
+  let newArr = new Set(arr);
+  let result = [...newArr];
+  console.log(result);//[1, 2, 3, 4]
+  ```
+
+* 数组合并去重
+
+  ```js
+  let arr1 = [1,2,3,4,2,1,2,2];
+  let arr2 = [6,3,4,2,2];
+  // 合并数组
+  let newArr1 = [...arr1,...arr2];
+  // 数组去重
+  let newArr2 = new Set(newArr1);
+  // 将Set数据结构转换为数组结构
+  let newArr3 = [...newArr2];
+  console.log(newArr3);//[1, 2, 3, 4, 6]
+  ```
+
+* 字符串去重
+
+  ```js
+  let str = "sdjfhk";
+  // 字符串去重
+  let newStr1 = new Set(str);
+  // 将Set数据结构转换为数组
+  let newStr2 = [...newStr1];
+  // 将数组转换为字符串
+  let newStr3 = newStr2.join("");
+  console.log(newStr3);//sdjfhk
+  ```
+
+* 存放DOM元素，结合forEach()方法使用
