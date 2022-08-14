@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map实例的属性和方法</title>
+</head>
+<body>
+    <script>
+        let m = new Map();
+        m.set("name","xiaoming");
+        m.set("sex","nan");
+        console.log(m);//Map(2) {'name' => 'xiaoming', 'sex' => 'nan'}
+        let name = m.get("name");
+        console.log(name);//xiaoming
+
+        m.forEach((key,value,map) => {
+            console.log(key,value,map === m);
+        })
+        console.log(m.size);//2
+
+        // console.log(m.has("name"));//true
+        // console.log(m.has("sleep"));//false
+        // m.delete("name");
+        // m.delete("sleep");
+    </script>
+</body>
+</html>
