@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map初识</title>
+</head>
+<body>
+    <Script>
+        let obj = {
+            name:"xiaoming",
+            sex:"nan",
+            age:19
+        }
+
+        let m = new Map();
+        m.set("name","xiaoming");
+        m.set("sex","nan");
+        m.set(true,1);//{true => 1}
+        m.set({},"object");//{…} => 'object'
+        m.set(undefined,"undefined");//{undefined => "undefined"}
+        m.set(new Set(),"undefined");//{Set(0) => "undefined"}
+        console.log(m);
+    </Script>
+</body>
+</html>
