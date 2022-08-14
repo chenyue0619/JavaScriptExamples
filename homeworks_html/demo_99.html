@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set的注意事项</title>
+</head>
+<body>
+    <script>
+        // console.log(NaN === NaN);//false
+        // let arr = [NaN];
+        // console.log(arr.includes(NaN));//true
+
+        // let s = new Set([NaN,NaN,2]);
+        // console.log(s);// {NaN, 2}
+        // console.log(s.has(NaN));//true
+
+        let s = new Set();
+        s.add({a:1}).add({a:1});
+        console.log(s);//Set(2) {{…}, {…}}
+    </script>
+</body>
+</html>
