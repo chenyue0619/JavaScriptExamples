@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set构造函数的参数</title>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <script>
+        let aP = document.querySelectorAll("p");
+        let newAp = new Set(aP);
+        let newAp1 = new Set(newAp);
+        console.log(newAp);//{p, p, p}
+        console.log(newAp1)//{p, p, p}
+        console.log(newAp1 === newAp);//false
+        // 1、数组
+        // let s = new Set([1,2,3]);
+        // console.log(s);// {1, 2, 3}
+
+        // 2、字符串
+        // let s = new Set("jsdjks");
+        // console.log(s);//{'j', 's', 'd', 'k'}
+
+        // 3、arguments
+        function fn(){
+            console.log(new Set(arguments));
+        }
+        fn(1,2,3);//{1, 2, 3}
+    </script>
+</body>
+</html>
