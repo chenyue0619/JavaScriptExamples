@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剩余参数的应用</title>
+</head>
+<body>
+    <script>
+        // 1、接受一个累加器
+        // let sum = 0;
+        // const add = (...args) => {
+        //     let sum = args.reduce((prev,next) => {
+        //         return prev + next;
+        //     });
+        //     return sum;
+        // }
+        // console.log(add(1,2,3));//6
+
+        // 2、与解构赋值一起使用
+        // const [a,b,...args] = [1,2,3,4,5,6];
+        // console.log(args);//[3,4,5,6]
+
+        // 1、数组
+        // const add = ([a,b,c,...args]) => {
+        //     console.log(args);
+        // }
+        // add([1,2,3,4,5]);//[4,5]
+        // 2、对象
+        const {a,b,...args} = {a:1,b:2,C:3,d:5};
+        console.log(args);//{c:3,d:5}
+    </script>
+</body>
+</html>
