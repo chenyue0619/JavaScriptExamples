@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map构造函数的参数</title>
+</head>
+<body>
+    <script>
+        // let arr = [
+        //     ["name","xiaoming"],
+        //     ["sex","nan"],
+        //     ["age",19]
+        // ]
+        // let m = new Map(arr);
+        // console.log(m);//{'name' => 'xiaoming', 'sex' => 'nan', 'age' => 19}
+
+        // let n = new Map(m);
+        // console.log(n);//Map(3) {'name' => 'xiaoming', 'sex' => 'nan', 'age' => 19}
+        // console.log(n === m);//false
+
+        let m = new Map();
+        m.set(NaN,1).set(NaN,2).set({},1).set({},2);
+        console.log(m);//Map(3) {NaN => 2, {…} => 1, {…} => 2}
+    </script>
+</body>
+</html>
