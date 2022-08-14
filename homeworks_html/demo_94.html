@@ -7,9 +7,49 @@
     <title>数组展开运算符初识</title>
 </head>
 <body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
     <script>
-        let arr = [1,2,3,4];
-        console.log(Math.min(...arr));//1
+        let aP = document.querySelectorAll("p");
+        console.log(aP);
+        let newAp = [...aP];
+        console.log(newAp);//[p, p, p]
+        // let arr = [1,2,3,4];
+        // console.log(Math.min(...arr));//1
+
+        // 1、二维数组变一维数组
+        // let arr = [1,2,3,[4,5,6]];
+        // let newArr = [1,2,3,...[4,5,6]]
+        // console.log(newArr);//[1, 2, 3, 4, 5, 6]
+
+        // 2、复制数组
+        // let arr = [1,2,3];
+        // let newArr = [...arr];
+        // console.log(newArr);
+        // console.log(newArr === arr);
+
+        // 3、合并数组
+        // let arr1 = [1,2];
+        // let arr2 = [3,4];
+        // let arr3 = [5,6];
+        // let newArr = [...arr1,...arr2,...arr3];
+        // console.log(newArr);//[1, 2, 3, 4, 5, 6]
+
+        // 4、字符串转为数组
+        // let str = "sfdshfj";
+        // let newStr1 = str.split("");
+        // let newStr = [...str];
+        // console.log(newStr);//['s', 'f', 'd', 's', 'h', 'f', 'j']
+        // console.log(newStr1);//['s', 'f', 'd', 's', 'h', 'f', 'j']
+
+
+        // 5、常见的类数组转化为数组
+        // function fn() {
+        //     let arr = [...arguments];
+        //     console.log(arr);//[1, 2, 3]
+        // };
+        // fn(1,2,3);
     </script>
 </body>
 </html>
