@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非原生可遍历 => 对象封装</title>
+</head>
+<body>
+    <script>
+        // 定义一个普通的对象
+        let obj = {
+            name:"xiaoming",
+            sex:"nan"
+        }
+        
+        // 给对象绑定iterator接口，就会有next()方法
+        obj[Symbol.iterator] = () => {
+            let index = 0;
+            return {next(){
+                index++;
+                if(index === 1){
+                    return {
+                        value:obj.name,
+                        done:false
+                    };
+                }else if(index === 2){
+                    return {
+                        value:obj.sex,
+                        done:false
+                    };
+                }else{
+                    return {
+                        value:undefined,
+                        done:true
+                    };
+                }
+            }};
+        }
+        let it = obj[Symbol.iterator]();
+        console.log(it.next());//{value: 'xiaoming', done: false}
+        console.log(it.next());//{value: 'nan', done: false}
+        console.log(it.next());//{value: undefined, done: true}
+
+        // 现在就可以使用for of循环遍历了
+        for(let item of obj){
+            console.log(item);
+        }
+
+        // 类数组对象
+        let obj1 = {
+            0:0,
+            1:1,
+            2:2,
+            length:3
+        }
+        obj1[Symbol.iterator] = Array.prototype[Symbol.iterator];
+        for(let o of obj1){
+            console.log(o);
+        }
+    </script>
+</body>
+</html>
