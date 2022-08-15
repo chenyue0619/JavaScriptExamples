@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise改写回调地狱</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        transition: all 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      let oBox = document.querySelector(".box");
+      // 这里有三个参数
+      //  el表示传入的元素
+      //  {x = 0,y = 0} = {}表示对传入的对象解构赋值
+      //  end表示传入的函数，这里就是回调函数
+      const move = (el, { x = 0, y = 0 } = {}, end = () => {}) => {
+        el.style.transform = `translate3d(${x}px,${y}px,0)`;
+        // ontransitionend在transition结束之后才会执行的操作
+        el.ontransitionend = function () {
+          end();
+        };
+      };
+
+    //   回调函数改写成Promise对象
+      const movePromise = (el, point) => {
+        return new Promise((resolve) => {
+            // 调用回调函数
+          move(el, point, () => {
+            // 返回resolve()函数，成功状态才可以使用then()方法
+            return resolve();
+          });
+        });
+      };
+      document.onclick = () => {
+        movePromise(oBox, { x: 200, y: 0 })
+          .then(() => {
+            return movePromise(oBox, { x: 200, y: 200 })
+          })
+          .then(() => {
+            return movePromise(oBox, { x: 0, y: 200 })
+          })
+          .then(() => {
+            return movePromise(oBox, { x: 0, y: 0 });
+          })
+      };
+    </script>
+  </body>
+</html>
