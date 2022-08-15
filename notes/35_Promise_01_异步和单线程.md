@@ -21,6 +21,7 @@
 
     * 定时任务：setTimeout()/setInterval()
     * 网络请求：ajax、图片加载
+    * DOM点击事件
 
     ```js
     // 异步setTimeout()/setInterval()
@@ -30,6 +31,14 @@
     },1000)
     console.log(3);
     //1  3   2
+    ```
+
+    ```js
+    // 异步DOM点击事件
+    let div = document.querySelector("div");
+    div.onclick = () => {
+        console.log(1);
+    }
     ```
 
     
