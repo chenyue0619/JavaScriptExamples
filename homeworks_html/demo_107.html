@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iterator => for of</title>
+</head>
+<body>
+    <script>
+        // let arr = [1,2,3];
+        // let it = arr[Symbol.iterator]();
+        // console.log(it);//Array Iterator {}
+        // console.log(it.next());//{value: 1, done: false}
+        // console.log(it.next());//{value: 2, done: false}
+        // console.log(it.next());//{value: 3, done: false}
+        // console.log(it.next());//{value: undefined, done: true}
+
+
+        // 封装for of循环
+        // let arr = [1,2,3];
+        // let it = arr[Symbol.iterator]();
+        // let next = it.next();
+        // while(next.done === false){
+        //     console.log(next.value);
+        //     next = it.next();
+        // }
+
+        // let arr = [1,2,3,4,5];
+        // for(let i of arr){
+        //     if(i === 2){
+        //         continue;
+        //     }
+        //     if(i === 4){
+        //         break;
+        //     }
+        //     console.log(i);//1  3
+        // }
+
+        // let arr = [1,2,3,4];
+        // for(let index of arr.keys()){
+        //     console.log(index);
+        // }
+        // for(let value of arr.values()){
+        //     console.log(value);
+        // }
+        // for(let [index,value] of arr.entries()){
+        //     console.log(index,value);
+        // }
+
+        let obj = {
+            name:"xiaoming",
+            sex:"nan"
+        }
+        for(let key of Object.keys(obj)){
+            console.log(key);
+        }
+        for(let value of Object.values(obj)){
+            console.log(value);
+        }
+        for(let [key,value] of Object.entries(obj)){
+            console.log(key,value);
+        }
+    </script>
+</body>
+</html>
