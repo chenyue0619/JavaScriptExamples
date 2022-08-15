@@ -35,6 +35,7 @@
             // 调用回调函数
           move(el, point, () => {
          // 返回resolve()函数，成功状态才可以使用then()方法
+         // 每次都是resolve()成功状态，then()方法才能正常执行第一个函数
             return resolve();
           });
         });
@@ -42,6 +43,7 @@
       document.onclick = () => {
         movePromise(oBox, { x: 200, y: 0 })
           .then(() => {
+            // 每次return是为了保证回调函数执行完之后且返回一个成功状态才能执行下一步
             return movePromise(oBox, { x: 200, y: 200 })
           })
           .then(() => {
