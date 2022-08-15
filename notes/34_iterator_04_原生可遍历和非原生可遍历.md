@@ -86,6 +86,7 @@
     obj[Symbol.iterator] = () => {
         let index = 0;
         //返回next方法，迭代的重要部分
+        //这个地方用了闭包
         return {next(){
             //每次迭代都要+1，执行下一次迭代
             index++;
