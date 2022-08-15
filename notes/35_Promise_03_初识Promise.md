@@ -191,7 +191,7 @@
 
   * catch()注意事项
     * catch()必须接受一个函数作为参数，不能是空参数
-    * 默认返回return undefined，
+    * 默认返回return undefined，默认成功状态
     * 当执行完catch之后，后面的then()方法也会继续执行
 
 * resolve()与reject()函数的参数
