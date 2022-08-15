@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生可遍历</title>
+</head>
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <script>
+        // 4、NodeList
+        // let aP = document.querySelectorAll("p");
+        // for(let p of aP){
+        //     console.log(p);
+        // }
+
+        //1、 数组
+        // let arr = [1,2,3];
+        // for(let item of arr){
+        //     console.log(item);
+        // }
+
+        // 2、字符串
+        // let str = "dsjh";
+        // for(let s of str){
+        //     console.log(s);
+        // }
+
+        // 3、arguments，箭头函数没有arguments
+        // let fn = function() {
+        //     for(let a of arguments){
+        //         console.log(a);
+        //     }
+        // }
+        // fn(1,2,3);
+
+        // 5、Set
+        // let s = new Set([1,2,3,4]);
+        // for(let i of s){
+        //     console.log(i);
+        // }
+
+        // 6、Map
+        let m = new Map([["name","xioaming"],["sex","nan"]]);
+        for(let i of m){
+            console.log(i);
+        }
+    </script>
+</body>
+</html>
