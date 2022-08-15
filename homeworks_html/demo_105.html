@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol数据类型</title>
+</head>
+<body>
+    <script>
+        // let s1 = Symbol();
+        // let s2 = Symbol();
+        // console.log(s1,s2);//ymbol() Symbol()
+        // console.log(s1 === s2);//false
+
+
+        // let s1 = Symbol("foo");
+        // let _s1 = Symbol.for("foo");
+        // let s2 = Symbol.for("foo2");
+        // console.log(s1);//Symbol(foo)
+        // console.log(_s1);//Symbol(foo)
+        // console.log(s2);//Symbol(foo)
+        // console.log(Symbol.keyFor(s2));//foo2
+        // console.log(Symbol.keyFor(s1));//undefined
+
+        // let s1 = Symbol("eat");
+        // let s2 = Symbol("eat");
+
+        // let person = {
+        //     eyes:"two",
+        //     nose:"one",
+        //     [s1]:"apple",
+        //     [s2]:"banana"
+        // }
+        // console.log(person);
+        // //{eyes: 'two', nose: 'one', Symbol(eat): 'apple', Symbol(eat): 'banana'}
+        // console.log(person[s1]);//apple
+        // console.log(Object.getOwnPropertySymbols(person));
+        // //[Symbol(eat), Symbol(eat)]
+        // console.log(Reflect.ownKeys(person));
+        // // ['eyes', 'nose', Symbol(eat), Symbol(eat)]
+
+        let fruits = {
+            apple:Symbol(),
+            grape:Symbol(),
+            banana:Symbol()
+        }
+        let judge = (type) => {
+            let result = 0;
+            switch(type){
+                case fruits.apple:
+                    result = 1;
+                    break;
+
+                case fruits.grape:
+                    result = 2;
+                    break;
+
+                case fruits.banana:
+                    result = 3;
+                    break;
+                
+            }
+            return result;
+        }
+        console.log(judge(fruits.apple));//1
+    </script>
+</body>
+</html>
