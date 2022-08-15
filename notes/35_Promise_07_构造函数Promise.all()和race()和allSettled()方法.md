@@ -1,0 +1,1 @@
+# Promise.all()和race()和allSettled()方法
