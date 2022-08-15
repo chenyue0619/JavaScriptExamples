@@ -8,10 +8,31 @@
 </head>
 <body>
     <script>
-        let ws = new WeakSet([{a:1}]);
-        console.log(ws);
-        ws.add(function(){}).add({b:2});
-        console.log(ws);
+        // let ws = new WeakSet([{a:1}]);
+        // console.log(ws);
+        // ws.add(function(){}).add({b:2});
+        // console.log(ws);
+
+        let fn = function(a,b){
+            return a + b;
+        }
+        console.log(fn(1,null));
+
+        // function test(){
+        //     return 3;
+        // }
+        // function fn(){
+        //     const [a = test(),b = 4] = arguments;
+        //     return a + b;
+        // }
+        // console.log(fn(1,null));
+
+        let a ;
+        console.log(a);
+        a = 1;
+        console.log(a);
+        a = 8;
+        console.log(a);
     </script>
 </body>
 </html>
