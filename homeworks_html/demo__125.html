@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承extends</title>
+</head>
+<body>
+    <script>
+        class Person{
+            // 属性
+            constructor(name,sex){
+                this.name = name;
+                this.sex = sex;
+            }
+            // 实例方法
+            say(){
+                console.log("父类say");
+            }
+            // 静态方法：class
+            static say(){
+                console.log("父类static say");
+            }
+
+        }
+
+        // 创建一个子类
+        class Programmer extends Person{
+            constructor(name,sex){
+                // 继承父类的属性
+                super(name,sex);
+                // 添加新的属性直接书写，一定要写在super()后面
+                this.age = this.age;
+            }
+            // 同名方法覆盖直接修改
+            say(){
+                console.log("Programmer say");
+            }
+            static say(){
+                console.log("Programmer static say");
+            }
+        }
+
+        let p = new Programmer("xioaming","nan");
+        // p.say();//父类say
+        // Programmer.say();//父类static say
+
+        p.say();//Programmer say
+        Programmer.say();//Programmer static say
+    </script>
+</body>
+</html>
