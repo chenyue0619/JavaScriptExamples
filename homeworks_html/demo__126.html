@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class实现继承</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,sex){
+                this,name = name;
+                this.sex = sex;
+            }
+            say(){
+                console.log("Person say");
+                // 父类中的方法被super调用时，其this指向子类中的实例
+                console.log("父类",this);
+                //父类 Students {sex: undefined, number: undefined}
+            }
+            static say(){
+                console.log("Person static say");
+                // 父类中的静态方法被子类调用时父类里面的this指向子类的class
+                console.log("父类",this);
+            }
+        }
+
+        class Students extends Person{
+            // 构造函数
+            constructor(name,sex,number){
+                super(name,sex);
+                this.number = number;
+            }
+            say(){
+                // 执行父类中的say()方法
+                // super() => Person.prototype
+                // super.say() => Person.prototype.say()
+                super.say();//Person say
+                //父类 Students {sex: undefined, number: undefined}
+            }
+            study(){
+                console.log("Students study");
+            }
+            static say(){
+                // 调用父类里面的say静态方法
+                super.say();
+            }
+        }
+        let s = new Students();
+        s.say();
+        Students.say();//Person static say
+    </script>
+</body>
+</html>
