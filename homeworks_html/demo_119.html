@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的注意事项</title>
+</head>
+<body>
+    <script>
+        // let p = new Promise((resolve,reject) => {
+        //     // return resolve();
+        //     // return reject();
+            
+        //     console.log("hi");
+        // })
+        // // console.log(p);
+
+        Promise.all([1,2,3]).then(
+            (datas) => {console.log(datas)}//[1, 2, 3]
+        )
+
+        // 等价于
+        Promise.all([
+            // Promise.resolve()相当于直接创建一个成功状态的resolve()对象
+            Promise.resolve(1),
+            Promise.resolve(2),
+            Promise.resolve(3)
+        ]).then((datas) => {
+            console.log(datas);//[1, 2, 3]
+        })
+
+        // 又等价于
+        let p1 = Promise.resolve(1);
+        let p2 = Promise.resolve(2);
+        let p3 = Promise.resolve(3);
+        Promise.all([p1,p2,p3]).then((datas) => {
+            console.log(datas);//[1, 2, 3]
+        })
+
+
+        Promise.all(new Set([1,2,3])).then((datas) => {
+            console.log(datas);//[1, 2, 3]
+        })
+
+        let pp1 = Promise.resolve(new Set([1]));
+        let pp2 = Promise.resolve(new Set([2]));
+        let pp3 = Promise.resolve(new Set([3]));
+        Promise.all([pp1,pp2,pp3]).then((datas) => {
+            console.log(datas);//[Set(1), Set(1), Set(1)]
+        })
+
+        let ppp1 = Promise.resolve(1);
+        // 错误既可以单独catch()方法处理
+        let ppp2 = Promise.reject(2).catch(() => {console.log("error")});//error
+        // 错误也可以集中catch()处理
+        let p = Promise.all([ppp1,ppp2]).catch(() => {console.log("error")});
+    </script>
+</body>
+</html>
