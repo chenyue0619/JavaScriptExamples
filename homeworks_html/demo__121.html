@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识class</title>
+</head>
+<body>
+    <script>
+        class Person{
+            // 属性定义在构造函数constructor()里面
+            constructor(name,sex){
+                this.name = name;
+                this.sex = sex;
+            }
+            // 方法定义在class里面
+            sayHello(){
+                console.log("hi");
+            }
+        }
+        // 用new创建一个新的实例对象
+        let n = new Person("xiaoming","nan");
+        console.log(n);//Person {name: 'xiaoming', sex: 'nan'}
+        // class类实际上就是一个封装好的构造函数，typeof === function
+        console.log(typeof Person);//functions
+    </script>
+</body>
+</html>
