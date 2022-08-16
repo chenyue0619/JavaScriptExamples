@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性和方法static</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name,sex){
+                this.name = name;
+                this.sex = sex;
+            }
+            say(){
+                console.log("我是定义在实例对象上面的say");
+            }
+            static say(){
+                console.log("我是定义在class类上面的say")
+            }
+            static speak(){
+                console.log("我是定义在class类上面的speak")
+            }
+            static getVersion(){
+                return 1.2;
+            }
+        }
+        let p = new Person("xiaoming","nan");
+        p.say();//我是定义在实例对象上面的say
+        Person.say();//我是定义在class类上面的say
+        console.log(Person.getVersion());//1.2
+    </script>
+</body>
+</html>
