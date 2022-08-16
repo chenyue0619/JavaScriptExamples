@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实例的属性和方法</title>
+</head>
+<body>
+    <script>
+        class Person{
+            // 设置age默认值，每个实例对象都会携带此属性
+            age = 19;
+            constructor(name,sex,age){
+                this.name = name;
+                this.sex = sex;
+                // 给age设置默认值并传值
+                this.age = age || this.age;
+            }
+
+            // 方法定义
+            say(){
+                console.log(`我是${this.name},你好啊`)
+            }
+        }
+
+        let p = new Person("xiaoming","nan",20);
+        //Person {age: 20, name: 'xiaoming', sex: 'nan'}
+        console.log(p.say());
+    </script>
+</body>
+</html>
