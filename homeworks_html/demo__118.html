@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的构造函数方法</title>
+</head>
+<body>
+    <script>
+        const print = (ms) => {
+            return new Promise((resolve,reject) => {
+                setTimeout(resolve,ms);
+            })
+        }
+        let p1 = print(1000).then(
+            () => {
+                console.log("p1完成了");
+                // return new Promise(reject => {"p1失败了"})
+            }
+        );
+        let p2 = print(2000).then(() => {console.log("p2完成了")});//p2完成了
+        // let a = Promise.all([p1,p2]).then(() => {})
+        // console.log(p);//[[PromiseState]]: "fulfilled"
+        // a.then(
+        //     () => {
+        //         console.log("success");//success
+        //     },
+        //     () => {
+        //         console.log("error");
+        //     }
+        // )
+
+        // let r = Promise.race([p1,p2]);
+        // r.then(
+        //     () => {
+        //         console.log("success");
+        //     },
+        //     () => {
+        //         console.log("error");
+        //     }
+        // )
+
+        let as = Promise.allSettled([p1,p2]);
+        as.then(() => {console.log(1)});//1
+        console.log(as);
+        // [[PromiseState]]: "fulfilled"
+        //[[PromiseResult]]: Array(2)
+            // 0: {status: 'fulfilled', value: undefined}
+            // 1: {status: 'fulfilled', value: undefined}
+
+        // 最终结果：
+        // 若p1成功：p1完成了  success  p2完成了
+        // 若p1失败：p2完成了  success
+    </script>
+</body>
+</html>
