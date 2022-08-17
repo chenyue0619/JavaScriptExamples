@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class面试题1</title>
+</head>
+<body>
+    <script>
+        class Parent{
+            color = "red";
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            pSay(){
+                // 因为在子类中super()没有传参，所以属性并没有实现继承，所以这里undefined
+                alert(this.name);
+            }
+        }
+        class Child extends Parent{
+            constructor(name,age){
+                super();;//这里并没有传入参数，所以并没有继承父类的属性
+            }
+            cChild(){
+                alert(this.name);
+            }
+        }
+        const p1 = new Parent("p1",17);
+        const c1 = new Child("c1",18)
+        c1.pSay();
+        p1.cChild();//因为p1是父类的实例对象，cChild()是子类的原型上面的方法，父类不可以访问
+    </script>
+</body>
+</html>
