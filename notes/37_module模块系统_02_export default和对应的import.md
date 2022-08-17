@@ -1,4 +1,4 @@
-# export default和对应的import
+# export/default和对应的import
 
 * 导出和导入
 
