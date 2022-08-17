@@ -38,7 +38,20 @@
         // console.log(obj.Person);//class Person{}
         // console.log(Person,username);//class Person{} 'xiaoming'
 
-        import fn,{Person,name} from "./js/index.js";
+        // import fn,{Person,name} from "./js/index.js";
+
+        // console.log(2);
+        // console.log(3)
+        // import "./js/index.js";
+        // //打印结果1 2 3
+
+        // 
+        
+        export {name} from "./js/index.js";
+
+        // 等价于
+        export {name};
+        import {name} from "./js/index.js" ;
 
 
     </script>

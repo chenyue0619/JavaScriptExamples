@@ -9,8 +9,8 @@ console.log(1);
 // export default function(){};
 
 // // 导出class类
-class Person{};
-const name = "xiaoming";
+// class Person{};
+// const name = "xiaoming";
 
-export {Person,name};
-export default function(){};
+// export {Person,name};
+// export default function(){};
