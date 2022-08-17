@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态方法与普通方法</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name){
+                this.name;
+            }
+            say(){
+                console.log("say");
+            }
+            static say(){
+                console.log("static say");
+            }
+            static version = "1.2";
+        }
+
+        let p = new Person("xiaoming");
+        Person.say();
+        p.say();
+        console.log(p.say() === Person.prototype.say())//true
+    </script>
+</body>
+</html>
