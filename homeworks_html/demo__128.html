@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>module的导出export以及导入import</title>
+</head>
+<body>
+    <script type="module">
+        // 导入import
+        // 只会执行一次
+        // import "./js/index.js";//1
+        // import "./js/index.js";
+        // import "./js/index.js";
+
+        // // 从文件index.js里面导入name变量
+        // import name from "./js/index.js";
+        // // 导出之后就可以访问该变量
+        // console.log(name);//xiaoming
+
+        // // 导入匿名函数
+        // import fn from "./js/index.js";
+        // // fn是给导出的随想随意起的名字
+        // console.log(fn);//ƒ (){}
+
+        // 导入类
+        // import Person from "./js/index.js";
+        // console.log(Person);//class Person{}
+
+        // export导出的对象对应的import导入用花括号{}包裹起来
+
+        // import {Person,name as username} from "./js/index.js";
+
+        // 整体导出
+        // import * as obj from "./js/index.js";
+        // console.log(obj.name);//xiaoming
+        // console.log(obj.Person);//class Person{}
+        // console.log(Person,username);//class Person{} 'xiaoming'
+
+        import fn,{Person,name} from "./js/index.js";
+
+
+    </script>
+</body>
+</html>
