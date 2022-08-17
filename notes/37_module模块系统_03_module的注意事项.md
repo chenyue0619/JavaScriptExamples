@@ -62,11 +62,12 @@
     
     export {name} from "./js/index.js";
     
-    // 等价于
-    export {name};
-    import {name} from "./js/index.js" ;
-    ```
-
+    // 等价于 => 先导入再导出
     
-
+    import {name} from "./js/index.js" ;
+    export {name};
+```
+    
+  
+  
   
