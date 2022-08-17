@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class面试题2</title>
+</head>
+<body>
+    <script>
+        class Parent{
+            color = "red";//会被子类继承
+            // 因为父类构造函数里面并没有传入color属性，所以没有该属性传值
+            constructor(username){
+                this.username = username;
+                // this.color = color;//这样定义父类可以访问color属性了
+            }
+            static pSay(){
+                // 父类静态方法中的this指向子类，
+                console.log(this.username);//等价于Child.username
+                                            //undefined
+            }
+            pShow(){
+                // 父类普通方法里面的this指向子类的实例对象
+                console.log(this.color);//等价于p1.color = "red"
+            }
+        }
+        class Child extends Parent{
+            constructor(username){
+                super(username)
+            }
+            static cSay(){
+                // 子类static静态方法里面的super代表父类class Person
+                super.pSay();//等价于Person.pSay()
+            }
+            cShow(){
+                // 子类普通方法里面的super()代表父类原型
+                super.pShow();//等价于Parent.prototype.pShow()
+                console.log(super.color);
+            }
+        }
+        const c1  = new Child("c1");
+        Child.cSay();//undefined
+        c1.cShow();
+    </script>
+</body>
+</html>
