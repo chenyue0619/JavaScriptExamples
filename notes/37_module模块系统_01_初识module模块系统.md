@@ -16,8 +16,15 @@
     ```js
     <script src="index.js" type="module"></script>
     ```
+    
+    ```js
+    <script type="module">
+        import"index.js";
+    </script>
+    ```
 
 * 分析module解决的问题
+  
   * 模块化的问题
   * 消除全局变量
   * 管理加载顺序
