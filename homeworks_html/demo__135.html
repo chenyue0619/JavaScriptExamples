@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+</head>
+<body>
+    <script>
+        
+        document.cookie = "username=xiaoming";
+        document.cookie = "age=19";
+        document.cookie = `nickname=${encodeURIComponent("大头")}`;
+        document.cookie = `${encodeURIComponent("昵称")}=${encodeURIComponent("小明")}`;
+        document.cookie = `name=xiaoming;expires=${new Date("2022-10-20")}`;
+        document.cookie = `sex=nan;max-age=50`;
+        console.log(document.cookie);//username=xiaoming; age=19
+    </script>
+</body>
+</html>
