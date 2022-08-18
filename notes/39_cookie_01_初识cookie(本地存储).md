@@ -14,4 +14,5 @@
   * 获取cookie：控制台 -> console.log(document.cookie)
   * 位置：
     * 检查 => 应用(application) -> Cookie
+      * 可以修改也可以添加
     * 网络(newwork) -> 标头 -> 请求标头 -> Cookie
