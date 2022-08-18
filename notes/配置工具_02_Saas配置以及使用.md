@@ -2,7 +2,7 @@
 
 * 插件：Live Sass Compiler
 
-* 编译转化：
+* 解析转化：
 
   * 后缀名.scss 
   * 编辑器右下角Watch Sass将scss文件转换为css文件
@@ -78,6 +78,7 @@
 * sass注释
   * //在css文件里面看不到
   * /**/在css文件里面可以看到内容
+  
 * 变量定义
   * 定义$：$text-color:red;
   * 使用$text-color
@@ -120,6 +121,35 @@
   }
   ```
 
+* mixin混合的使用
+
+  * 用来封装重复代码
+
+  * @mixin用来封装重复的代码，名字随便起
+  
+  * @include用来引入封装的重复代码，后面直接跟名字
+  
+    ```scss
+    @mixin single-ellipsis{
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+    .box{
+        width: 100px;
+        @include single-ellipsis
+    }
+    ```
+  
+  * 函数的形式可以直接传参设置样式
+  
+    ```css
+    //一开始就传值代表默认值
+  @mixin single-ellipsis($width:200px,$height:200px)
+    ```
+
+  * @mixin(@include)和@extend用法相似
+  
 * 媒体查询搭配Mixin配合使用
 
   * 原始写法
