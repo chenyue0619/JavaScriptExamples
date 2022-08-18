@@ -25,6 +25,8 @@
 
       ![1660845184644](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1660845184644.png)
 
+      ![1660845621126](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1660845621126.png)
+
     * POST请求，有请求体，数据通过请求体携带
 
       ```html
