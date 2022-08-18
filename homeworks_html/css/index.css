@@ -1,0 +1,49 @@
+.box {
+  border: 1px solid #000000;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: bisque;
+  color: 0;
+}
+.box .content1 {
+  margin: 10px;
+  width: 80px;
+  height: 80px;
+  color: pink;
+}
+.box .content1 .content2 {
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  color: 0;
+  font-size: 20px;
+  font-family: 0;
+  font-weight: 0;
+}
+
+.header {
+  width: 1000px;
+}
+@media screen and (max-width: 1200px) {
+  .header {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .header {
+    width: 500px;
+  }
+  .footer {
+    color: red;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .header {
+    width: 500px;
+    color: red;
+  }
+}/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,66 @@
+// 定义占位符
+%placeholder{
+    border: 1px solid #000000;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: bisque;
+    color: green($color: #000000);
+    // 继承占位符
+    @extend %placeholder;
+
+    .content1{
+        margin: 10px;
+        width: 80px;
+        height: 80px;
+        color: pink;
+
+        .content2{
+            margin: 10px;
+            width: 60px;
+            height: 60px;
+            color: blue($color: #000000);
+            font:{
+                size:20px;
+                family:abs($number: 0);
+                weight:abs($number: 0);
+            }
+        }
+    }
+}
+
+
+// 嵌套语法
+.header {
+    width:1000px;
+    @media screen and (max-width:1200px){
+        width:500px;
+    }
+}
+
+// 响应式代码
+// 外部
+@media screen and (max-width:1000px){
+    .header{
+        width:500px;
+    }
+    .footer{
+        color:red;
+    }
+}
+
+
+@mixin ipad(){
+    @media screen and (max-width:1000px){
+        @content;
+    }
+}
+
+.header{
+    @include ipad(){
+        width:500px;
+        color:red;
+    }
+}
