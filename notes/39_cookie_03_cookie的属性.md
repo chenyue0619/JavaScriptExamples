@@ -48,3 +48,8 @@
       ```
 
     * 如果max-age的值是0或负数，则Cookie会被删除
+  
+* Domain域
+
+  * Domain限定了访问Cookie的范围(不同域名)
+  * 使用JS只能读写当前路径和上级路径的Cookie，无法读写下级路径的Cookie
