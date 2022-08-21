@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage本地存储</title>
+</head>
+<body>
+    <script>
+        localStorage.setItem("name","xiaoming");
+        localStorage.setItem("age",19);
+        console.log(localStorage.length);//3
+        console.log(localStorage.getItem("name"));//xiaoming
+        console.log(localStorage.getItem("sex"));//null
+        localStorage.removeItem("name");
+        localStorage.clear();
+        console.log(localStorage);//Storage {length: 0}
+        localStorage.setItem({},19);
+        console.log(localStorage);//Storage {[object Object]: '19', length: 1}
+
+
+
+
+        // document.cookie="age=19";
+    </script>
+</body>
+</html>
