@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage实现自动填充</title>
+</head>
+<body>
+    <form action="#" method="post" id="login">
+        姓名：<input type="text" name="username" id="username">
+        性别：<input type="text" name="sex" id="sex">
+        <button class="btn">登录</button>
+    </form>
+    <script>
+        let login = document.querySelector("#login");
+        let btn = document.querySelector(".btn");
+        const username = localStorage.getItem("username");
+
+        // 如果本地有数据的话，就将本地数据返回给username表单的值
+        if(username){
+            login.username.value = username;
+        }
+
+        btn.addEventListener("click",function(e){
+            e.preventDefault();
+            // localStorage的值是对象，不需要转换encodeURIComponent()
+            localStorage.setItem("username",login.username.value);
+            login.submit();
+        })
+
+        
+
+    </script>
+</body>
+</html>
