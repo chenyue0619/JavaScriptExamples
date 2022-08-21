@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖(事件在n秒内只执行一次)</title>
+</head>
+<body>
+    <input type="text" name="" id="text">
+    <script>
+        let text = document.querySelector("#text");
+        // 只要有定时器，就要先清除，先定义再使用
+        // let timer;
+
+        // text.addEventListener("keyup",function(){
+        //     if(timer){
+        //         clearTimeout(timer);
+        //     }
+        //     timer = setTimeout(function(){
+        //         console.log(text.value);
+        //     },2000);
+        // })
+
+        // 封装debouonce防抖(一定时间内只执行一次)
+        const debounce = function(fn,delay){
+
+            // 定义一个延时器
+            let timer;
+            // 返回函数执行，逻辑主代码(){
+                // 先清除延时器，不让延时器里面的内容执行
+                if(timer){
+                    clearTimeout(timer);
+                }
+                // 执行延时器
+                timer = setTimeout(() => {
+                    // 逻辑主代码
+                    fn()
+                },delay)
+            }
+        }
+        text.onkeyup = debounce(() => {console.log(text.value)},1000);
+    </script>
+</body>
+</html>
