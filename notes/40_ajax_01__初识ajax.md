@@ -21,3 +21,10 @@
   * 使用ajax可以在不重新加载整个页面的情况下，对页面的某部分进行更新
     * B站注册检测
     * B站搜索提示
+
+* ajax的开发环境
+
+  * ajax需要服务器环境(http/https)
+  * 非服务器环境下，很多浏览器无法正常使用ajax
+  * window phpStudy
+  * Mac MAMP
