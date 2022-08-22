@@ -20,3 +20,19 @@
 * JSON.stringfy()   (JS  ->  JSON)
 
   * JSON.stringify()可以将JS的基本数据类型、对象或者数组转换成JSON格式的字符串
+
+  * 如果不加JSON.stringify()解析的话[Object,Object]
+
+    ```js
+    console.log(xhr.responseText);
+    //{name: "xiaoming", sex: "nan", age: 19}
+    xhr.send(JSON.stringify(
+        {
+            name:"xiaoming",
+            sex:"nan",
+            age:19
+        }
+    ));
+    ```
+
+    
