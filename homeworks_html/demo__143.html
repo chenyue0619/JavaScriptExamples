@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JSON</title>
 </head>
 <body>
-    
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState !== 4) return;
+            if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+                // 接收到的是JSON格式的数据
+                // 打印出来的也是JDON格式的数据
+                console.log(xhr.responseText);
+                // console.log(JSON.parse(xhr.responseText));
+                //{username: 'xioaming', sex: 'female', age: 19}
+            }
+        }
+        const url = "https://www.imooc.com/api/http/search/suggest?word=js&username=xiaoming"
+        xhr.open("POST",url,true)
+        xhr.send(JSON.stringify(
+            {
+                name:"xiaoming",
+                sex:"nan",
+                age:19
+            }
+        ));
+    </script>
 </body>
 </html>
