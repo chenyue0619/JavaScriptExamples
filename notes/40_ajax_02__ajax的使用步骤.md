@@ -26,15 +26,14 @@
         `请求地址->地址URL:https://www.imooc.com/api/http/search/suggest?word=js&username=xiaoming`,
       `是否异步方式->`true
     )
-  ```
-  
+    ```
   * 3、发送请求
   
     ```js
     // 3、发送请求  send()的参数是通过请求体携带的数据
-  //  get没有请求体  xhr.send(null)
-    xhr.send();
-  ```
+    //  get没有请求体  xhr.send(null)
+      xhr.send();
+    ```
   
   * 4、监听事件，处理响应
   
