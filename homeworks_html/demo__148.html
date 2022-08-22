@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一题</title>
+</head>
+<body>
+    <script>
+        // Promsie.resolve ()直接创建一个成功状态的Promise对象
+        Promise.resolve()
+        .then(() => {
+            console.log(1);
+        })
+        .catch(() => {
+            console.log(2);
+        })
+        .then(() => {
+            console.log(3);
+        })
+        //控制台打印出1 3
+    </script>
+</body>
+</html>
