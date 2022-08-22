@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写一个简易的ajax</title>
+</head>
+<body>
+    <script>
+        function ajax(url,success){
+            // 创建一个xhr对象
+            const xhr = new XMLHttpRequest();
+
+            // 监听响应结果
+            xhr.addEventListener("readystatechange",() => {
+                if(xhr.readyState !== 4) return;
+                if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+                    // 接收到返回来的数据传给success函数
+                    success(xhr.responseText);
+                }
+            })
+
+            // 准备发送请求
+            xhr.open("GET",url,true);
+
+            // 发送请求
+            xhr.send(null);
+        }
+    </script>
+</body>
+</html>
