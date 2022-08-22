@@ -6,7 +6,7 @@
   * 以文本的形式响应内容
   *  console.**log**(xhr.responseText);
 
-* response
+* responseType响应类型
 
   * 设置其他的响应类型
   * xhr.responseType = "json"
