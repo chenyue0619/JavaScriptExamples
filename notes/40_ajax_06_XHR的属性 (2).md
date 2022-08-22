@@ -21,7 +21,7 @@
   * 兼容性：IE6-7不支持，IE8开始支持
 
     ```js
-    xhr.timeout = 1000;
+    xhr.timeout = 1000 ;
     ```
 
 * withCredentials
