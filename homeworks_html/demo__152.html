@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二题</title>
+</head>
+<body>
+    <script>
+        (async function(){
+            console.log("start");//start
+            const a = await 100;
+            console.log("a",a);//a 100
+            const b = await Promise.resolve(200);
+            console.log("b",b);//b 200
+            const c = await Promise.reject(300);
+            console.log("c",c);
+            console.log("end");
+        })();//Uncaught (in promise) 300
+        //控制台
+    </script>
+</body>
+</html>
