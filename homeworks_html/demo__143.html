@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON</title>
+    <title>ajax</title>
 </head>
 <body>
     <script>
@@ -19,15 +19,41 @@
                 //{username: 'xioaming', sex: 'female', age: 19}
             }
         }
+
+        // 只监听成功状态
+        // xhr.addEventListener("load",function(){
+        //     if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
+        //         xonsole.log(xhr.responseText);
+        //     }
+        // })
+
+        // 监听错误状态
+        // xhr.addEventListener("error",() => {
+        //     console.log(error);
+        // })
+
+        // 终止请求
+        xhr.addEventListener("abort",() => {
+            console.log("abort");
+        })
+
+        // 请求超时事件
+        xhr.addEventListener("timeout",() => {
+            console.log("timeout");
+        })
+
+        
         const url = "https://www.imooc.com/api/http/search/suggest?word=js&username=xiaoming"
-        xhr.open("POST",url,true)
-        xhr.send(JSON.stringify(
-            {
-                name:"xiaoming",
-                sex:"nan",
-                age:19
-            }
-        ));
+        xhr.open("GET",url,true)
+
+        // 设置请求超时事件
+        xhr.timeout = 1000;
+
+        // 设置数据发送的的格式
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        xhr.send();
+        // 终止请求
+        xhr.abort();
     </script>
 </body>
 </html>
