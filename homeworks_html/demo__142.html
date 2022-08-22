@@ -22,12 +22,14 @@
             }
         }
 
-        const url = "https://www.imooc.com/api/http/search/suggest?wod=js ./index.html  ./index.txt";
+        const url = `https://www.imooc.com/api/http/search/suggest?word=js&username=xiaoming&age=${encodeURIComponent("小学生")}`;
         // 3、准备发送请求
-        xhr.open("GET",url,true);
+        xhr.open("POST",url,true);
 
         // 4.发送请求
-        xhr.send(null);
+        // xhr.send("company=shanghai&sex=man");
+        // xhr.send({sex:"man"});//[object Object]
+        xhr.send(`sex=${encodeURIComponent("男")}`);//sex=%E7%94%B7
     </script>
 </body>
 </html>
