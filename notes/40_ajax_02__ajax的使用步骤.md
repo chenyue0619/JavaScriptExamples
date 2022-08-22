@@ -57,9 +57,11 @@
         if(xhr.readyState !== 4) return;
     
         if(xhr.status >=200 && xhr < 300 || xhr.status === 304){
+            //接收到的是JSON格式的数据
+            //打印出来的也是JSON格式的数据
             console.log(xhr.responseText);//正常使用我们的响应
       }
-    }
+  }
     ```
-  
+    
     
