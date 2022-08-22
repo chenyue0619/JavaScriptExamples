@@ -5,7 +5,7 @@
   * 只监听成功状态
 
     ```js
-    //onreadystatechange每一个状态都会监听，所以要判断xhr的状态
+    //onreadystatechange 每一个状态都会监听，所以要判断xhr的状态
     xhr.onreadystatechange = function(){
         if(xhr.readyState !== 4) return;
         if(xhr.status >= 200 && xhr.status < 300 || xhr.status === 304){
