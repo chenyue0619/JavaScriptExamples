@@ -3,7 +3,7 @@
 * 实现方式
 
   * 借助构造函数XMLHttpRequest
-  * 不论是XMLHttpRequest，还是Ajax，都没有和具体的某种数据格式绑定
+  * 不论是XMLHttpRequest， 还是Ajax，都没有和具体的某种数据格式绑定
 
 * ajax实现步骤
 
