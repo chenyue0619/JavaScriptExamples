@@ -63,7 +63,7 @@
   console.log(Math.pow(2,3));//2*2*2 = 8
   ```
 
-* Math.aqrt()开方
+* Math.aqrt()开方：开平方根
 
 * Math.random();
   * 该方法返回的是一个大于等于0并且小于1的随机数
