@@ -26,7 +26,7 @@
     console.log(Math.max.apply(null,[1,2,3,4,5]));
     ```
 
-  * Math.pow()平方根
+  * Math.pow()平方
 
 * Math.floor()向下取整
 
@@ -55,9 +55,9 @@
   console.log(Math.round(2.3455 * 100) / 100);//2.34
   ```
 
-* Math.pow()平方根
+* Math.pow()幂次方
 
-  * Math.pow(2,3) => 2的3次方跟
+  * Math.pow(2,3) => 2的3次方
 
   ```
   console.log(Math.pow(2,3));//2*2*2 = 8
