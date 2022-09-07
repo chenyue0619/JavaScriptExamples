@@ -55,6 +55,8 @@
   console.log(Math.round(2.3455 * 100) / 100);//2.34
   ```
 
+* Math.trunc()直接取出小数点后面的值
+
 * Math.pow()幂次方
 
   * Math.pow(2,3) => 2的3次方
