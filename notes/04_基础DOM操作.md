@@ -629,30 +629,28 @@
     * 可以实现收起效果，有就添加/没有就删除
 
       ```html
-    <style>
-          .small{
-              width:100px;
-              height:100px;
-              background-color:orange;
-          }
-          .big{
-              width:200px;
-              height:200px;
-              background-color:blue;
-          }
-      </style>
+      <style>
+            .small{
+                width:100px;
+                height:100px;
+                background-color:orange;
+            }
+            .big{
+                width:200px;
+                height:200px;
+                background-color:blue;
+            }
+        </style>
       <body>
-          <div class="small"></div>
-          <script>
-              let small = document.querySelector(".small");
-              small.onclick = function(){
-                  this.classList.toggle("big");
-              }
-          </script>
+      	<div class="small"></div>
+        <script>
+            let small = document.querySelector(".small");
+            small.onclick = function(){
+                this.classList.toggle("big");
+            }
+        </script>
       </body>
       ```
-  
-      
   
   * replace('旧类名','新类名');   替换**
   
@@ -801,6 +799,10 @@
 3、**子元素**：children[标签]  childNodes[文本节点+标签节点]
 
 4、**父亲元素**：parentNode ===parentElement
+
+​	**判断包含元素**：contains()
+
+​	**判断公共元素：**commonParentNode()
 
 5、**兄弟元素**：previousElementSibling[上一个兄弟元素]  nextElementSibling[下一个兄弟元素]：获取到的是标签内容
 
